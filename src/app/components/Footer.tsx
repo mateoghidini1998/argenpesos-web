@@ -22,78 +22,124 @@ export default function Footer() {
                     <div className="flex flex-col text-[10px] md:text-[12px] xl:text-sm items-center lg:items-start">
                         <h4 className="text-[#888] font-bold mb-2 text-center md:text-left">NUESTROS SERVICIOS</h4>
                         <ul className="space-y-1">
-                            <li className="text-[#17AAE1] font-bold whitespace-nowrap">- PRÉSTAMOS</li>
+                        <li className="text-[#17AAE1] font-bold whitespace-nowrap">- PRÉSTAMOS</li>
+                        <li className="text-[#EC5647] font-bold whitespace-nowrap overflow-hidden">
                             <Link href="https://www.argencompras.com.ar" target='_blank'>
-                            <li className="text-[#EC5647] font-bold whitespace-nowrap overflow-hidden">- ARGENCOMPRAS</li>
+                            - ARGENCOMPRAS
                             </Link>
+                        </li>
+                        <li className="text-[#6104EE] font-bold whitespace-nowrap overflow-hidden">
                             <Link href="https://www.cuponizate.com.ar" target='_blank'>
-                            <li className="text-[#6104EE] font-bold whitespace-nowrap overflow-hidden">- CUPONIZATE</li>
+                            - CUPONIZATE
                             </Link>
+                        </li>
+                        <li className="text-[#888] font-bold whitespace-nowrap">
                             <Link href="/micuenta">
-                            <li className="text-[#888] font-bold whitespace-nowrap">- CONSULTÁ TU CUENTA</li>
+                            - CONSULTÁ TU CUENTA
                             </Link>
+                        </li>
+                        <li className="text-[#888] font-bold whitespace-nowrap">
                             <Link href="https://api.whatsapp.com/send?phone=541168164074&text=Hola!%20les%20consulto%20por%20los%20servicios%20vistos%20en%20www.argenpesos.com.ar" target='__blank'>
-                                <li className="text-[#888] font-bold whitespace-nowrap">- DUDAS O RECLAMOS</li>
+                            - DUDAS O RECLAMOS
                             </Link>
+                        </li>
                         </ul>
                     </div>
 
                     <div className="flex flex-col text-[10px] md:text-[12px] xl:text-sm items-center lg:items-start w-[206px] whitespace-nowrap overflow-hidden text-overflow-ellipsis">
                         <h4 className="text-[#888] font-bold mb-2">SOBRE NOSOTROS</h4>
                         <ul className="space-y-1">
-                            <Link href="/institucional">
-                                <li className="text-[#888]">Quienes somos</li>
-                            </Link>
+                            <li className="text-[#888]">
+                                <Link href="/institucional">
+                                Quienes somos
+                                </Link>
+                            </li>
+                            <li className="text-[#888]">
                             <Link href="/responsabilidad-social">
-                                <li className="text-[#888]">Responsabilidad social</li>
+                            Responsabilidad social
                             </Link>
+                        </li>
+                        <li className="text-[#888]">
                             <Link href="/sucursales" target='_blank'>
-                                <li className="text-[#888]">Nuestras sucursales</li>
+                            Nuestras sucursales
                             </Link>
+                        </li>
+                        <li className="text-[#888]">
                             <Link href="/medios-de-pago" target='_blank'>
-                                <li className="text-[#888]">Medios de Pago</li>
+                            Medios de Pago
                             </Link>
+                        </li>
+                        <li className="text-[#888]">
                             <Link href="/preguntas-frecuentes" target='_blank'>
-                                <li className="text-[#888]">Preguntas frecuentes</li>
+                            Preguntas frecuentes
                             </Link>
+                        </li>
+                        <li className="text-[#888]">
                             <Link href="./TERMINOS-Y-CONDICIONES-2024.docx" download>
-                                <li className="text-[#888]">Términos y condiciones</li>
+                            Términos y condiciones
                             </Link>
-                            <a href="./POLITICAS_DE_PRIVACIDAD 2024.docx" download><li className="text-[#888]">Políticas de privacidad</li></a>
-                            <a href="./Comisiones-Cargos-y-Tasas.docx" download><li className="text-[#888]">Información de tasas</li></a>
+                        </li>
+                        <li className="text-[#888]">
+                            <a href="./POLITICAS_DE_PRIVACIDAD 2024.docx" download>
+                            Políticas de privacidad
+                            </a>
+                        </li>
+                        <li className="text-[#888]">
+                            <a href="./Comisiones-Cargos-y-Tasas.docx" download>
+                            Información de tasas
+                            </a>
+                        </li>
                         </ul>
                     </div>
                     <div className="flex flex-col text-[10px] md:text-[12px] xl:text-sm text-center lg:text-start items-center lg:items-start lg:max-w-[320px]  text-wrap">
-                        <ul className="space-y-1 w-full">
-                            <Link href="boton_arrepentimiento" >
-                                <li className="text-[#EC5647]">Botón de arrepentimiento</li>
+                    <ul className="space-y-1 w-full">
+                        <li className="text-[#EC5647]">
+                            <Link href="boton_arrepentimiento">
+                            Botón de arrepentimiento
                             </Link>
+                        </li>
+                        <li className="text-[#17AAE1]">
                             <Link href="boton_baja">
-                                <li className="text-[#17AAE1]">Botón de Baja</li>
+                            Botón de Baja
                             </Link>
-                           <Link href="./SOLICITUD-MANUAL-ARGEN.docx" download>
-                                <li className="text-[#888] font-bold text-wrap">Contratos de adhesión - Ley 24.240 de Defensa del Consumidor</li>
+                        </li>
+                        <li className="text-[#888] font-bold text-wrap">
+                            <Link href="./SOLICITUD-MANUAL-ARGEN.docx" download>
+                            Contratos de adhesión - Ley 24.240 de Defensa del Consumidor
                             </Link>
-                            <li className="text-[#888] relative group">Defensa del Consumidor
-                                <ul className="hidden group-hover:block absolute bg-white space-y-1  border-gray-300 rounded">
-                                    <Link href="https://www.argentina.gob.ar/economia/industria-y-comercio/defensadelconsumidor/leyes-proteccion-consumidor" target='__blank'>
-                                        <li className="text-[#888] text-wrap">Legislación Derecho de los Consumidores</li>
-                                    </Link>
-                                    <Link href="https://www.argentina.gob.ar/economia/industria-y-comercio/defensadelconsumidor" target='__blank'>
-                                        <li className="text-[#888]">Dónde y cómo reclamar</li>
-                                    </Link>
-                                    <Link href="https://autogestion.produccion.gob.ar/consumidores" target='__blank'>
-                                        <li className="text-[#888]">Defensa de las y los consumidores</li>
-                                    </Link>
-                                    <Link href="https://www.argenpesos.com.ar/public/storage/pdf/Jurisdiccion%20en%20caso%20de%20litigio.pdf" target='__blank'>
-                                        <li className="text-[#888]">Jurisdición en caso de litigio</li>
-                                    </Link>
-                                    <Link href="https://www.argenpesos.com.ar/public/storage/pdf/Protecion%20de%20Datos%20Personales.pdf" target='__blank'>
-                                        <li className="text-[#888]">Protección de datos personales</li>
-                                    </Link>
-                                </ul>
+                        </li>
+                        <li className="text-[#888] relative group">
+                            Defensa del Consumidor
+                            <ul className="hidden group-hover:block absolute bg-white space-y-1 border-gray-300 rounded">
+                            <li className="text-[#888] text-wrap">
+                                <Link href="https://www.argentina.gob.ar/economia/industria-y-comercio/defensadelconsumidor/leyes-proteccion-consumidor" target='__blank'>
+                                Legislación Derecho de los Consumidores
+                                </Link>
                             </li>
+                            <li className="text-[#888]">
+                                <Link href="https://www.argentina.gob.ar/economia/industria-y-comercio/defensadelconsumidor" target='__blank'>
+                                Dónde y cómo reclamar
+                                </Link>
+                            </li>
+                            <li className="text-[#888]">
+                                <Link href="https://autogestion.produccion.gob.ar/consumidores" target='__blank'>
+                                Defensa de las y los consumidores
+                                </Link>
+                            </li>
+                            <li className="text-[#888]">
+                                <Link href="https://www.argenpesos.com.ar/public/storage/pdf/Jurisdiccion%20en%20caso%20de%20litigio.pdf" target='__blank'>
+                                Jurisdicción en caso de litigio
+                                </Link>
+                            </li>
+                            <li className="text-[#888]">
+                                <Link href="https://www.argenpesos.com.ar/public/storage/pdf/Protecion%20de%20Datos%20Personales.pdf" target='__blank'>
+                                Protección de datos personales
+                                </Link>
+                            </li>
+                            </ul>
+                        </li>
                         </ul>
+
                     </div>
                     <FooterForms/>
                 </div>

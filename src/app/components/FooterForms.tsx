@@ -37,12 +37,16 @@ export default function FooterForms() {
                 </DialogTrigger>
                 <li className="text-[#888] whitespace-nowrap relative group">Información para el usuario financiero
                     <ul className="hidden group-hover:block absolute bg-white space-y-1  border-gray-300 rounded">
-                        <Link href="http://www.bcra.gob.ar/BCRAyVos/Usuarios_Financieros.asp" target='__blank'>
-                            <li className="text-[#888] text-wrap">Info BCRA</li>
-                        </Link>
-                        <Link href="/usuario_financiero" target='__blank'>
-                            <li className="text-[#888]">Info usuarios</li>
-                        </Link>
+                        <li className="text-[#888] text-wrap">
+                            <Link href="http://www.bcra.gob.ar/BCRAyVos/Usuarios_Financieros.asp" target='__blank'>
+                            Info BCRA
+                            </Link>
+                        </li>
+                        <li className="text-[#888]">
+                            <Link href="/usuario_financiero" target='__blank'>
+                            Info usuarios
+                            </Link>
+                        </li>
                     </ul>
                 </li>
             </ul>
