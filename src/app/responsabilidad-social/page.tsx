@@ -1,0 +1,94 @@
+import React from 'react'
+import responsabilidadImg from '../../../public/responsabilidad-social.png'
+import ResponsabilidadPost from '../components/ResponsabilidadPost'
+
+
+const POSTS = [
+    {
+        title: "CLUB VILLA VATTEONE",
+        subtitle:"Florencio Varela",
+        content:"En el marco de nuestro plan vinculado al deporte, nos acercamos a otro club ubicado en la zona de nuestras Sucursales, para contribuir con pelotas y camisetas para distintas categorías de Vatteone.",
+        image: responsabilidadImg
+    },
+    {
+        title: "CLUB SOLANO JUNIORS",
+        subtitle:"San Francisco Solano ",
+        content:"¡Nos ponemos la 10 también en San Francisco Solano! El Club Solano Junior nos abrió cálidamente sus puertas para recibirnos. Nos acercamos a otro club de la zona de nuestras Sucursales, para entregarle a distintas categorías de fútbol femenino y masculino, camisetas de fútbol y pelotas para entrenar. Nos entusiasma que cada chico y cada chica puedan utilizar y disfrutar de los recursos necesarios para entrenar.",
+        image: responsabilidadImg
+    },
+    {
+        title: "CREANDO CONCIENCIA",
+        subtitle:"Mates realizados a base de plástico reciclado",
+        content:"En ArgenPesos concientizamos sobre el uso del material reciclable a través de distintas prácticas sustentables. Una de ellas es la compra de mates realizados por la cooperativa Creando Conciencia a base de material plástico reciclado.",
+        image: responsabilidadImg
+    },
+    {
+        title: "TALLER BAB",
+        subtitle:"",
+        content:"En ArgenPesos apoyamos mes a mes a Taller BAB, con la compra de delantales para regalar a nuestros clientes. BAB es una marca textil creada durante la pandemia por un grupo de mujeres del barrio Almirante Brown (Tigre) con un sueño: generar oportunidades para sus familias y vecinos.",
+        image: responsabilidadImg
+    },
+    {
+        title: "HOSPITAL LARCADE",
+        subtitle:"San Miguel",
+        content:"El 15 de febrero se conmemoró el Día Internacional de la lucha contra el Cáncer Infantil. Para acompañar a los familiares, y en apoyo al personal de salud que trabaja para la detección temprana, el diagnóstico y el tratamiento de los niños, nos acercaremos al Hospital Larcarde, ubicado cerca de nuestra Sucursal de San Miguel, para entregar más de 5.000 barbijos, mascarillas y regalos para ellos.",
+        image: responsabilidadImg
+    },
+    {
+        title: "CLUB PACHECO SUR",
+        subtitle:"San Fernando",
+        content:"Pacheco Sur es otro de los clubes que nos abrió las puertas, y junto con nuestros colaboradores, asistimos en el horario de entreamiento para sorprender a los chicos con pelotas y camisetas para todos.",
+        image: responsabilidadImg
+    },
+    {
+        title: "SEGUIMOS ESTANDO PRESENTES",
+        subtitle:"Club Torino Juniors de Pablo Nogués",
+        content:"Asistimos junto a nuestros colaboradores una vez más al Club El Torino Junior con pelotas, camisetas de fútbol para distintas categorías y compartimos una merienda con todos los chicos y chicas que asistieron al evento.",
+        image: responsabilidadImg
+    },
+    {
+        title: "PELOTAS PARA EL JARDIN DE INFANTES MANUELITA",
+        subtitle:"",
+        content:"A través de la fundación Carolina Malbran, colaboramos con la donación de pelotas para que los chicos del jardín dejen de jugar.",
+        image: responsabilidadImg
+    },
+    {
+        title: "CLUB EL TORINO JUNIORS",
+        subtitle:"Pablo Nogués, Diciembre 2019",
+        content:"En nuestro primer acercamiento a este club, colaboramos en la confección de las camisetas del equipo junior del Torino Juniors.",
+        image: responsabilidadImg
+    },
+    {
+        title: "PRESENTES EN EL BINGO SOLIDARIO",
+        subtitle:"Diciembre 2018",
+        content:"Participamos en el Bingo solidario organizado por El Merendero Móvil con la donación de pelotas y lapiceras. El fin del evento fue para ayudar a las pequeñas Gabriela y Valeria.",
+        image: responsabilidadImg
+    },
+    {
+        title: "ACCIONES MUNDIAL 2018",
+        subtitle:"",
+        content:"En el mes del mundial, por cada préstamo de $20.000 o más, donamos una pelota a un club o escuela de barrio cercanos a nuestras Sucursales para que los chicos puedan jugar y divertirse.",
+        image: responsabilidadImg
+    }
+]
+
+export default function ResponsabilidadSocial() {
+  return (
+    <section className='w-full h-full mt-[80px] md:mt-[100px] lg:mt-[132px] py-8'>
+        <h1 className="text-lightblue-primary text-center text-[34px] md:text-heading mb-20">
+          <b>RESPONSABILIDAD</b> SOCIAL
+        </h1>
+
+        {POSTS.map((post, index) => (
+        <ResponsabilidadPost
+          key={index}
+          image={post.image}
+          title={post.title}
+          subtitle={post.subtitle}
+          content={post.content}
+          reverse={index % 2 === 1}
+        />
+        ))}
+    </section>
+  )
+}

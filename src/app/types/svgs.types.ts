@@ -1,0 +1,3 @@
+type svgsPropTypes = {
+    className: string
+}
