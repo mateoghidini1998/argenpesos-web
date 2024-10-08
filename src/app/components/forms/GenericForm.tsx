@@ -7,6 +7,7 @@ interface GenericFormProps<T extends FormData> {
   title: string;
   fields: Array<{ label: string; inputType: string; name: keyof T }>;
   onSubmit: (data: T) => void;
+  errors: { [key in keyof T]?: string };
 }
 
 interface FormData {
@@ -15,7 +16,7 @@ interface FormData {
   // ... otros campos
 }
 
-function GenericForm<T extends FormData>({ title, fields, onSubmit }: GenericFormProps<T>) {
+function GenericForm<T extends FormData>({ title, fields, onSubmit, errors }: GenericFormProps<T>) {
   const [formData, setFormData] = useState<T>({} as T);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -31,7 +32,7 @@ function GenericForm<T extends FormData>({ title, fields, onSubmit }: GenericFor
   return (
     <>
     <FormTitle title={title} />
-    <form onSubmit={handleSubmit}>
+    <div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {fields.map((field, index) => (
           <div
@@ -46,6 +47,8 @@ function GenericForm<T extends FormData>({ title, fields, onSubmit }: GenericFor
                 onChange: handleChange,
                 name: field.name,
               }}
+              selectOptions={field.selectOptions}
+              error={errors[field.name]}
             />
           </div>
         ))}
@@ -53,12 +56,13 @@ function GenericForm<T extends FormData>({ title, fields, onSubmit }: GenericFor
       <div className="flex justify-center mt-4">
         <button
           type="submit"
+          onClick={handleSubmit}
           className="bg-[#00ADEE] w-full text-white py-2 px-8 rounded-[8px] focus:outline-none"
         >
           Enviar
         </button>
       </div>
-    </form>
+    </div>
     </>
 
   );

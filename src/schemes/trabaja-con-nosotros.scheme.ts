@@ -3,7 +3,7 @@ import * as yup from 'yup';
 const TrabajaConNosotrosSchema = yup.object().shape({
   nombre: yup.string().required('El nombre es obligatorio'),
   apellido: yup.string().required('El apellido es obligatorio'),
-  DNI: yup
+  dni: yup
     .string()
     .matches(/^\d{7,8}$/, 'El DNI debe ser un número de 7 u 8 dígitos sin puntos')
     .required('El DNI es obligatorio'),

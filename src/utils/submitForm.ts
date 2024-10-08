@@ -1,7 +1,7 @@
 import { ObjectSchema } from 'yup';
 
 interface FormData {
-  [key: string]: any; 
+  [key: string]: any;
 }
 
 const handleSubmit = async (
@@ -10,9 +10,10 @@ const handleSubmit = async (
   formType: string 
 ): Promise<void> => {
   try {
-    
+    // Validación del esquema con Yup
     await schema.validate(data, { abortEarly: false });
 
+    // Envío del formulario
     const response = await fetch('/api/resend', {
       method: 'POST',
       headers: {
@@ -28,7 +29,13 @@ const handleSubmit = async (
     const result = await response.json();
     console.log('Formulario enviado con éxito:', result);
   } catch (error) {
-    console.error('Error en el formulario:', error);
+    // Si hay errores de Yup, lanzamos el error para que el componente que llama lo maneje
+    if (error.name === 'ValidationError') {
+      throw error; // Lanzar el error para que el componente superior lo capture
+    }
+    
+    // Si es un error de red o de envío del formulario
+    throw new Error('Error enviando el formulario');
   }
 };
 

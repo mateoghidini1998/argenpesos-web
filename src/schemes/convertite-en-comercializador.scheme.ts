@@ -4,11 +4,11 @@ import * as yup from 'yup'
 const ConvertiteEnComercializadorScheme = yup.object().shape({
   nombre: yup.string().required('El nombre es obligatorio'),
   apellido: yup.string().required('El apellido es obligatorio'),
-  DNI: yup
+  dni: yup
     .string()
     .matches(/^\d{7,8}$/, 'El DNI debe ser un número de 7 u 8 dígitos sin puntos')
     .required('El DNI es obligatorio'),
-  phone: yup
+  celular: yup
     .string()
     .matches(/^\d+$/, 'El celular debe contener solo números')
     .required('El celular es obligatorio'),
@@ -18,7 +18,7 @@ const ConvertiteEnComercializadorScheme = yup.object().shape({
     .required('El mail es obligatorio'),
   provincia: yup.string().required('La provincia es obligatoria'),
   localidad: yup.string().required('La localidad es obligatoria'),
-  ventaAlPublico: yup
+  venta_al_publico: yup
     .boolean()
     .required('Debe indicar si cuenta con local de venta al público'),
   comentarios: yup.string().nullable(),

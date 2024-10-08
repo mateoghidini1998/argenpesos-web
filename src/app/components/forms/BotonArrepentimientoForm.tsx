@@ -2,6 +2,7 @@
 import handleSubmit from "@/utils/submitForm";
 import GenericForm from "./GenericForm";
 import PrestamoSchema from "@/schemes/prestamos-scheme";
+import { useState } from "react";
 
 const BotonArrepentimientoForm = ({ title }) => {
   const fields = [
@@ -12,11 +13,26 @@ const BotonArrepentimientoForm = ({ title }) => {
     { label: "Mail", inputType: "input", name: "mail" },
   ];
 
+  const [errors, setErrors] = useState({});
+
   const onSubmit = async (data) => {
-    await handleSubmit(data, PrestamoSchema, 'boton_arrepentimiento');
+    try {
+      await handleSubmit(data, PrestamoSchema, 'boton_arrependitimiento');
+      setErrors({}); 
+    } catch (err) {
+      if (err.inner) {
+        const formErrors = err.inner.reduce((acc, currentError) => {
+          acc[currentError.path] = currentError.message;
+          return acc;
+        }, {});
+        setErrors(formErrors);
+      } else {
+        setErrors({ general: 'Ha ocurrido un error desconocido' });
+      }
+    }
   };
 
-  return <GenericForm title={title} fields={fields} onSubmit={onSubmit} />;
+  return <GenericForm title={title} fields={fields} onSubmit={onSubmit} errors={errors}/>;
 };
 
 export default BotonArrepentimientoForm;

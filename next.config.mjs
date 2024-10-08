@@ -13,7 +13,13 @@ const nextConfig = {
                 hostname: 'acdn.mitiendanube.com',
                 port: '',
                 pathname: '/**'
-            }
+            },
+            {
+                protocol: 'http',
+                hostname: 'www.afip.gob.ar',
+                port: '',
+                pathname: '/**'
+            },
         ]
     },
     eslint: {

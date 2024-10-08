@@ -13,36 +13,28 @@ const BotonBajaForm = ({ title }) => {
     { label: "Mail", inputType: "input", name: "mail" },
   ];
 
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState({});
 
   const onSubmit = async (data) => {
     try {
       await handleSubmit(data, PrecancelarScheme, 'boton_baja');
-    } catch (errors) {
-      if (Array.isArray(errors)) {
-        setErrors(errors);
-      } else if (errors instanceof Error) {
-        setErrors([errors.message]);
+      setErrors({}); 
+    } catch (err) {
+      if (err.inner) {
+        const formErrors = err.inner.reduce((acc, currentError) => {
+          acc[currentError.path] = currentError.message;
+          return acc;
+        }, {});
+        setErrors(formErrors);
       } else {
-        setErrors(['Ha ocurrido un error desconocido']);
+        setErrors({ general: 'Ha ocurrido un error desconocido' });
       }
     }
   };
-  
 
   return (
     <>
-      <GenericForm title={title} fields={fields} onSubmit={onSubmit} />
-      {errors.length > 0 && (
-        <div className="mt-4">
-          <h3>Errores:</h3>
-          <ul>
-            {errors.map((error, index) => (
-              <li key={index}>{error}</li>
-            ))}
-          </ul>
-        </div>
-      )}
+      <GenericForm title={title} fields={fields} onSubmit={onSubmit} errors={errors} />
     </>
   );
 };

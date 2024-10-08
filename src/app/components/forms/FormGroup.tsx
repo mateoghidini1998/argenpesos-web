@@ -5,7 +5,7 @@ type FormGroupProps = {
     inputType?: 'input' | 'textarea' | 'select' | 'file';
     inputProps?: React.InputHTMLAttributes<HTMLInputElement> | React.TextareaHTMLAttributes<HTMLTextAreaElement>;
     selectOptions?: Array<{ value: string; label: string }>;
-    error?: string; // Add error prop to handle the error message
+    error?: string;
   }
   
   export default function FormGroup({ label, inputType = 'input', inputProps, selectOptions = [], error }: FormGroupProps) {
@@ -21,25 +21,21 @@ type FormGroupProps = {
         {inputType === 'input' && (
           <input 
             type="text" 
-            className="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:border-lightblue-primary"
+            className={`border ${hasError ? 'border-red-500' : 'border-gray-300'} rounded px-4 py-2 focus:outline-none focus:border-lightblue-primary`}
             {...(inputProps as React.InputHTMLAttributes<HTMLInputElement>)}
           />
         )}
-        {hasError && (
-        <div className="text-red-500 text-[10px] mt-1">
-          {error || 'Este campo es requerido'}
-        </div>
-      )}
+        {error && (
+          <div className="text-red-500 text-[10px] mt-1">
+            {error}
+          </div>
+        )}
+
         {inputType === 'textarea' && (
           <textarea 
             className="border border-gray-300 rounded px-4 py-2 w-full h-24 focus:outline-none focus:border-lightblue-primary"
             {...(inputProps as React.TextareaHTMLAttributes<HTMLTextAreaElement>)}
           />
-        )}
-        {hasError && (
-        <div className="text-red-500 text-[10px] mt-1">
-          {error || 'Este campo es requerido'}
-        </div>
         )}
         {inputType === 'file' && (
           <input 
@@ -48,33 +44,22 @@ type FormGroupProps = {
             {...(inputProps as React.InputHTMLAttributes<HTMLInputElement>)}
           />
         )}
-        {hasError && (
-        <div className="text-red-500 text-[10px] mt-1">
-          {error || 'Este campo es requerido'}
-        </div>
-        )}
         {inputType === 'select' && (
-          <div className="flex items-center justify-start text-[#393E4F] text-xs gap-[15px]">
-            {selectOptions.map(option => (
-              <label key={option.value} className="flex items-center">
-                <input 
-                  type="radio" 
-                  value={option.value} 
+          <div className="flex  gap-2">
+            {selectOptions?.map(option => (
+              <label key={option.value} className="flex items-center gap-2">
+                <input
+                  type="radio"
+                  value={option.value}
                   name={inputProps?.name}
-                  className="mr-2" 
-                  {...(inputProps as React.InputHTMLAttributes<HTMLInputElement>)}
+                  onChange={inputProps?.onChange}
+                  className="form-radio"
                 />
                 {option.label}
               </label>
             ))}
           </div>
         )}
-        {hasError && (
-        <div className="text-red-500 text-[10px] mt-1">
-          {error || 'Este campo es requerido'}
-        </div>
-      )}
       </div>
     );
   }
-  

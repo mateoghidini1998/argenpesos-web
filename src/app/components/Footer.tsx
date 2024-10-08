@@ -1,4 +1,6 @@
 import logo from '../../../public/logo.png'
+import QR from '../../../public/DATAWEB.jpg'
+import usuariofinanciero from '../../../public/usuariofinanciero.jpeg'
 import Image from 'next/image'
 import Link from 'next/link'
 import FooterForms from './FooterForms'
@@ -6,9 +8,15 @@ import FooterForms from './FooterForms'
 export default function Footer() {
     return (
         <footer className="max-w-full flex flex-col gap-[50px] md:gap-[106px] p-4 md:p-[40px] 2xl:p-20  lg:py-[74px] lg:px-[40px] border-t-[1px] border-t-[#BEBEBE]">
-            <div className="w-full flex flex-col xl:flex-row  justify-between lg:items-start">
-                <div className="flex flex-col items-start mb-[20px]">
+            <div className="w-full flex flex-col md:flex-row  justify-between lg:items-start">
+                <div className="flex flex-col items-center justify-center mb-[20px] gap-2">
                     <Image src={logo} alt="ArgenPesos Logo" className="mb-4 md:mr-[80px] w-[110px] h-[52px] xl:w-[150px] xl:h-[65px] 2xl:w-[190px] 2xl:h-[80px]" />
+                    <Link href="http://qr.afip.gob.ar/?qr=h7BGKxDe84z8C41OZoy9tQ,," target='__blank'>
+                        <Image src={QR} alt='QR_AFIP' width={80} height={90}/>
+                    </Link>
+                    <Link href="http://usuariosfinancieros.gob.ar/" target='__blank'>
+                        <Image src={usuariofinanciero} alt='usuariofinanciero' width={200} height={60}/>
+                    </Link>
                 </div>
                 <div className='flex flex-col w-full lg:flex-row lg:text-start text-center items-center justify-evenly 2xl:justify-center 2xl:px-8 lg:items-start gap-[14px] md:gap-[28px] xl:gap-[30px]'>
                     <div className="flex flex-col text-[10px] md:text-[12px] xl:text-sm items-center lg:items-start">
@@ -21,7 +29,7 @@ export default function Footer() {
                             <Link href="https://www.cuponizate.com.ar" target='_blank'>
                             <li className="text-[#6104EE] font-bold whitespace-nowrap overflow-hidden">- CUPONIZATE</li>
                             </Link>
-                            <Link href="/consulta-tu-cuenta">
+                            <Link href="/micuenta">
                             <li className="text-[#888] font-bold whitespace-nowrap">- CONSULTÁ TU CUENTA</li>
                             </Link>
                             <Link href="https://api.whatsapp.com/send?phone=541168164074&text=Hola!%20les%20consulto%20por%20los%20servicios%20vistos%20en%20www.argenpesos.com.ar" target='__blank'>

@@ -1,7 +1,8 @@
-// AdheriTuComercioForm.tsx
+'use client'
 import AdherirComercioSchema from '@/schemes/adherite.scheme';
 import GenericForm from './GenericForm';
 import handleSubmit from '@/utils/submitForm';
+import { useState } from 'react';
 
 const AdheriTuComercioForm = () => {
   const fields = [
@@ -17,11 +18,26 @@ const AdheriTuComercioForm = () => {
     { label: "Comentarios", inputType: "textarea", name: "comentarios" },
   ];
 
+  const [errors, setErrors] = useState({});
+
   const onSubmit = async (data) => {
-    await handleSubmit(data, AdherirComercioSchema, 'adherir_comercio');
+    try {
+      await handleSubmit(data, AdherirComercioSchema, 'adherir_comercio');
+      setErrors({}); 
+    } catch (err) {
+      if (err.inner) {
+        const formErrors = err.inner.reduce((acc, currentError) => {
+          acc[currentError.path] = currentError.message;
+          return acc;
+        }, {});
+        setErrors(formErrors);
+      } else {
+        setErrors({ general: 'Ha ocurrido un error desconocido' });
+      }
+    }
   };
 
-  return <GenericForm title="Adherí tu comercio" fields={fields} onSubmit={onSubmit} />;
+  return <GenericForm title="Adherí tu comercio" fields={fields} onSubmit={onSubmit} errors={errors}/>;
 };
 
 export default AdheriTuComercioForm;

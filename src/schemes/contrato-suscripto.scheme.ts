@@ -3,7 +3,9 @@ import * as yup from "yup";
 const ContratoSuscriptoScheme = yup.object().shape({
   nombre: yup.string().required("El nombre es obligatorio"),
   apellido: yup.string().required("El apellido es obligatorio"),
-  DNI: yup
+  localidad: yup.string().required("La localidad es obligatoria"),
+  provincia: yup.string().required("La provincia es obligatoria"),
+  dni: yup
     .string()
     .matches(
       /^\d{7,8}$/,
