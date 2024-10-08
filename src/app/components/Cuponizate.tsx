@@ -34,6 +34,12 @@ export default function Cuponizate() {
     fetchData()
   }, [])
 
+  function generateLink(name, id) {
+    const formattedName = name.replace(/\s+/g, '-');
+    return `https://cuponizate.com.ar/c/${formattedName}_${id}`;
+  }
+
+
   return (
     <div className="w-full flex flex-col items-center justify-center gap-[30px] md:justify-between min-h-[430px] bg-[#6104EE] text-white p-[16px] md:p-[24px]">
       <div className='flex flex-col md:flex-row-reverse gap-[30px] justify-center md:justify-between items-center text-white w-full '>
@@ -73,7 +79,7 @@ export default function Cuponizate() {
                       <span className='text-[#6648B8] text-2xl md:text-[40px] mb-1'>{item.descuento}</span>
                       <p className='text-[10px] md:text-base text-[#5E5E5E] mb-4'>Descarga tu cupón y empieza a ahorrar</p>
                       <div className='w-full h-auto md:text-sm lg:text-base py-1 px-2.5 mb-2 bg-[#6648B8] rounded-md md:rounded-[10px] text-center'>
-                        <Link href="#" className="inline-block w-full whitespace-nowrap">
+                        <Link href={generateLink(item.nombre, item.id)} target='__blank' className="inline-block w-full whitespace-nowrap">
                           Quiero este cupón
                         </Link>
                       </div>
