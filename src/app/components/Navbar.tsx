@@ -19,7 +19,6 @@ export default function Navbar({ onNavbarToggle }) {
 
     const [activeLink, setActiveLink] = useState('');
     const [isOpen, setIsOpen] = useState(false);
-    console.log(isOpen)
 
     useEffect(() => {
         setActiveLink(pathname);

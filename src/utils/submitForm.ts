@@ -27,7 +27,6 @@ const handleSubmit = async (
     }
 
     const result = await response.json();
-    console.log('Formulario enviado con éxito:', result);
   } catch (error) {
     // Si hay errores de Yup, lanzamos el error para que el componente que llama lo maneje
     if (error.name === 'ValidationError') {

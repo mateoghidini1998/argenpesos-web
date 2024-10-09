@@ -10,8 +10,13 @@ export default function Footer() {
         <footer className="max-w-full flex flex-col gap-[50px] md:gap-[106px] p-4 md:p-[40px] 2xl:p-20  lg:py-[74px] lg:px-[40px] border-t-[1px] border-t-[#BEBEBE]">
             <div className="w-full flex flex-col md:flex-row  justify-between lg:items-start">
                 <div className="flex flex-col items-center justify-center mb-[20px] gap-2">
-                    <Image src={logo} alt="ArgenPesos Logo" className="mb-4 md:mr-[80px] w-[110px] h-[52px] xl:w-[150px] xl:h-[65px] 2xl:w-[190px] 2xl:h-[80px]" />
-                    <Link href="http://qr.afip.gob.ar/?qr=h7BGKxDe84z8C41OZoy9tQ,," target='__blank'>
+                    <Link href="/" passHref>
+                            <Image 
+                                src={logo} 
+                                alt="ArgenPesos Logo" 
+                                className="mb-4 md:mr-[80px] w-[110px] h-[52px] xl:w-[150px] xl:h-[65px] 2xl:w-[190px] 2xl:h-[80px]" 
+                            />
+                    </Link>                    <Link href="http://qr.afip.gob.ar/?qr=h7BGKxDe84z8C41OZoy9tQ,," target='__blank'>
                         <Image src={QR} alt='QR_AFIP' width={80} height={90}/>
                     </Link>
                     <Link href="http://usuariosfinancieros.gob.ar/" target='__blank'>

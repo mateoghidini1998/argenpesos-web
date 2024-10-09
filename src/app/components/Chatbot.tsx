@@ -315,7 +315,7 @@ export default function Chatbot() {
 
     try {
       const response = await fetch(
-        "http://smarter.argenpesos.com.ar:30002/External/consultacupo",
+        "https://smarter.argenpesos.com.ar:30002/External/consultacupo",
         {
           method: "POST",
           headers: {

@@ -14,7 +14,6 @@ export default function MiCuenta() {
     const openModal = (content: string) => {
         setModalContent(content);
         setIsModalOpen(true);
-        console.log(isModalOpen)
     };
 
     const closeModal = () => {

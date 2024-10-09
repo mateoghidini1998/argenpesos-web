@@ -2,10 +2,16 @@
 import { useState } from "react";
 import FAQ from "../components/FAQ";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function FAQList() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const router = useRouter();
 
+  const handleClick = (e) => {
+      e.preventDefault();
+      router.push('/?openChat=true');
+  };
   const faqs = [
     {
       category: {
@@ -15,7 +21,7 @@ export default function FAQList() {
             text: "¿QUÉ ES ARGENPESOS Y CÓMO FUNCIONA? ",
             content: (
               <>
-              <p>Somos una entidad de préstamos personales de dinero. Podés realizar el trámite online en: <Link href="https://argenpesos.com.ar/saca_tu_prestamo" target="__blank" className="text-lightblue-primary font-bold">https://argenpesos.com.ar/saca_tu_prestamo</Link> o a través de cualquiera de nuestros canales de contacto: </p>
+              <p>Somos una entidad de préstamos personales de dinero. Podés realizar el trámite online en: <Link href="/" onClick={handleClick} className="text-lightblue-primary font-bold">https://argenpesos.com.ar/saca_tu_prestamo</Link> o a través de cualquiera de nuestros canales de contacto: </p>
               <ul>
                   <li>-Tel: 0800-220-2743</li>
                   <li>-WhatsApp: 
@@ -65,7 +71,7 @@ export default function FAQList() {
           {
             text: "¿CUÁNDO Y CÓMO SE PAGAN LAS CUOTAS? ",
             content: (
-              <p>Las cuotas vencen el 1 de cada mes y se puede abonar sin recargo hasta el día 10. Dependiendo el plan otorgado, pueden debitarse de la cuenta bancaria o pueden abonarse través de cualquiera de nuestros <Link href="/metodosdepago" className="text-lightblue-primary underline" target="__blank">medios de pago</Link>. </p>
+              <p>Las cuotas vencen el 1 de cada mes y se puede abonar sin recargo hasta el día 10. Dependiendo el plan otorgado, pueden debitarse de la cuenta bancaria o pueden abonarse través de cualquiera de nuestros <Link href="/medios-de-pago " className="text-lightblue-primary underline" target="__blank">medios de pago</Link>. </p>
             )
           },
           {
@@ -86,7 +92,7 @@ export default function FAQList() {
             text: "¿CUÁLES SON LOS PASOS PARA EL OTORGAMIENTO DEL PRÉSTAMO? ",
             content: (
             <ul>
-                  <li>1º - Envianos tu solicitud: Se puede solicitar en <Link href="https://argenpesos.com.ar/saca_tu_prestamo" target="__blank" className="text-lightblue-primary font-bold">https://argenpesos.com.ar/saca_tu_prestamo</Link> o enviando los datos a través de alguno de nuestros canales de comunicación. </li>
+                  <li>1º - Envianos tu solicitud: Se puede solicitar en <Link href="/" onClick={handleClick} target="__blank" className="text-lightblue-primary font-bold">https://argenpesos.com.ar/saca_tu_prestamo</Link> o enviando los datos a través de alguno de nuestros canales de comunicación. </li>
                   <li>2º - Aprobación: Analizaremos los datos ingresados y se pre-aprueba o rechaza la solicitud. </li>
                   <li>3º - Contacto con el cliente: todos los clientes cuya solicitud fue preaprobada, reciben una llamada, whatsapp o mail de alguno de nuestros asesores de venta, quien realizará una verificación de identidad y completa los datos del cliente. </li>
                   <li>4º - Confirmación del otorgamiento: una vez confirmado el préstamo, te enviamos la documentación necesaria para que seas nuestro cliente.</li>
