@@ -17,7 +17,7 @@ const BotonArrepentimientoForm = ({ title }) => {
 
   const onSubmit = async (data) => {
     try {
-      await handleSubmit(data, PrestamoSchema, 'boton_arrependitimiento');
+      await handleSubmit(data, PrestamoSchema, 'boton_arrepentimiento');
       setErrors({}); 
     } catch (err) {
       if (err.inner) {

@@ -1,10 +1,9 @@
 "use client"
-
-import * as React from "react"
-import responsabilidad from '../../../public/responsabilidad-social.png'
+import { useEffect } from 'react'
 import Image from "next/image"
 import { Card, CardContent } from "@/components/ui/card"
 import Autoplay from "embla-carousel-autoplay"
+import Logo from '../../../public/logo-argenpesos-white.png'
 import {
   Carousel,
   CarouselContent,
@@ -12,34 +11,36 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
+import POSTS from '../../data/posts.json'
 
-interface BannerItem {
-  imageUrl: string
+interface Post {
   title: string
-  subtitle: string
+  subtitle?: string
+  content: string
+  image: string
 }
 
-const bannerItems: BannerItem[] = [
-  {
-    imageUrl: responsabilidad,
-    title: "Welcome to Our Store",
-    subtitle: "Discover amazing products at unbeatable prices",
-  },
-  {
-    imageUrl: responsabilidad,
-    title: "Summer Sale",
-    subtitle: "Get up to 50% off on selected items",
-  },
-  {
-    imageUrl: responsabilidad,
-    title: "New Arrivals",
-    subtitle: "Check out our latest collection",
-  },
-]
-
 export default function Responsabilidad() {
+
+  useEffect(() => {
+    console.log(POSTS)
+  })
+
+const numberOfPosts = POSTS.length;
+const shouldLoop = numberOfPosts > 1;
+
   return (
-    <div className="w-full bg-[#82CC6D] ">
+    <div className="w-full bg-[#82CC6D] pt-10 gap-10">
+      <div className='flex flex-col sm:flex-row-reverse md:flex-row gap-[30px] justify-center md:justify-between items-center text-white w-full px-10 mb-4'>
+        {/* <div className='w-full md:w-[230px] flex justify-center md:justify-end'>
+          <Image
+            src={Logo}
+            alt="argencompras"
+            className='w-[185px] h-[84px] md:w-[230px] md:h-[100px] mb-3.5 md:mb-0'
+          />
+        </div> */}
+        <h2 className='text-[28px] sm:text-[34px] lg:text-[40px] text-center sm:text-start'>Responsabilidad Social</h2>
+      </div>
       <Carousel 
       opts={{
         align: "start",
@@ -50,24 +51,25 @@ export default function Responsabilidad() {
             delay:3500
         })
       ]}
-      className="w-full max-w-5xl mx-auto p-2 sm:p-6 md:p-8 lg:p-10 xl:p-14 2xl:p-20">
+      className="w-full max-w-[80rem] mx-auto p-2 sm:p-6 md:p-8 lg:p-10  2xl:p-12">
         <CarouselContent className="bg-transparent">
-          {bannerItems.map((item, index) => (
+          {POSTS.map((item, index) => (
             <CarouselItem key={index} >
               <Card className="border-none shadow-none bg-transparent">
-                <CardContent className="flex flex-col-reverse md:flex-row items-center p-0 gap-6">
+                <CardContent className="flex flex-col md:flex-row items-center p-0 gap-6">
                   <div className="w-full h-full sm:w-[400px] md:w-1/2 relative aspect-[3/2] overflow-hidden rounded-3xl">
                     <Image
-                      src={item.imageUrl}
+                      src={item.image}
                       alt={item.title}
                       fill
                       className="object-cover"
                     />
                   </div>
                   <div className="w-full md:w-1/2 p-6 md:p-10 flex flex-col justify-center">
-                    <h2 className="text-2xl md:text-3xl font-bold mb-2">{item.title}</h2>
-                    <p className="text-muted-foreground">{item.subtitle}</p>
-                  </div>
+                  <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">{item.title}</h2>
+                  <p className="text-muted-foreground text-white font-medium">{item.subtitle || ''}</p>
+                  <p className="text-muted-foreground mt-4 text-white">{item.content}</p>
+                </div>
                 </CardContent>
               </Card>
             </CarouselItem>
@@ -82,3 +84,46 @@ export default function Responsabilidad() {
     </div>
   )
 }
+
+{/* <div className="w-full bg-[#82CC6D]">
+   <Carousel 
+  opts={{
+    align: "start",
+    loop: true,
+  }}
+  plugins={[
+    Autoplay({
+        delay:3500
+    })
+  ]}
+      className="w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-5xl mx-auto" 
+    >
+    <CarouselContent className="bg-transparent flex items-center justify-center">
+      {POSTS.map((post, index) => (
+        <CarouselItem key={index}>
+          <Card className="border-none shadow-none bg-transparent">
+            <CardContent className="flex flex-col-reverse md:flex-row items-center p-0 gap-6">
+              <div className="w-full h-full sm:w-[400px] md:w-1/2 relative aspect-[3/2] overflow-hidden rounded-3xl">
+              <Image
+                src={post.image}
+                alt={post.title}
+                fill
+                className="object-cover"
+              />
+              </div>
+              <div className="w-full md:w-1/2 p-6 md:p-10 flex flex-col justify-center">
+                <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">{post.title}</h2>
+                <p className="text-muted-foreground text-white font-medium">{post.subtitle || ''}</p>
+                <p className="text-muted-foreground mt-4 text-white">{post.content}</p>
+              </div>
+            </CardContent>
+          </Card>
+        </CarouselItem>
+      ))}
+    </CarouselContent>
+    <div className="sm:h-[60px] md:h-[0px] mt-4 md:mt-0 flex justify-center md:justify-between text-[#6648B8] font-bold">
+      <CarouselPrevious className="relative md:absolute md:right-50 md:top-1/2 md:-translate-y-1/2" />
+      <CarouselNext className="relative md:absolute md:left-50 md:top-1/2 md:-translate-y-1/2" />
+    </div>
+  </Carousel>
+</div> */}

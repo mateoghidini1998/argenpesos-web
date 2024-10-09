@@ -69,15 +69,15 @@ export default function Cuponizate() {
             {data && data.length > 0 ? (
               data.map((item, index) => (
                 <CarouselItem key={index} className='lg:basis-1/2 xl:basis-1/3 min-h-[180px]'>
-                  <div className="flex items-center justify-center w-auto md:max-w-1/3 h-auto md:h-[280px] bg-white px-3 py-9 md:px-2 lg:px-3 md:py-16 gap-4 md:gap-[30px] rounded-lg shadow-lg text-center mb-[30px]">
+                  <div className="flex items-center justify-center w-auto md:max-w-1/3 h-auto md:h-[280px] bg-white px-3 py-9 md:px-2 lg:px-3 md:py-10 gap-4 md:gap-[30px] rounded-lg shadow-lg text-center mb-[30px]">
                     <img 
                       src={item.foto_thumbnail.original} 
                       alt="coupon-logo" 
-                      className='w-[95px] h-[85px] md:w-[120px] md:h-[140px]'
+                      className='w-[95px] h-[85px] md:w-[120px] md:h-[170px]'
                     />
                     <div className='w-3/4 md:w-1/2 h-full flex flex-col text-start justify-center'>
-                      <span className='text-[#6648B8] text-2xl md:text-[40px] mb-1'>{item.descuento}</span>
-                      <p className='text-[10px] md:text-base text-[#5E5E5E] mb-4'>Descarga tu cupón y empieza a ahorrar</p>
+                      <span className='text-[#6648B8] text-2xl md:text-[40px] mb-1 font-bold'>{item.descuento}</span>
+                      <p className='text-[10px] md:text-base text-[#5E5E5E] mb-4 font-md'>Descarga tu cupón y empieza a ahorrar</p>
                       <div className='w-full h-auto md:text-sm lg:text-base py-1 px-2.5 mb-2 bg-[#6648B8] rounded-md md:rounded-[10px] text-center'>
                         <Link href={generateLink(item.nombre, item.id)} target='__blank' className="inline-block w-full whitespace-nowrap">
                           Quiero este cupón

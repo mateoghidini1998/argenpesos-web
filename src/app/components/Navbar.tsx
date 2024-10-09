@@ -59,7 +59,7 @@ export default function Navbar({ onNavbarToggle }) {
                     <a 
                         key={index} 
                         href={LINK.url} 
-                        className={`block text-grey-primary text-lg lg:text-sm  xl:text-lg hover:text-lightblue-primary px-4 py-2 md:px-0 md:py-0 text-center ${activeLink === LINK.url ? 'font-bold !text-lightblue-primary underline underline-offset-4' : ''}`}>
+                        className={`block text-grey-primary  text-lg lg:text-sm  xl:text-lg hover:text-lightblue-primary px-4 py-2 md:px-0 md:py-0 text-center ${activeLink === LINK.url ? 'font-bold !text-lightblue-primary underline underline-offset-4' : 'font-medium'}`}>
                         {LINK.text}
                     </a>
                 ))}

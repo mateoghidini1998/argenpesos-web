@@ -11,14 +11,14 @@ type ResponsabilidadPostPropTypes = {
 
 export default function ResponsabilidadPost({ image, title, subtitle, content, reverse }: ResponsabilidadPostPropTypes) {
     return (
-      <div className={`w-full bg-[#82CC6D] text-white p-8 sm:p-12 md:p-16 mx-auto flex flex-col items-center justify-center md:flex md:flex-row ${reverse ? 'md:flex-row-reverse' : ''} gap-8 mb-12`}>
-          <div className='w-full md:w-1/2'>
+      <div className={`w-full bg-[#82CC6D] text-white p-8 sm:p-12 md:p-12 mx-auto flex flex-col items-center justify-center md:flex md:flex-row ${reverse ? 'md:flex-row-reverse' : ''} gap-8 mb-12`}>
+          <div className='w-full md:w-1/3 rounded-[0.5rem]'>
             <Image 
                 src={image} 
                 alt={title} 
                 width={500} 
                 height={500} 
-                className="w-full h-auto object-cover"
+                className="h-auto object-cover rounded-[0.5rem]"
             />
           </div>
           <div className="flex flex-col justify-center w-full md:w-1/2">

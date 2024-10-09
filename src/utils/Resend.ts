@@ -24,11 +24,16 @@ async function sendEmail(formData, formType) {
   };
 
   const subject = emailSubjects[formType] || 'Otro Tipo de Formulario';
-
+  const recipientEmail = recipientEmails[formType.toLowerCase()];
+  if (!recipientEmail) {
+    console.error(`Invalid formType: ${formType}`);
+    throw new Error('Invalid formType');
+  }
   try {
+    console.log('Full Recipient Email asd:', recipientEmails[formType]);
     const { data, error } = await resend.emails.send({
       from: 'Acme <onboarding@resend.dev>',
-      to: recipientEmails[formType],
+      to: recipientEmail,
       subject,
       react: EmailTemplate({ title: subject, formData }),
     });
