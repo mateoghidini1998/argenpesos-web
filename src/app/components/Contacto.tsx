@@ -19,7 +19,7 @@ export default function ContactSection() {
                     <p className="text-[14px] md:text-lg lg:text-[28px] text-[#1E1E1E]">Mail</p>
                 </div>
                 <div className='flex flex-col justify-center items-center gap-[10px] md:gap-[22px]'>
-                    <Link href="https://www.facebook.com/argenpesos" target='_blank' aria-label="Llamar a ArgenPesos">
+                    <Link href="tel:0800-220-2743" target='_blank' aria-label="Llamar a ArgenPesos">
                         <div className="flex justify-center items-center bg-[#17AAE1] rounded-full h-[70px] w-[70px] md:h-[100px] md:w-[100px] mb-[10px] ">
                             <Telephone className={"w-[36px] h-[36px] md:w-[40px] md:h-[40px] lg:w-[48px] lg:h-[48px]"}/>
                         </div>
