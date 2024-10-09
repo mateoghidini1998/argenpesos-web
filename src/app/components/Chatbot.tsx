@@ -119,7 +119,7 @@ export default function Chatbot() {
           const dni = userData.dni;
           try {
             const response = await fetch(
-              `http://smarter.argenpesos.com.ar:30002/External/validacionidentidad?ticket=EB56789C-B3B9-4D4A-A6C8-98235B1179C8&documento=${dni}&sexo=${sexoNumerico}`
+              `https://smarter.argenpesos.com.ar:30002/External/validacionidentidad?ticket=EB56789C-B3B9-4D4A-A6C8-98235B1179C8&documento=${dni}&sexo=${sexoNumerico}`
             );
             const data = await response.json();
 
