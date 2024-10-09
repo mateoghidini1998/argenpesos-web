@@ -11,44 +11,44 @@ export default function ContactSection() {
             <h2 className="text-[#17AAE1] text-[36px] md:text-[80px] mb-8 md:mb-[86px]">Medios de contacto</h2>
             <div className="gap-8 mb-8 flex flex-wrap justify-center  md:gap-12 md:mb-[75px]">
                 <div className='flex flex-col justify-center items-center gap-[10px] md:gap-[22px]'>
-                    <Link href="mailto:atencionalcliente@argenpesos.com.ar" target='_blank'>
+                    <Link href="mailto:atencionalcliente@argenpesos.com.ar" target='_blank' aria-label="Enviar correo a Atención al cliente">
                         <div className="flex justify-center items-center bg-[#17AAE1] rounded-full h-[70px] w-[70px] md:h-[100px] md:w-[100px] mb-[10px] ">
                             <Email className={"w-[36px] h-[36px] md:w-[40px] md:h-[40px] lg:w-[48px] lg:h-[48px]"}/>
                         </div>
                     </Link>
-                        <p className="text-[14px] md:text-lg lg:text-[28px] text-[#1E1E1E]">Mail</p>
+                    <p className="text-[14px] md:text-lg lg:text-[28px] text-[#1E1E1E]">Mail</p>
                 </div>
                 <div className='flex flex-col justify-center items-center gap-[10px] md:gap-[22px]'>
-                    <Link href="https://www.facebook.com/argenpesos" target='_blank'>
+                    <Link href="https://www.facebook.com/argenpesos" target='_blank' aria-label="Llamar a ArgenPesos">
                         <div className="flex justify-center items-center bg-[#17AAE1] rounded-full h-[70px] w-[70px] md:h-[100px] md:w-[100px] mb-[10px] ">
                             <Telephone className={"w-[36px] h-[36px] md:w-[40px] md:h-[40px] lg:w-[48px] lg:h-[48px]"}/>
                         </div>
                     </Link>
-                        <p className="text-[14px] md:text-lg lg:text-[28px] text-[#1E1E1E]">Teléfono</p>
+                    <p className="text-[14px] md:text-lg lg:text-[28px] text-[#1E1E1E]">Teléfono</p>
                 </div>
                 <div className='flex flex-col justify-center items-center gap-[10px] md:gap-[22px]'>
-                    <Link href="https://api.whatsapp.com/send?phone=541168164074&text=Hola!%20les%20consulto%20por%20los%20servicios%20vistos%20en%20www.argenpesos.com.ar" target='_blank'>
+                    <Link href="https://api.whatsapp.com/send?phone=541168164074&text=Hola!%20les%20consulto%20por%20los%20servicios%20vistos%20en%20www.argenpesos.com.ar" target='_blank' aria-label="Contactar a ArgenPesos por WhatsApp">
                         <div className="flex justify-center items-center bg-[#17AAE1] rounded-full h-[70px] w-[70px] md:h-[100px] md:w-[100px] mb-[10px] ">
                             <Whatsapp className={"w-[36px] h-[36px] md:w-[40px] md:h-[40px] lg:w-[48px] lg:h-[48px]"}/>
                         </div>
                     </Link>
-                        <p className="text-[14px] md:text-lg lg:text-[28px] text-[#1E1E1E]">Whatsapp</p>
+                    <p className="text-[14px] md:text-lg lg:text-[28px] text-[#1E1E1E]">Whatsapp</p>
                 </div>
                 <div className='flex flex-col justify-center items-center gap-[10px] md:gap-[22px] justify-self-center col-span-1'>
-                    <Link href="https://www.instagram.com/argenpesos" target='_blank'>
+                    <Link href="https://www.instagram.com/argenpesos" target='_blank' aria-label="Visitar el Instagram de ArgenPesos">
                         <div className="flex justify-center items-center bg-[#17AAE1] rounded-full h-[70px] w-[70px] md:h-[100px] md:w-[100px] mb-[10px] ">
                             <Instagram className={"w-[36px] h-[36px] md:w-[40px] md:h-[40px] lg:w-[48px] lg:h-[48px]"}/>
                         </div>
                     </Link>
-                        <p className="text-[14px] md:text-lg lg:text-[28px] text-[#1E1E1E]">Instagram</p>
+                    <p className="text-[14px] md:text-lg lg:text-[28px] text-[#1E1E1E]">Instagram</p>
                 </div>
                 <div className='flex flex-col justify-center items-center gap-[10px] md:gap-[28px] justify-self-center col-span-1'>
-                    <Link href="https://www.facebook.com/argenpesos" target='_blank'>
+                    <Link href="https://www.facebook.com/argenpesos" target='_blank' aria-label="Visitar el Facebook de ArgenPesos">
                         <div className="flex justify-center items-center bg-[#17AAE1] rounded-full h-[70px] w-[70px] md:h-[100px] md:w-[100px] mb-[10px] ">
                             <Facebook className={"w-[36px] h-[36px] md:w-[40px] md:h-[40px] lg:w-[48px] lg:h-[48px]"}/>
                         </div>
                     </Link>
-                        <p className="text-[14px] md:text-lg lg:text-[28px] text-[#1E1E1E]">Facebook</p>
+                    <p className="text-[14px] md:text-lg lg:text-[28px] text-[#1E1E1E]">Facebook</p>
                 </div>
             </div>
             <div className="bg-[#EC5647] text-white text-[12px] md:text-[24px] py-2 px-4 md:py-[27px] md:px-[16px] rounded-lg mx-auto w-full md:w-3/4">
