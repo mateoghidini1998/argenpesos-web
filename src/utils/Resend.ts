@@ -5,12 +5,13 @@ const resend = new Resend(process.env.NEXT_PUBLIC_RESEND_API_KEY);
 
 async function sendEmail(formData, formType) {
   const recipientEmails = {
-    'boton_arrepentimiento': 'ghidinimateo1@gmail.com',
+    'boton_arrepentimiento': 'procesos@argenpesos.com.ar',
     'boton_baja': 'ghidinimateo1@gmail.com',
     'solicitar_contrato_suscripto': 'atencionalcliente@argenpesos.com.ar',
     'trabajar_con_nosotros': 'rrhh@argenpesos.com.ar',
     'adherente': 'atencionalcliente@argenpesos.com.ar',
     'comercio': 'casosa@argenpesos.com.ar',
+    
   };
 
   const emailSubjects = {
@@ -27,7 +28,7 @@ async function sendEmail(formData, formType) {
   try {
     const { data, error } = await resend.emails.send({
       from: 'Acme <onboarding@resend.dev>',
-      to: [recipientEmails[formType]],
+      to: recipientEmails[formType],
       subject,
       react: EmailTemplate({ title: subject, formData }),
     });
