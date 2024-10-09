@@ -11,7 +11,7 @@ export default function AppPublicidad () {
                     <div className="h-full w-[45%] flex flex-col  items-center  md:px-12 pb-0 md:py-14 ">
                         <div className="flex flex-col items-start justify-center">
                             <Image src={logo} alt="Argenpesos Logo" className="mb-[45px]"/>
-                            <h3 className="text-white text-center md:text-start w-auto text-[18px] md:text-[22px] xl:text-[32px] mb-[20px]">¿Todavía no descargaste la app de ArgenPesos?</h3>
+                            <h2 className="text-white text-center md:text-start w-auto text-[18px] md:text-[22px] xl:text-[32px] mb-[20px]">¿Todavía no descargaste la app de ArgenPesos?</h2>
                             <p className="text-white text-center md:text-start w-auto text-base md:text-[16px] xl:text-[24px] mb-[55px]">Recibe préstamos, compra productos, obtén descuentos y más beneficios.</p>
                         </div>
                         <div className="flex flex-col items-center w-[80px] md:w-[120px] md:h-[180px] lg:w-[175px] h-[90px] lg:h-[200px] md:gap-[12px] p-1 md:p-2.5 bg-white rounded-[18px]">

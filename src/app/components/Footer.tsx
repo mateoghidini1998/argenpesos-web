@@ -20,7 +20,7 @@ export default function Footer() {
                 </div>
                 <div className='flex flex-col w-full lg:flex-row lg:text-start text-center items-center justify-evenly 2xl:justify-center 2xl:px-8 lg:items-start gap-[14px] md:gap-[28px] xl:gap-[30px]'>
                     <div className="flex flex-col text-[10px] md:text-[12px] xl:text-sm items-center lg:items-start">
-                        <h4 className="text-[#888] font-bold mb-2 text-center md:text-left">NUESTROS SERVICIOS</h4>
+                        <p className="text-[#888] font-bold mb-2 text-center md:text-left">NUESTROS SERVICIOS</p>
                         <ul className="space-y-1">
                         <li className="text-[#17AAE1] font-bold whitespace-nowrap">- PRÉSTAMOS</li>
                         <li className="text-[#EC5647] font-bold whitespace-nowrap overflow-hidden">
@@ -47,7 +47,7 @@ export default function Footer() {
                     </div>
 
                     <div className="flex flex-col text-[10px] md:text-[12px] xl:text-sm items-center lg:items-start w-[206px] whitespace-nowrap overflow-hidden text-overflow-ellipsis">
-                        <h4 className="text-[#888] font-bold mb-2">SOBRE NOSOTROS</h4>
+                        <p className="text-[#888] font-bold mb-2">SOBRE NOSOTROS</p>
                         <ul className="space-y-1">
                             <li className="text-[#888]">
                                 <Link href="/institucional">

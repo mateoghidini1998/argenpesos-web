@@ -41,7 +41,7 @@ export default function ArgenCompras() {
                         className='w-[185px] h-[53px] md:w-[260px] md:h-[75px] mb-3.5 md:mb-0'
                         />
                     </div>
-                    <p className='text-base md:text-[28px] lg:text-[40px]'>Todo lo que necesitas para vos y tu hogar</p>
+                    <h2 className='text-base md:text-[28px] lg:text-[40px]'>Todo lo que necesitas para vos y tu hogar</h2>
                 </div>
                 <div className="w-full  bg-transparent">
                     <Carousel

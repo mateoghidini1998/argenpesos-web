@@ -50,7 +50,7 @@ export default function Cuponizate() {
             className='w-[185px] h-[84px] md:w-[230px] md:h-[100px] mb-3.5 md:mb-0'
           />
         </div>
-        <p className='text-base md:text-[28px] lg:text-[40px]'>¡Disfrutá de los mejores beneficios!</p>
+        <h2 className='text-base md:text-[28px] lg:text-[40px]'>¡Disfrutá de los mejores beneficios!</h2>
       </div>
       <div className="w-full bg-transparent">
         <Carousel
