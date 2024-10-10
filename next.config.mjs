@@ -27,6 +27,18 @@ const nextConfig = {
     },
     typescript: {
         ignoreBuildErrors:true
+    },
+    async rewrites() {
+        return [
+            {
+                source: '/api/consultacupo', 
+                destination: 'http://smarter.argenpesos.com.ar:30002/External/consultacupo',
+            },
+            {
+                source: '/api/validacionidentidad', 
+                destination: 'http://smarter.argenpesos.com.ar:30002/External/validacionidentidad',
+            },
+        ];
     }
 };
 

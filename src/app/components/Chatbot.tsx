@@ -93,6 +93,24 @@ export default function Chatbot() {
     setStep(0); // Step 0 is the DNI input step
   };
 
+  const validateIdentidad = async (dni, sexoNumerico) => {
+    try {
+      const response = await fetch(`/api/validacionidentidad?ticket=EB56789C-B3B9-4D4A-A6C8-98235B1179C8&documento=${dni}&sexo=${sexoNumerico}`);
+      const data = await response.json();
+  
+      if (data.statusCode === 201 && data.result.length === 1) {
+        const identidad = data.result[0];
+        setMessages([...messages, { from: 'bot', text: `Identidad validada: ${identidad.nombre}` }]);
+        setStep(2);
+      } else {
+        setMessages([...messages, { from: 'bot', text: 'No se pudo validar la identidad.' }]);
+        setStep(0);
+      }
+    } catch (error) {
+      setMessages([...messages, { from: 'bot', text: 'Error al validar identidad.' }]);
+    }
+  };
+
   const processInput = async (inputText: string) => {
     switch (step) {
       case 0:
@@ -118,9 +136,7 @@ export default function Chatbot() {
 
           const dni = userData.dni;
           try {
-            const response = await fetch(
-              `http://smarter.argenpesos.com.ar:30002/External/validacionidentidad?ticket=EB56789C-B3B9-4D4A-A6C8-98235B1179C8&documento=${dni}&sexo=${sexoNumerico}`
-            );
+            const response = await fetch(`/api/validacionidentidad?ticket=EB56789C-B3B9-4D4A-A6C8-98235B1179C8&documento=${dni}&sexo=${sexoNumerico}`);
             const data = await response.json();
 
             if (data.statusCode === 201 && data.result.length === 1) {
@@ -295,8 +311,7 @@ export default function Chatbot() {
   const sendConsultaCupo = async (userData) => {
     setIsLoading(true);
     const { dni, cuil, sexo, bankCodigo, ingresos } = userData;
-
-    // Crear el body de la solicitud de manera dinámica
+  
     const requestBody = {
       ticket: "EB56789C-B3B9-4D4A-A6C8-98235B1179C8",
       usuario: "PRUEBAWEB",
@@ -305,60 +320,36 @@ export default function Chatbot() {
       entidadFinancieraCodigo: bankCodigo,
       ingresos: ingresos,
     };
-
-    // Agregar 'cuil' o 'documento' según corresponda
+  
     if (cuil) {
-      requestBody.cuil = cuil; // Si hay CUIL, agregarlo al body como 'cuil'
+      requestBody.cuil = cuil;
     } else {
-      requestBody.documento = dni; // Si no hay CUIL, agregar 'documento' con el valor del DNI
+      requestBody.documento = dni;
     }
-
+  
     try {
-      const response = await fetch(
-        "http://smarter.argenpesos.com.ar:30002/External/consultacupo",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(requestBody),
-        }
-      );
-
+      const response = await fetch('/api/consultacupo', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestBody),
+      });
+  
       const data = await response.json();
-
+  
       if (response.ok) {
         const { resultado } = data.result;
-
-        let finalMessage = "";
-        if (resultado === "RECHAZADO") {
-          finalMessage =
-            "Ups....por el momento no sería posible acceder a un préstamo. De todas formas puede volver a consultarlo en 30 días.";
-        } else if (resultado !== "RECHAZADO") {
-          finalMessage =
-            "¡Excelente! Tenes un préstamo pre-aprobado, sujeto a un análisis crediticio. Para más información, comunícate al 11 2678-5266 o al 11 6123-1754.";
-        }
-
-        setMessages((prevMessages) => [
-          ...prevMessages,
-          {
-            from: "bot",
-            text: finalMessage,
-          },
-        ]);
+        let finalMessage = resultado === 'RECHAZADO'
+          ? 'Ups....por el momento no sería posible acceder a un préstamo. De todas formas puede volver a consultarlo en 30 días.'
+          : '¡Excelente! Tenes un préstamo pre-aprobado, sujeto a un análisis crediticio. Para más información, comunícate al 11 2678-5266 o al 11 6123-1754. ';
+        setMessages([...messages, { from: 'bot', text: finalMessage }]);
         setIsFlowComplete(true);
       } else {
-        setMessages((prevMessages) => [
-          ...prevMessages,
-          { from: "bot", text: `Error en la consulta: ${data.message}` },
-        ]);
+        setMessages([...messages, { from: 'bot', text: `Error: ${data.message}` }]);
       }
     } catch (error) {
-      setMessages((prevMessages) => [
-        ...prevMessages,
-        { from: "bot", text: "Ocurrió un error al realizar la consulta." },
-      ]);
-      console.error("Error en la consulta:", error);
+      setMessages([...messages, { from: 'bot', text: 'Ocurrió un error.' }]);
     } finally {
       setIsLoading(false);
     }
