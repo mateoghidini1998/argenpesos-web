@@ -71,7 +71,7 @@ export default function ArgenCompras() {
                 data.map((item, index) => (
                   <CarouselItem
                     key={index}
-                    className="lg:basis-1/2 xl:basis-1/3 min-h-[300px] xl:min-h-[400px]"
+                    className="lg:basis-1/2 xl:basis-1/3 min-h-[300px] xl:min-h-[280px]"
                   >
                     <div className="flex items-center justify-center w-auto md:max-w-1/3 h-auto min-h-[225px] md:h-[280px] bg-white px-3 py-9 md:px-5 md:py-10 gap-4 md:gap-[30px] rounded-lg shadow-lg text-center mb-[30px]">
                       <img
