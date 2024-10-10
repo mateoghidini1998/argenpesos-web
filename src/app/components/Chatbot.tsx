@@ -7,6 +7,8 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { X, Send } from "lucide-react";
 import DynamicSelector from "./ComboBox";
 import Loader from "./Loader";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import Bot from "./svgs/Bot";
 
 export default function Chatbot() {
   const [messages, setMessages] = useState([
@@ -95,19 +97,30 @@ export default function Chatbot() {
 
   const validateIdentidad = async (dni, sexoNumerico) => {
     try {
-      const response = await fetch(`/api/validacionidentidad?ticket=EB56789C-B3B9-4D4A-A6C8-98235B1179C8&documento=${dni}&sexo=${sexoNumerico}`);
+      const response = await fetch(
+        `/api/validacionidentidad?ticket=EB56789C-B3B9-4D4A-A6C8-98235B1179C8&documento=${dni}&sexo=${sexoNumerico}`
+      );
       const data = await response.json();
-  
+
       if (data.statusCode === 201 && data.result.length === 1) {
         const identidad = data.result[0];
-        setMessages([...messages, { from: 'bot', text: `Identidad validada: ${identidad.nombre}` }]);
+        setMessages([
+          ...messages,
+          { from: "bot", text: `Identidad validada: ${identidad.nombre}` },
+        ]);
         setStep(2);
       } else {
-        setMessages([...messages, { from: 'bot', text: 'No se pudo validar la identidad.' }]);
+        setMessages([
+          ...messages,
+          { from: "bot", text: "No se pudo validar la identidad." },
+        ]);
         setStep(0);
       }
     } catch (error) {
-      setMessages([...messages, { from: 'bot', text: 'Error al validar identidad.' }]);
+      setMessages([
+        ...messages,
+        { from: "bot", text: "Error al validar identidad." },
+      ]);
     }
   };
 
@@ -117,7 +130,7 @@ export default function Chatbot() {
         setUserData((prevData) => ({ ...prevData, dni: inputText }));
         setMessages((prevMessages) => [
           ...prevMessages,
-          { from: "bot", text: "Por favor, selecciona tu sexo: M o F" },
+          { from: "bot", text: "Por favor, selecciona tu sexo:" },
         ]);
         setStep(1);
         break;
@@ -125,18 +138,27 @@ export default function Chatbot() {
         // Handling sexo selection with dropdown
         if (selectedSexo) {
           setIsLoading(true); // Comienza la carga
+
+          // Encontrar el label correspondiente en genderOptions
+          const selectedOption = genderOptions.find(
+            (option) => option.value === selectedSexo
+          );
+
+          // Convertir "M" o "F" en 1 o 2
           const sexoNumerico = selectedSexo === "M" ? 1 : 2;
           setUserData((prevData) => ({ ...prevData, sexo: sexoNumerico }));
 
-          // Mostrar selección en el chat
+          // Mostrar la selección en el chat con el label ("Masculino" o "Femenino")
           setMessages((prevMessages) => [
             ...prevMessages,
-            { from: "user", text: selectedSexo },
+            { from: "user", text: selectedOption?.label || selectedSexo },
           ]);
 
           const dni = userData.dni;
           try {
-            const response = await fetch(`/api/validacionidentidad?ticket=EB56789C-B3B9-4D4A-A6C8-98235B1179C8&documento=${dni}&sexo=${sexoNumerico}`);
+            const response = await fetch(
+              `/api/validacionidentidad?ticket=EB56789C-B3B9-4D4A-A6C8-98235B1179C8&documento=${dni}&sexo=${sexoNumerico}`
+            );
             const data = await response.json();
 
             if (data.statusCode === 201 && data.result.length === 1) {
@@ -240,7 +262,7 @@ export default function Chatbot() {
               ...prevMessages,
               {
                 from: "bot",
-                text: "Por favor, ingresa tu ingreso mensual neto.",
+                text: "Por favor, coloque su ingreso mensual neto.",
               },
             ]);
             setStep(5);
@@ -311,7 +333,7 @@ export default function Chatbot() {
   const sendConsultaCupo = async (userData) => {
     setIsLoading(true);
     const { dni, cuil, sexo, bankCodigo, ingresos } = userData;
-  
+
     const requestBody = {
       ticket: "EB56789C-B3B9-4D4A-A6C8-98235B1179C8",
       usuario: "PRUEBAWEB",
@@ -320,36 +342,40 @@ export default function Chatbot() {
       entidadFinancieraCodigo: bankCodigo,
       ingresos: ingresos,
     };
-  
+
     if (cuil) {
       requestBody.cuil = cuil;
     } else {
       requestBody.documento = dni;
     }
-  
+
     try {
-      const response = await fetch('/api/consultacupo', {
-        method: 'POST',
+      const response = await fetch("/api/consultacupo", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(requestBody),
       });
-  
+
       const data = await response.json();
-  
+
       if (response.ok) {
         const { resultado } = data.result;
-        let finalMessage = resultado === 'RECHAZADO'
-          ? 'Ups....por el momento no sería posible acceder a un préstamo. De todas formas puede volver a consultarlo en 30 días.'
-          : '¡Excelente! Tenes un préstamo pre-aprobado, sujeto a un análisis crediticio. Para más información, comunícate al 11 2678-5266 o al 11 6123-1754. ';
-        setMessages([...messages, { from: 'bot', text: finalMessage }]);
+        let finalMessage =
+          resultado === "RECHAZADO"
+            ? "Ups....por el momento no sería posible acceder a un préstamo. De todas formas puede volver a consultarlo en 30 días."
+            : "¡Excelente! Tenes un préstamo pre-aprobado, sujeto a un análisis crediticio. Para más información, comunícate al 11 2678-5266 o al 11 6123-1754. ";
+        setMessages([...messages, { from: "bot", text: finalMessage }]);
         setIsFlowComplete(true);
       } else {
-        setMessages([...messages, { from: 'bot', text: `Error: ${data.message}` }]);
+        setMessages([
+          ...messages,
+          { from: "bot", text: `Error: ${data.message}` },
+        ]);
       }
     } catch (error) {
-      setMessages([...messages, { from: 'bot', text: 'Ocurrió un error.' }]);
+      setMessages([...messages, { from: "bot", text: "Ocurrió un error." }]);
     } finally {
       setIsLoading(false);
     }
@@ -359,25 +385,47 @@ export default function Chatbot() {
     <>
       <div className="relative h-[600px]">
         <div className="flex justify-center  h-[60px] items-center text-white  border border-border rounded-lg ">
-          <h2 className="text-lg font-semibold text-lightblue-primary">Chatea con Tina</h2>
+          <h2 className="text-lg font-semibold text-lightblue-primary">
+            Chatea con Tina
+          </h2>
         </div>
         <ScrollArea
           className={`${
             isFlowComplete || isLoading
               ? "h-[calc(100% - 60px)] max-h-[535px]"
               : "h-[calc(100% - 60px)] max-h-[450px]"
-          } flex-grow p-4  overflow-y-auto`}
+          } flex-grow p-4 overflow-y-auto`}
         >
           {messages.map((message, index) => (
             <div
               key={index}
-              className={`mb-2 p-2 rounded-lg ${
-                message.from === "user"
-                  ? "text-white font-bold bg-[#17AAE1] ml-auto"
-                  : "bg-[#EEE] text-[#505050]"
-              } max-w-[55%] ${message.from === "user" ? "ml-auto" : "mr-auto"}`}
+              className={`mb-4 flex items-start ${
+                message.from === "user" ? "justify-end" : "justify-start"
+              }`}
             >
-              {message.text}
+              {message.from === "bot" && (
+                <Avatar className="mr-2 h-10 w-10 ">
+                  <AvatarImage src="/ai-avatar.png" alt="BOT" />
+                  <AvatarFallback>
+                    <Bot />
+                  </AvatarFallback>
+                </Avatar>
+              )}
+              <div
+                className={`p-2  ${
+                  message.from === "user"
+                    ? "text-white font-bold bg-[#17AAE1] rounded-bl-lg rounded-t-lg"
+                    : "bg-[#EEE] text-[#505050] rounded-b-lg rounded-tr-lg mt-[15px]"
+                } max-w-[55%]`}
+              >
+                {message.text}
+              </div>
+              {message.from === "user" && (
+                <Avatar className="ml-1 h-10 w-10 mt-[20px]">
+                  <AvatarImage src="/user-avatar.png" alt="User" />
+                  <AvatarFallback>U</AvatarFallback>
+                </Avatar>
+              )}
             </div>
           ))}
           {isLoading && (

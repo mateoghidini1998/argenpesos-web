@@ -37,6 +37,24 @@
   
 }
 
+.custom-carousel {
+  position: relative;
+  overflow: visible;
+}
+
+.custom-carousel .swiper-container {
+  width: calc(100% + 20px); /* Ajusta según sea necesario */
+}
+
+.custom-carousel .swiper-button-prev,
+.custom-carousel .swiper-button-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+
 .form-container {
   max-height: 80vh;
   overflow-y: auto;
