@@ -37,6 +37,37 @@
   
 }
 
+/* Default state */
+/* Default state */
+.metodo-svg {
+  background-color: white;
+}
+
+.metodo-svg svg path {
+  fill: #00AEE1 !important; /* Default fill color for path and rect */
+}
+
+.metodo-svg:hover svg g rect {
+  fill: #00AEE1 !important;
+}
+
+.metodo-svg svg g rect {
+  fill: white !important;
+}
+
+/* Hover state on parent */
+.metodo-svg:hover {
+  background-color: #00AEE1; /* Change background color of parent */
+}
+
+/* Change fill of path and rect when parent is hovered */
+.metodo-svg:hover svg path,
+.metodo-svg:hover svg rect {
+  fill: white !important; /* Change fill color of path and rect when parent is hovered */
+}
+
+
+
 .custom-carousel {
   position: relative;
   overflow: visible;

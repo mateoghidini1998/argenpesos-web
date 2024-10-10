@@ -7,10 +7,12 @@ import Debito from '../../../public/debito.png';
 import PagoFacil from '../../../public/pagofacil.png';
 import RapiPago from '../../../public/rapipago.png';
 import MercadoPago from '../../../public/mercadopago.png';
-import SucursalArgenpesos from '../../../public/sucursal_argenpesos.png';
-import WebAregenpesos from '../../../public/web_argenpesos.png';
-import Transferencia from '../../../public/transferencia.png';
 import MetodoDePago from './MetodoDePago';
+import QR from './svgs/QR';
+import Tarjeta from './svgs/Tarjeta';
+import Banco from './svgs/Banco';
+import PC from './svgs/PC';
+import Market from './svgs/Market';
 import { useMediaQuery } from 'react-responsive'
 
 const METODOS_DE_PAGO = [
@@ -40,7 +42,7 @@ const METODOS_DE_PAGO = [
     },
     { 
       title: "Billetera Virtual",
-       image: BilleteraVirtual,
+       image: <QR/>,
        description1: "Para abonar la cuota de tu préstamo escanea el QR desde tu billetera virtual favorita y luego ingresá el monto a pagar", 
        description2: "", 
        description3: BilleteraVirtual, 
@@ -48,7 +50,7 @@ const METODOS_DE_PAGO = [
     },
     { 
       title: "Tarjeta de débito",
-       image: Debito,
+       image: <Tarjeta/>,
        description1: "Para abonar la cuota de tu préstamo escanea el QR desde tu billetera virtual favorita y luego ingresá el monto a pagar",
        description2: "", 
        description3: "Paga directamente con tu tarjeta de débito.", 
@@ -56,7 +58,7 @@ const METODOS_DE_PAGO = [
     },
     { 
       title: "Sucursal Argenpesos",
-       image: SucursalArgenpesos,
+       image: <Market/>,
        description1: "Para abonar la cuota de tu préstamo en una de nuestras sucursales, solamente tenés que acercarte a la más cercana con tu DNI.", 
        description2: "Consulta tu sucursal más cercana aquí https://www.argenpesos.com.ar/sucursales", 
        description3: "", 
@@ -64,7 +66,7 @@ const METODOS_DE_PAGO = [
     },
     { 
       title: "Argenpesos.com.ar Consultá tu cuenta",
-       image: WebAregenpesos,
+       image: <PC/>,
        description1: "Para abonar la cuota de tu préstamo ingresa a nuestra página y selecciona “Ingresá a tu cuenta” ", 
        description2: "Si no tenés usuario ingresá a “Aún no tengo usuario” y generá uno solo con tu DNI y una clave.", 
        description3: "Ahí podrás abonar la cuota de tu préstamo y ver tu estado de cuenta", 
@@ -72,7 +74,7 @@ const METODOS_DE_PAGO = [
     },
     { 
       title: "Transferencia Deposito Bancario",
-       image: Transferencia,
+       image: <Banco/>,
        description1: " Para abonar la cuota de tu préstamo por este medio deberás realizar una transferencia / depósito a una de las siguientes cuentas: ", 
        description2: "BANCO GALICIA\nCuenta Corriente en Pesos 3424/1 068/6\nTransferencia CBU 0070068920000003424164\nBBVA FRANCES\nCuenta Corriente en Pesos 039/2222/2\n   Transferencia CBU 01700398-20000000222228", 
        description3: "", 

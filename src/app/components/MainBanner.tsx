@@ -33,6 +33,7 @@ export default function MainBanner() {
                                     Pedilo acá
                                 </Button>
                             </DialogTrigger> 
+                            <p className='text-white font-medium text-sm mt-[15px] max-w-[440px]'>*La otorgación del préstamo esta sujeta a análisis de riesgo crediticio</p>
                         </div>
                     </div>
                 </section>

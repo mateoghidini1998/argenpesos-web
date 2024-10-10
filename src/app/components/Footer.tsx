@@ -115,7 +115,7 @@ export default function Footer() {
                         </li>
                         <li className="text-[#888] relative group">
                             Defensa del Consumidor
-                            <ul className="hidden group-hover:block absolute bg-white space-y-1 border-gray-300 rounded">
+                            <ul className="hidden lg:group-hover:block absolute bg-white space-y-1 border-gray-300 rounded">
                             <li className="text-[#888] text-wrap">
                                 <Link href="https://www.argentina.gob.ar/economia/industria-y-comercio/defensadelconsumidor/leyes-proteccion-consumidor" target='__blank'>
                                 Legislación Derecho de los Consumidores
@@ -143,6 +143,31 @@ export default function Footer() {
                             </li>
                             </ul>
                         </li>
+                        <li className="lg:hidden text-[#888] text-wrap">
+                                <Link href="https://www.argentina.gob.ar/economia/industria-y-comercio/defensadelconsumidor/leyes-proteccion-consumidor" target='__blank'>
+                                Legislación Derecho de los Consumidores
+                                </Link>
+                            </li>
+                            <li className="lg:hidden text-[#888]">
+                                <Link href="https://www.argentina.gob.ar/economia/industria-y-comercio/defensadelconsumidor" target='__blank'>
+                                Dónde y cómo reclamar
+                                </Link>
+                            </li>
+                            <li className="lg:hidden text-[#888]">
+                                <Link href="https://autogestion.produccion.gob.ar/consumidores" target='__blank'>
+                                Defensa de las y los consumidores
+                                </Link>
+                            </li>
+                            <li className="lg:hidden text-[#888]">
+                                <Link href="https://www.argenpesos.com.ar/public/storage/pdf/Jurisdiccion%20en%20caso%20de%20litigio.pdf" target='__blank'>
+                                Jurisdicción en caso de litigio
+                                </Link>
+                            </li>
+                            <li className="lg:hidden text-[#888]">
+                                <Link href="https://www.argenpesos.com.ar/public/storage/pdf/Protecion%20de%20Datos%20Personales.pdf" target='__blank'>
+                                Protección de datos personales
+                                </Link>
+                            </li>
                         </ul>
 
                     </div>

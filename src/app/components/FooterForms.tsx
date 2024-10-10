@@ -50,7 +50,7 @@ export default function FooterForms() {
           </li>
           <li className="text-[#888] whitespace-nowrap relative group">
             Información para el usuario financiero
-            <ul className="hidden group-hover:block absolute bg-white space-y-1 border-gray-300 rounded">
+            <ul className="hidden lg:group-hover:block absolute bg-white space-y-1 border-gray-300 rounded">
               <li className="text-[#888] text-wrap">
                 <Link
                   href="http://www.bcra.gob.ar/BCRAyVos/Usuarios_Financieros.asp"
@@ -65,6 +65,19 @@ export default function FooterForms() {
                 </Link>
               </li>
             </ul>
+          </li>
+          <li className="lg:hidden text-[#888] text-wrap">
+            <Link
+              href="http://www.bcra.gob.ar/BCRAyVos/Usuarios_Financieros.asp"
+              target="__blank"
+            >
+              Info BCRA
+            </Link>
+          </li>
+          <li className="lg:hidden text-[#888]">
+            <Link href="/usuario_financiero" target="__blank">
+              Info usuarios
+            </Link>
           </li>
         </ul>
       </div>
