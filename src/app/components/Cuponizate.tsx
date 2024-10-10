@@ -41,7 +41,7 @@ export default function Cuponizate() {
 
 
   return (
-    <div className="w-full flex flex-col items-center justify-center gap-[30px] md:justify-between min-h-[430px] bg-[#6104EE] text-white p-[16px] md:p-[24px]">
+    <div className="w-full flex flex-col items-center justify-center gap-[30px] md:justify-between min-h-[430px] bg-[#6104EE] text-white p-[16px] md:p-[24px] lg:p-[14px] xl:p-[24px]">
       <div className='flex flex-col md:flex-row-reverse gap-[30px] justify-center md:justify-between items-center text-white w-full '>
         <div className='w-full md:w-[230px] flex justify-end'>
           <Image
@@ -91,9 +91,9 @@ export default function Cuponizate() {
               <p className="text-white">No hay datos disponibles.</p> 
             )}
           </CarouselContent>
-          <div className="mt-4 md:mt-0 flex justify-center md:justify-between text-[#6648B8] font-bold">
-            <CarouselPrevious className="relative md:absolute md:right-50 md:top-1/2 md:-translate-y-1/2" />
-            <CarouselNext className="relative md:absolute md:left-50 md:top-1/2 md:-translate-y-1/2" />
+          <div className="mt-4 md:mt-0 flex items-center justify-center md:justify-between text-[#6648B8] font-bold lg:justify-center xl:justify-center">
+            <CarouselPrevious className="lg:mt-8 lg:mx-14 xl:m-0  relative md:absolute md:right-50 md:top-1/2 md:-translate-y-1/2 lg:relative xl:absolute xl:right-50 xl:top-1/2 xl:-translate-y-1/2" />
+            <CarouselNext className="lg:mt-8 lg:mx-14 xl:m-0 relative md:absolute md:left-50 md:top-1/2 md:-translate-y-1/2 lg:relative xl:absolute xl:right-50 xl:top-1/2 xl:-translate-y-1/2" />
           </div>
         </Carousel>
       </div>
