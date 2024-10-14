@@ -50,8 +50,8 @@ export default function Adherite() {
             </section>
 
             <DialogPortal>
-                <DialogContent>
-                    <form className="w-full max-w-lg mx-auto relative">
+                <DialogContent className="w-[90%] h-[90%] sm:h-full sm:w-full overflow-scroll">
+                    <form className="w-full max-w-[20rem] sm:max-w-lg mx-auto relative">
                         {modalContent === "Adherí tu comercio" && (
                             <AdheriTuComercioForm/>   
                         )}

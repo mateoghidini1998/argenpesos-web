@@ -29,16 +29,9 @@
 
 .hero-background {
   @apply bg-no-repeat bg-top bg-cover;
-  @apply bg-[url('/main-banner.jpeg')];
- /*  @apply md:bg-[url('/home-banner-md.png')];
-  @apply lg:bg-[url('/home-banner-lg.png')];
-  @apply xl:bg-[url('/home-banner-xl.png')];
-  @apply 2xl:bg-[url('/home-banner-2xl.png')]; */
-  
+  @apply bg-[url('/main-banner.jpeg')];  
 }
 
-/* Default state */
-/* Default state */
 .metodo-svg {
   background-color: white;
 }

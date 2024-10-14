@@ -17,11 +17,11 @@ type FormGroupProps = {
     
     return (
       <div className={`form-group flex flex-col h-full gap-2.5 ${inputProps?.className || ''}`}>
-        {label && <label className="text-xs text-[#393E4F]" htmlFor={inputProps?.id}>{label}</label>}
+        {label && <label className="text-xs md:text-sm text-[#393E4F]" htmlFor={inputProps?.id}>{label}</label>}
         {inputType === 'input' && (
           <input 
             type="text" 
-            className={`border ${hasError ? 'border-red-500' : 'border-gray-300'} rounded px-4 py-2 focus:outline-none focus:border-lightblue-primary`}
+            className={`border ${hasError ? 'border-red-500' : 'border-gray-300'} rounded w-full px-2 py-2 md:px-4 focus:outline-none focus:border-lightblue-primary`}
             {...(inputProps as React.InputHTMLAttributes<HTMLInputElement>)}
           />
         )}
@@ -33,19 +33,19 @@ type FormGroupProps = {
 
         {inputType === 'textarea' && (
           <textarea 
-            className="border border-gray-300 rounded px-4 py-2 w-full h-24 focus:outline-none focus:border-lightblue-primary"
+            className="border border-gray-300 rounded w-full px-2 py-2 md:px-4 h-24 focus:outline-none focus:border-lightblue-primary"
             {...(inputProps as React.TextareaHTMLAttributes<HTMLTextAreaElement>)}
           />
         )}
         {inputType === 'file' && (
           <input 
             type="file" 
-            className="border border-gray-300 rounded px-4 py-2 w-full focus:outline-none focus:border-lightblue-primary"
+            className="border border-gray-300 rounded w-full px-2 py-2 md:px-4 focus:outline-none focus:border-lightblue-primary"
             {...(inputProps as React.InputHTMLAttributes<HTMLInputElement>)}
           />
         )}
         {inputType === 'select' && (
-          <div className="flex  gap-2">
+          <div className="flex flex-wrap gap-2">
             {selectOptions?.map(option => (
               <label key={option.value} className="flex items-center gap-2">
                 <input
