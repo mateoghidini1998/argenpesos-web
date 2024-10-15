@@ -10,6 +10,7 @@ import Loader from "./Loader";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Bot from "./svgs/Bot";
 import User from "./svgs/User";
+import Link from "next/link";
 
 export default function Chatbot() {
   const [messages, setMessages] = useState([
@@ -28,7 +29,7 @@ export default function Chatbot() {
   const [selectedBank, setSelectedBank] = useState("");
   const [identidades, setIdentidades] = useState([]);
   const [selectedIdentidad, setSelectedIdentidad] = useState("");
-  const [isConsultaApproved, setIsConsultaApproved] = useState(false);
+  const [isConsultaStatus, setIsConsultaStatus] = useState(null);
   const [userData, setUserData] = useState({
     sexo: "",
     dni: "",
@@ -357,20 +358,22 @@ export default function Chatbot() {
       const data = await response.json();
 
       if (response.ok) {
-        const { resultado } = data.result;
+        const { resultado, maximoCapital, maximoCuota } = data.result;
         let finalMessage = "";
         if (resultado === "RECHAZADO") {
           // Mensaje para resultado RECHAZADO
+          setIsConsultaStatus("REJECTED");
           finalMessage =
-            "Ups....por el momento no sería posible acceder a un préstamo. De todas formas puede volver a consultarlo en 30 días.";
+            " Ups....por el momento no sería posible acceder a un préstamo. De todas formas puede volver a consultarlo en 30 días. Descárgate la app ..... para obtener más información y aprovechar todos nuestros beneficios";
         } else if (resultado === "APROBADO SIN CUPO") {
           // Mensaje para resultado APROBADO SIN CUPO con un botón que redirige a WhatsApp
+          setIsConsultaStatus("PENDING");
           finalMessage =
-            ' ¡Excelente! Tenes un préstamo pre-aprobado, sujeto a un análisis crediticio. Y en caso de que quiera avanzar con el préstamo, haya un boton donde diga "QUIERO COMUNICARME" y nos redirija al WhatsApp de Online (11 2678-5266).';
+            ` ¡Excelente! Tenes un préstamo pre-aprobado, sujeto a un análisis crediticio. Y en caso de que quiera avanzar con el préstamo`;
         } else if (resultado === "APROBADO CON CUPO") {
           finalMessage =
-            " ¡Excelente! Tenes un préstamo aprobado, para más información haz click en el siguiente botón";
-          setIsConsultaApproved(true);
+            ` ¡Excelente! Tenes un préstamo aprobado por $${maximoCapital} en 12 cuotas de ${maximoCuota}. Sujeto a un análisis crediticio.`;
+          setIsConsultaStatus("APPROVED");
         }
 
         // Añadir el mensaje y el contenido adicional (si existe)
@@ -400,7 +403,7 @@ export default function Chatbot() {
         </div>
         <ScrollArea
           className={`${
-            (isFlowComplete && !isConsultaApproved) || isLoading
+            (isFlowComplete && !isConsultaStatus) || isLoading
               ? "h-[calc(100% - 60px)] max-h-[535px]"
               : "h-[calc(100% - 60px)] max-h-[450px]"
           } flex-grow p-4 overflow-y-auto`}
@@ -432,7 +435,9 @@ export default function Chatbot() {
               {message.from === "user" && (
                 <Avatar className="ml-1 h-10 w-10 mt-[20px]">
                   <AvatarImage src="/user-avatar.png" alt="User" />
-                  <AvatarFallback><User/></AvatarFallback>
+                  <AvatarFallback>
+                    <User />
+                  </AvatarFallback>
                 </Avatar>
               )}
             </div>
@@ -534,19 +539,36 @@ export default function Chatbot() {
           </div>
         )}
 
-        {!isLoading && isConsultaApproved && (
+        {!isLoading && isConsultaStatus == "APPROVED" && (
           <div className="p-4 h-auto border-t border-border flex items-center justify-center absolute bottom-0 left-0 right-0">
-            <Button
-              onClick={startChat}
-              className="bg-[#17AEE1] text-white px-4 py-2 rounded-lg"
+            <Link
+              href="https://wa.me/541126785266" 
+              target="_blank"
+              rel="noopener noreferrer" 
             >
-              LO QUIERO
-            </Button>
+              <Button className="bg-[#17AEE1] text-white px-4 py-2 rounded-lg">
+                LO QUIERO
+              </Button>
+            </Link>
+          </div>
+        )}
+
+        {!isLoading && isConsultaStatus == "PENDING" && (
+          <div className="p-4 h-auto border-t border-border flex items-center justify-center absolute bottom-0 left-0 right-0">
+            <Link
+              href="https://wa.me/541126785266" 
+              target="_blank"
+              rel="noopener noreferrer" 
+            >
+              <Button className="bg-[#17AEE1] text-white px-4 py-2 rounded-lg">
+                QUIERO COMUNICARME
+              </Button>
+            </Link>
           </div>
         )}
 
         {!isFlowComplete &&
-          !isConsultaApproved &&
+          !isConsultaStatus &&
           !isLoading &&
           step !== -1 &&
           step !== 1 &&
