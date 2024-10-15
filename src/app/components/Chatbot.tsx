@@ -4,7 +4,7 @@ import BANCOS from "../../data/bancos.json";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { X, Send } from "lucide-react";
+import { Send } from "lucide-react";
 import DynamicSelector from "./ComboBox";
 import Loader from "./Loader";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -99,6 +99,7 @@ export default function Chatbot() {
   };
 
   const validateIdentidad = async (dni, sexoNumerico) => {
+    setIsLoading(true);
     try {
       const response = await fetch(
         `/api/validacionidentidad?ticket=EB56789C-B3B9-4D4A-A6C8-98235B1179C8&documento=${dni}&sexo=${sexoNumerico}`
@@ -145,6 +146,8 @@ export default function Chatbot() {
         ...prevMessages,
         { from: "bot", text: "Error al validar identidad." },
       ]);
+    } finally {
+      setIsLoading(false)
     }
   };
 
@@ -334,7 +337,7 @@ export default function Chatbot() {
     const requestBody = {
       ticket: "EB56789C-B3B9-4D4A-A6C8-98235B1179C8",
       usuario: "PRUEBAWEB",
-      sexo: sexo, // 1 para Masculino, 2 para Femenino
+      sexo: sexo,
       productoId: 10,
       entidadFinancieraCodigo: bankCodigo,
       ingresos: ingresos,
@@ -395,7 +398,7 @@ export default function Chatbot() {
 
   return (
     <>
-      <div className="relative h-[600px]">
+      <div className="chatbot relative h-[600px]">
         <div className="flex justify-center  h-[60px] items-center text-white  border border-border rounded-lg ">
           <h2 className="text-lg font-semibold text-lightblue-primary">
             Chatea con Tina

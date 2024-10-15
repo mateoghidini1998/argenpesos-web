@@ -26,6 +26,9 @@
   font-family: 'Gotham'
 }
 
+.parent:has(.chatbot) {
+  padding: 0 !important;
+}
 
 .hero-background {
   @apply bg-no-repeat bg-top bg-cover;
