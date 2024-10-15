@@ -27,6 +27,7 @@ export default function Chatbot() {
   const [selectedBank, setSelectedBank] = useState("");
   const [identidades, setIdentidades] = useState([]);
   const [selectedIdentidad, setSelectedIdentidad] = useState("");
+  const [isConsultaApproved, setIsConsultaApproved] = useState(false);
   const [userData, setUserData] = useState({
     sexo: "",
     dni: "",
@@ -103,22 +104,43 @@ export default function Chatbot() {
       const data = await response.json();
 
       if (data.statusCode === 201 && data.result.length === 1) {
+        // Si solo hay una identidad
         const identidad = data.result[0];
-        setMessages([
-          ...messages,
+        setMessages((prevMessages) => [
+          ...prevMessages,
           { from: "bot", text: `Identidad validada: ${identidad.nombre}` },
         ]);
-        setStep(2);
-      } else {
-        setMessages([
-          ...messages,
-          { from: "bot", text: "No se pudo validar la identidad." },
+        setUserData((prevData) => ({
+          ...prevData,
+          cuil: identidad.cuil, // Guardar el CUIL
+        }));
+        setStep(2); // Avanzamos al siguiente paso (ingreso de código de área)
+      } else if (data.statusCode === 201 && data.result.length > 1) {
+        // Si hay múltiples identidades
+        setIdentidades(data.result); // Guardar identidades
+        setMessages((prevMessages) => [
+          ...prevMessages,
+          {
+            from: "bot",
+            text: "Se encontraron múltiples identidades. Por favor selecciona la correcta:",
+          },
         ]);
-        setStep(0);
+        setStep(6); // Mostrar el selector de identidades
+      } else {
+        // Si no se puede validar la identidad
+        setMessages((prevMessages) => [
+          ...prevMessages,
+          {
+            from: "bot",
+            text: "No se pudo validar la identidad. Inténtalo nuevamente.",
+          },
+        ]);
+        setStep(0); // Volver al primer paso
       }
     } catch (error) {
-      setMessages([
-        ...messages,
+      // Manejo de error en la llamada a la API
+      setMessages((prevMessages) => [
+        ...prevMessages,
         { from: "bot", text: "Error al validar identidad." },
       ]);
     }
@@ -135,7 +157,7 @@ export default function Chatbot() {
         setStep(1);
         break;
       case 1:
-        // Handling sexo selection with dropdown
+        // Asegurarse de que se haya seleccionado un sexo
         if (selectedSexo) {
           setIsLoading(true); // Comienza la carga
 
@@ -154,40 +176,12 @@ export default function Chatbot() {
             { from: "user", text: selectedOption?.label || selectedSexo },
           ]);
 
-          const dni = userData.dni;
-          try {
-            const response = await fetch(
-              `/api/validacionidentidad?ticket=EB56789C-B3B9-4D4A-A6C8-98235B1179C8&documento=${dni}&sexo=${sexoNumerico}`
-            );
-            const data = await response.json();
+          // Llamar a la función validateIdentidad
+          validateIdentidad(userData.dni, sexoNumerico);
 
-            if (data.statusCode === 201 && data.result.length === 1) {
-              const identidad = data.result[0];
-              setMessages((prevMessages) => [
-                ...prevMessages,
-                {
-                  from: "bot",
-                  text: `Identidad validada: ${identidad.nombre} (CUIL: ${identidad.cuil})`,
-                },
-                { from: "bot", text: "¿Cuál es tu código de área?" },
-              ]);
-              setStep(2);
-            } else {
-              setMessages((prevMessages) => [
-                ...prevMessages,
-                {
-                  from: "bot",
-                  text: "No se pudo validar la identidad. Inténtalo nuevamente.",
-                },
-              ]);
-              setStep(0);
-            }
-          } catch (error) {
-            console.error("Error al validar identidad:", error);
-          } finally {
-            setIsLoading(false);
-          }
+          setIsLoading(false);
         } else {
+          // Mensaje si no se ha seleccionado sexo
           setMessages((prevMessages) => [
             ...prevMessages,
             {
@@ -197,6 +191,7 @@ export default function Chatbot() {
           ]);
         }
         break;
+
       case 2:
         // Handling area code selection with dropdown
         if (selectedAreaCode) {
@@ -297,7 +292,6 @@ export default function Chatbot() {
 
         break;
       case 6:
-        // Verificar si se ha seleccionado una identidad
         if (selectedIdentidad) {
           const identidadSeleccionada = identidades.find(
             (identidad) => identidad.cuil === Number(selectedIdentidad)
@@ -311,11 +305,12 @@ export default function Chatbot() {
               { from: "bot", text: "¿Cuál es tu código de área?" },
             ]);
 
+            // Guardar el CUIL de la identidad seleccionada
             setUserData((prevData) => ({
               ...prevData,
               cuil: identidadSeleccionada.cuil,
             }));
-            setStep(2);
+            setStep(2); // Avanzar al paso de ingresar código de área
           }
         } else {
           setMessages((prevMessages) => [
@@ -362,11 +357,24 @@ export default function Chatbot() {
 
       if (response.ok) {
         const { resultado } = data.result;
-        let finalMessage =
-          resultado === "RECHAZADO"
-            ? "Ups....por el momento no sería posible acceder a un préstamo. De todas formas puede volver a consultarlo en 30 días."
-            : "¡Excelente! Tenes un préstamo pre-aprobado, sujeto a un análisis crediticio. Para más información, comunícate al 11 2678-5266 o al 11 6123-1754. ";
+        let finalMessage = "";
+        if (resultado === "RECHAZADO") {
+          // Mensaje para resultado RECHAZADO
+          finalMessage =
+            "Ups....por el momento no sería posible acceder a un préstamo. De todas formas puede volver a consultarlo en 30 días.";
+        } else if (resultado === "APROBADO SIN CUPO") {
+          // Mensaje para resultado APROBADO SIN CUPO con un botón que redirige a WhatsApp
+          finalMessage =
+            ' ¡Excelente! Tenes un préstamo pre-aprobado, sujeto a un análisis crediticio. Y en caso de que quiera avanzar con el préstamo, haya un boton donde diga "QUIERO COMUNICARME" y nos redirija al WhatsApp de Online (11 2678-5266).';
+        } else if (resultado === "APROBADO CON CUPO") {
+          finalMessage =
+            " ¡Excelente! Tenes un préstamo aprobado, para más información haz click en el siguiente botón";
+          setIsConsultaApproved(true);
+        }
+
+        // Añadir el mensaje y el contenido adicional (si existe)
         setMessages([...messages, { from: "bot", text: finalMessage }]);
+
         setIsFlowComplete(true);
       } else {
         setMessages([
@@ -391,7 +399,7 @@ export default function Chatbot() {
         </div>
         <ScrollArea
           className={`${
-            isFlowComplete || isLoading
+            (isFlowComplete && !isConsultaApproved) || isLoading
               ? "h-[calc(100% - 60px)] max-h-[535px]"
               : "h-[calc(100% - 60px)] max-h-[450px]"
           } flex-grow p-4 overflow-y-auto`}
@@ -525,7 +533,19 @@ export default function Chatbot() {
           </div>
         )}
 
+        {!isLoading && isConsultaApproved && (
+          <div className="p-4 h-auto border-t border-border flex items-center justify-center absolute bottom-0 left-0 right-0">
+            <Button
+              onClick={startChat}
+              className="bg-[#17AEE1] text-white px-4 py-2 rounded-lg"
+            >
+              LO QUIERO
+            </Button>
+          </div>
+        )}
+
         {!isFlowComplete &&
+          !isConsultaApproved &&
           !isLoading &&
           step !== -1 &&
           step !== 1 &&
