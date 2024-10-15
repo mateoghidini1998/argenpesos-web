@@ -9,6 +9,7 @@ import DynamicSelector from "./ComboBox";
 import Loader from "./Loader";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Bot from "./svgs/Bot";
+import User from "./svgs/User";
 
 export default function Chatbot() {
   const [messages, setMessages] = useState([
@@ -431,7 +432,7 @@ export default function Chatbot() {
               {message.from === "user" && (
                 <Avatar className="ml-1 h-10 w-10 mt-[20px]">
                   <AvatarImage src="/user-avatar.png" alt="User" />
-                  <AvatarFallback>U</AvatarFallback>
+                  <AvatarFallback><User/></AvatarFallback>
                 </Avatar>
               )}
             </div>
