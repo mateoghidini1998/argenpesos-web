@@ -372,7 +372,7 @@ export default function Chatbot() {
           // Mensaje para resultado APROBADO SIN CUPO con un botón que redirige a WhatsApp
           setIsConsultaStatus("PENDING");
           finalMessage =
-            ` ¡Excelente! Tenes un préstamo pre-aprobado, sujeto a un análisis crediticio. Y en caso de que quiera avanzar con el préstamo`;
+            ` ¡Excelente! Tenes un préstamo pre-aprobado, sujeto a un análisis crediticio.`;
         } else if (resultado === "APROBADO CON CUPO") {
           finalMessage =
             ` ¡Excelente! Tenes un préstamo aprobado por $${maximoCapital} en 12 cuotas de ${maximoCuota}. Sujeto a un análisis crediticio.`;
