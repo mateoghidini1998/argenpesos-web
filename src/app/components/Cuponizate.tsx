@@ -23,7 +23,6 @@ export default function Cuponizate() {
         const response = await fetch('/api/cuponizate')
         const result = await response.json()
         setData(result.results.slice(0, 10))
-        console.log(result.results)
       } catch (error) {
         console.error('Error fetching data:', error)
       } finally {

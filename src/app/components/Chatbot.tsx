@@ -147,7 +147,7 @@ export default function Chatbot() {
         { from: "bot", text: "Error al validar identidad." },
       ]);
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
   };
 
@@ -183,8 +183,6 @@ export default function Chatbot() {
 
           // Llamar a la función validateIdentidad
           validateIdentidad(userData.dni, sexoNumerico);
-
-          setIsLoading(false);
         } else {
           // Mensaje si no se ha seleccionado sexo
           setMessages((prevMessages) => [
@@ -275,27 +273,34 @@ export default function Chatbot() {
         }
         break;
       case 5:
-        // Actualizamos el ingreso del usuario
+        // Actualizar el ingreso en userData
         setUserData((prevData) => ({ ...prevData, ingresos: inputText }));
 
-        // Actualiza los mensajes
+        // Agregar los mensajes de usuario y bot en una sola llamada
         setMessages((prevMessages) => [
           ...prevMessages,
+          { from: "user", text: inputText }, // Ingreso del usuario
           {
             from: "bot",
             text: "Gracias por proporcionar tu información. Procesando la consulta de cupo...",
-          },
+          }, // Mensaje del bot
         ]);
 
-        // Llama a la función después de actualizar el estado, usando setTimeout para garantizar que el estado se haya actualizado
+        // Asegurarse de que el timeout no esté ejecutándose dos veces
         setTimeout(() => {
+          console.log("Llamando a sendConsultaCupo con:", {
+            ...userData,
+            ingresos: inputText,
+          });
+
           sendConsultaCupo({
             ...userData,
-            ingresos: inputText, // Asegura que se está pasando el valor actualizado
+            ingresos: inputText,
           });
         }, 0);
 
         break;
+
       case 6:
         if (selectedIdentidad) {
           const identidadSeleccionada = identidades.find(
@@ -362,35 +367,37 @@ export default function Chatbot() {
 
       if (response.ok) {
         const { resultado, maximoCapital, maximoCuota } = data.result;
+
         let finalMessage = "";
         if (resultado === "RECHAZADO") {
-          // Mensaje para resultado RECHAZADO
           setIsConsultaStatus("REJECTED");
           finalMessage =
             " Ups....por el momento no sería posible acceder a un préstamo. De todas formas puede volver a consultarlo en 30 días. Descárgate la app ..... para obtener más información y aprovechar todos nuestros beneficios";
         } else if (resultado === "APROBADO SIN CUPO") {
-          // Mensaje para resultado APROBADO SIN CUPO con un botón que redirige a WhatsApp
           setIsConsultaStatus("PENDING");
-          finalMessage =
-            ` ¡Excelente! Tenes un préstamo pre-aprobado, sujeto a un análisis crediticio.`;
+          finalMessage = ` ¡Excelente! Tenes un préstamo pre-aprobado, sujeto a un análisis crediticio.`;
         } else if (resultado === "APROBADO CON CUPO") {
-          finalMessage =
-            ` ¡Excelente! Tenes un préstamo aprobado por $${maximoCapital} en 12 cuotas de ${maximoCuota}. Sujeto a un análisis crediticio.`;
+          finalMessage = ` ¡Excelente! Tenes un préstamo aprobado por $${maximoCapital} en 12 cuotas de ${maximoCuota}. Sujeto a un análisis crediticio.`;
           setIsConsultaStatus("APPROVED");
         }
 
-        // Añadir el mensaje y el contenido adicional (si existe)
-        setMessages([...messages, { from: "bot", text: finalMessage }]);
+        setMessages((prevMessages) => [
+          ...prevMessages,
+          { from: "bot", text: finalMessage },
+        ]);
 
         setIsFlowComplete(true);
       } else {
-        setMessages([
-          ...messages,
+        setMessages((prevMessages) => [
+          ...prevMessages,
           { from: "bot", text: `Error: ${data.message}` },
         ]);
       }
     } catch (error) {
-      setMessages([...messages, { from: "bot", text: "Ocurrió un error." }]);
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        { from: "bot", text: "Ocurrió un error." },
+      ]);
     } finally {
       setIsLoading(false);
     }
@@ -420,7 +427,6 @@ export default function Chatbot() {
             >
               {message.from === "bot" && (
                 <Avatar className="mr-2 h-10 w-10 ">
-                  <AvatarImage src="/ai-avatar.png" alt="BOT" />
                   <AvatarFallback>
                     <Bot />
                   </AvatarFallback>
@@ -437,7 +443,6 @@ export default function Chatbot() {
               </div>
               {message.from === "user" && (
                 <Avatar className="ml-1 h-10 w-10 mt-[20px]">
-                  <AvatarImage src="/user-avatar.png" alt="User" />
                   <AvatarFallback>
                     <User />
                   </AvatarFallback>
@@ -545,9 +550,9 @@ export default function Chatbot() {
         {!isLoading && isConsultaStatus == "APPROVED" && (
           <div className="p-4 h-auto border-t border-border flex items-center justify-center absolute bottom-0 left-0 right-0">
             <Link
-              href="https://wa.me/541126785266" 
+              href="https://wa.me/541126785266"
               target="_blank"
-              rel="noopener noreferrer" 
+              rel="noopener noreferrer"
             >
               <Button className="bg-[#17AEE1] text-white px-4 py-2 rounded-lg">
                 LO QUIERO
@@ -559,12 +564,12 @@ export default function Chatbot() {
         {!isLoading && isConsultaStatus == "PENDING" && (
           <div className="p-4 h-auto border-t border-border flex items-center justify-center absolute bottom-0 left-0 right-0">
             <Link
-              href="https://wa.me/541126785266" 
+              href="https://wa.me/541126785266"
               target="_blank"
-              rel="noopener noreferrer" 
+              rel="noopener noreferrer"
             >
               <Button className="bg-[#17AEE1] text-white px-4 py-2 rounded-lg">
-                QUIERO COMUNICARME
+                ME INTERESA
               </Button>
             </Link>
           </div>

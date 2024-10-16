@@ -22,23 +22,12 @@ interface Post {
 
 export default function Responsabilidad() {
 
-  useEffect(() => {
-    console.log(POSTS)
-  })
-
 const numberOfPosts = POSTS.length;
 const shouldLoop = numberOfPosts > 1;
 
   return (
     <div className="w-full bg-[#82CC6D] pt-10 gap-10">
       <div className='flex flex-col sm:flex-row-reverse md:flex-row gap-[30px] justify-center md:justify-between items-center text-white w-full px-10 mb-4'>
-        {/* <div className='w-full md:w-[230px] flex justify-center md:justify-end'>
-          <Image
-            src={Logo}
-            alt="argencompras"
-            className='w-[185px] h-[84px] md:w-[230px] md:h-[100px] mb-3.5 md:mb-0'
-          />
-        </div> */}
         <h2 className='text-[28px] sm:text-[34px] lg:text-[40px] text-center sm:text-start'>Responsabilidad Social</h2>
       </div>
       <Carousel 

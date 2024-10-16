@@ -30,7 +30,6 @@ async function sendEmail(formData, formType) {
     throw new Error('Invalid formType');
   }
   try {
-    console.log('Full Recipient Email asd:', recipientEmails[formType]);
     const { data, error } = await resend.emails.send({
       from: 'Acme <onboarding@resend.dev>',
       to: recipientEmail,
