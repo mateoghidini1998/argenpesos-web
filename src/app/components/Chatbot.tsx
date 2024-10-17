@@ -72,10 +72,8 @@ export default function Chatbot() {
     { value: "2901", label: "2901" },
   ];
 
-  // 1. Crear una referencia para el contenedor de mensajes
-  const messagesEndRef = useRef(null);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // 2. Usar useEffect para hacer scroll al último mensaje cuando cambien los mensajes
   useEffect(() => {
     if (messagesEndRef.current) {
       messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
@@ -95,10 +93,10 @@ export default function Chatbot() {
       ...prevMessages,
       { from: "bot", text: "Por favor, ingresá tu DNI." },
     ]);
-    setStep(0); // Step 0 is the DNI input step
+    setStep(0);
   };
 
-  const validateIdentidad = async (dni, sexoNumerico) => {
+  const validateIdentidad = async (dni: string, sexoNumerico: number) => {
     setIsLoading(true);
     try {
       const response = await fetch(
@@ -107,7 +105,6 @@ export default function Chatbot() {
       const data = await response.json();
 
       if (data.statusCode === 201 && data.result.length === 1) {
-        // Si solo hay una identidad
         const identidad = data.result[0];
         setMessages((prevMessages) => [
           ...prevMessages,
@@ -115,12 +112,11 @@ export default function Chatbot() {
         ]);
         setUserData((prevData) => ({
           ...prevData,
-          cuil: identidad.cuil, // Guardar el CUIL
+          cuil: identidad.cuil,
         }));
-        setStep(2); // Avanzamos al siguiente paso (ingreso de código de área)
+        setStep(2);
       } else if (data.statusCode === 201 && data.result.length > 1) {
-        // Si hay múltiples identidades
-        setIdentidades(data.result); // Guardar identidades
+        setIdentidades(data.result);
         setMessages((prevMessages) => [
           ...prevMessages,
           {
@@ -128,9 +124,8 @@ export default function Chatbot() {
             text: "Se encontraron múltiples identidades. Por favor selecciona la correcta:",
           },
         ]);
-        setStep(6); // Mostrar el selector de identidades
+        setStep(6);
       } else {
-        // Si no se puede validar la identidad
         setMessages((prevMessages) => [
           ...prevMessages,
           {
@@ -138,10 +133,9 @@ export default function Chatbot() {
             text: "No se pudo validar la identidad. Inténtalo nuevamente.",
           },
         ]);
-        setStep(0); // Volver al primer paso
+        setStep(0);
       }
     } catch (error) {
-      // Manejo de error en la llamada a la API
       setMessages((prevMessages) => [
         ...prevMessages,
         { from: "bot", text: "Error al validar identidad." },
@@ -162,29 +156,23 @@ export default function Chatbot() {
         setStep(1);
         break;
       case 1:
-        // Asegurarse de que se haya seleccionado un sexo
         if (selectedSexo) {
-          setIsLoading(true); // Comienza la carga
+          setIsLoading(true);
 
-          // Encontrar el label correspondiente en genderOptions
           const selectedOption = genderOptions.find(
             (option) => option.value === selectedSexo
           );
 
-          // Convertir "M" o "F" en 1 o 2
           const sexoNumerico = selectedSexo === "M" ? 1 : 2;
           setUserData((prevData) => ({ ...prevData, sexo: sexoNumerico }));
 
-          // Mostrar la selección en el chat con el label ("Masculino" o "Femenino")
           setMessages((prevMessages) => [
             ...prevMessages,
             { from: "user", text: selectedOption?.label || selectedSexo },
           ]);
 
-          // Llamar a la función validateIdentidad
           validateIdentidad(userData.dni, sexoNumerico);
         } else {
-          // Mensaje si no se ha seleccionado sexo
           setMessages((prevMessages) => [
             ...prevMessages,
             {
@@ -196,14 +184,12 @@ export default function Chatbot() {
         break;
 
       case 2:
-        // Handling area code selection with dropdown
         if (selectedAreaCode) {
           setUserData((prevData) => ({
             ...prevData,
             areaCode: selectedAreaCode,
           }));
 
-          // Display the selected area code in the chat as a user message
           setMessages((prevMessages) => [
             ...prevMessages,
             { from: "user", text: selectedAreaCode },
@@ -239,7 +225,6 @@ export default function Chatbot() {
         setStep(4);
         break;
       case 4:
-        // Handle bank selection from dropdown
         if (selectedBank) {
           const bancoSeleccionado = BANCOS.find(
             (banco) => banco.Codigo === Number(selectedBank)
@@ -250,7 +235,6 @@ export default function Chatbot() {
               bankCodigo: bancoSeleccionado.Codigo,
             }));
 
-            // Display the selected bank in the chat as a user message
             setMessages((prevMessages) => [
               ...prevMessages,
               { from: "user", text: bancoSeleccionado.Descripcion },
@@ -273,32 +257,24 @@ export default function Chatbot() {
         }
         break;
       case 5:
-        // Actualizar el ingreso en userData
-        setUserData((prevData) => ({ ...prevData, ingresos: inputText }));
+        if (!userData.ingresos) {
+          setUserData((prevData) => ({ ...prevData, ingresos: inputText }));
 
-        // Agregar los mensajes de usuario y bot en una sola llamada
-        setMessages((prevMessages) => [
-          ...prevMessages,
-          { from: "user", text: inputText }, // Ingreso del usuario
-          {
-            from: "bot",
-            text: "Gracias por proporcionar tu información. Procesando la consulta de cupo...",
-          }, // Mensaje del bot
-        ]);
+          setMessages((prevMessages) => [
+            ...prevMessages,
+            {
+              from: "bot",
+              text: "Gracias por proporcionar tu información. Procesando la consulta de cupo...",
+            },
+          ]);
 
-        // Asegurarse de que el timeout no esté ejecutándose dos veces
-        setTimeout(() => {
-          console.log("Llamando a sendConsultaCupo con:", {
-            ...userData,
-            ingresos: inputText,
-          });
-
-          sendConsultaCupo({
-            ...userData,
-            ingresos: inputText,
-          });
-        }, 0);
-
+          setTimeout(() => {
+            sendConsultaCupo({
+              ...userData,
+              ingresos: inputText,
+            });
+          }, 0);
+        }
         break;
 
       case 6:
@@ -315,12 +291,11 @@ export default function Chatbot() {
               { from: "bot", text: "¿Cuál es tu código de área?" },
             ]);
 
-            // Guardar el CUIL de la identidad seleccionada
             setUserData((prevData) => ({
               ...prevData,
               cuil: identidadSeleccionada.cuil,
             }));
-            setStep(2); // Avanzar al paso de ingresar código de área
+            setStep(2);
           }
         } else {
           setMessages((prevMessages) => [
