@@ -352,7 +352,7 @@ export default function Chatbot() {
           setIsConsultaStatus("PENDING");
           finalMessage = ` ¡Excelente! Tenes un préstamo pre-aprobado, sujeto a un análisis crediticio.`;
         } else if (resultado === "APROBADO CON CUPO") {
-          finalMessage = ` ¡Excelente! Tenes un préstamo aprobado por $${maximoCapital} en 12 cuotas de ${maximoCuota}. Sujeto a un análisis crediticio.`;
+          finalMessage = ` ¡Excelente! Tenes un préstamo aprobado por $${maximoCapital} en 12 cuotas de $${maximoCuota}. Sujeto a un análisis crediticio.`;
           setIsConsultaStatus("APPROVED");
         }
 
