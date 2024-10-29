@@ -21,7 +21,7 @@ export default function FAQList() {
             text: "¿QUÉ ES ARGENPESOS Y CÓMO FUNCIONA? ",
             content: (
               <>
-              <p>Somos una entidad de préstamos personales de dinero. Podés realizar el trámite online en: <Link href="/" onClick={handleClick} className="text-lightblue-primary font-bold">https://argenpesos.com.ar/saca_tu_prestamo</Link> o a través de cualquiera de nuestros canales de contacto: </p>
+              <p>Somos una entidad de préstamos personales de dinero. Podés realizar el trámite online: <Link href="/" onClick={handleClick} className="underline text-lightblue-primary font-bold">HACIENDO CLICK AQUÍ</Link> o a través de cualquiera de nuestros canales de contacto: </p>
               <ul>
                   <li>-Tel: 0800-220-2743</li>
                   <li>-WhatsApp: 
@@ -48,7 +48,7 @@ export default function FAQList() {
           {
             text: "¿CUÁL ES LA TASA DE INTERÉS? ",
             content: (
-              <p>La tasa de interés varía según el tipo de préstamo y la cantidad de cuotas a la que haya accedido el cliente. Para conocer esto, podés ingresar a <a href="www.argenpesos.com.ar/solicitarprestamo/" className="text-lightblue-primary underline">http://www.argenpesos.com.ar/solicitarprestamo/</a></p>
+              <p>La tasa de interés varía según el tipo de préstamo y la cantidad de cuotas a la que haya accedido el cliente. Para conocer esto, podés <Link href="/" onClick={handleClick} className="text-lightblue-primary font-bold">HACER CLICK AQUÍ</Link></p>
             )
           },
         ],
@@ -92,7 +92,7 @@ export default function FAQList() {
             text: "¿CUÁLES SON LOS PASOS PARA EL OTORGAMIENTO DEL PRÉSTAMO? ",
             content: (
             <ul>
-                  <li>1º - Envianos tu solicitud: Se puede solicitar en <Link href="/" onClick={handleClick} target="__blank" className="text-lightblue-primary font-bold">https://argenpesos.com.ar/saca_tu_prestamo</Link> o enviando los datos a través de alguno de nuestros canales de comunicación. </li>
+                  <li>1º - Envianos tu solicitud: Se puede solicitar haciendo <Link href="/" onClick={handleClick} target="__blank" className="text-lightblue-primary font-bold">CLICK AQUÍ</Link> o enviando los datos a través de alguno de nuestros canales de comunicación. </li>
                   <li>2º - Aprobación: Analizaremos los datos ingresados y se pre-aprueba o rechaza la solicitud. </li>
                   <li>3º - Contacto con el cliente: todos los clientes cuya solicitud fue preaprobada, reciben una llamada, whatsapp o mail de alguno de nuestros asesores de venta, quien realizará una verificación de identidad y completa los datos del cliente. </li>
                   <li>4º - Confirmación del otorgamiento: una vez confirmado el préstamo, te enviamos la documentación necesaria para que seas nuestro cliente.</li>
