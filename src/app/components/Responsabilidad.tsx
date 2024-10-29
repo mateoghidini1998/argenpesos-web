@@ -45,20 +45,20 @@ const shouldLoop = numberOfPosts > 1;
           {POSTS.map((item, index) => (
             <CarouselItem key={index} >
               <Card className="border-none shadow-none bg-transparent">
-                <CardContent className="flex flex-col md:flex-row items-start p-0 gap-6">
-                  <div className="w-full h-full sm:w-[400px] md:w-1/2 relative aspect-[3/2] overflow-hidden rounded-3xl">
+                <CardContent className="min-h-[480px] flex flex-col lg:flex-row items-start p-0 gap-6">
+                  <div className="w-full h-full   md:h-1/2 lg:w-1/2 relative aspect-[3/2] overflow-hidden rounded-3xl">
                     <Image
                       src={item.image}
                       alt={item.title}
                       fill
-                      className="object-cover"
+                      className="object-cover h-full"
                     />
                   </div>
-                  <div className="w-full md:w-1/2 px-6  flex flex-col justify-center">
-                  <h2 className="text-2xl md:text-3xl lg:text-[64px] lg:leading-[4rem] font-bold text-white mb-2">{item.title}</h2>
-                  <p className="text-muted-foreground text-white font-medium">{item.subtitle || ''}</p>
-                  <p className="text-muted-foreground mt-4 text-white text-[18px]">{item.content}</p>
-                </div>
+                  <div className="w-full md:w-full lg:w-1/2 px-6  flex flex-col justify-center">
+                    <h2 className="text-2xl md:text-3xl lg:text-[64px] lg:leading-[4rem] font-bold text-white mb-2">{item.title}</h2>
+                    <p className="text-muted-foreground text-white font-medium">{item.subtitle || ''}</p>
+                    <p className="text-muted-foreground mt-4 text-white text-[18px]">{item.content}</p>
+                  </div>
                 </CardContent>
               </Card>
             </CarouselItem>

@@ -24,7 +24,11 @@ const ConvertiteEnComercializadorForm = () => {
 
   const onSubmit = async (data) => {
     try {
-      await handleSubmit(data, ConvertiteEnComercializadorScheme, 'convertir_comercializador');
+      const dataForValidation = {
+        ...data,
+        venta_al_publico: data.venta_al_publico === 'Si',
+      };
+      await handleSubmit(dataForValidation, ConvertiteEnComercializadorScheme, 'comercio');
       setErrors({}); 
     } catch (err) {
       if (err.inner) {

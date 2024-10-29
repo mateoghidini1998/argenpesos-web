@@ -14,7 +14,7 @@ import Link from "next/link";
 
 export default function Chatbot() {
   const [messages, setMessages] = useState([
-    { from: "bot", text: "Soy Tina, la asistente virtual de Argenpesos." },
+    { from: "bot", text: "Soy Argento, el asistente virtual de Argenpesos." },
     {
       from: "bot",
       text: "Te voy a estar guiando en tu consulta de préstamos.",
@@ -244,7 +244,7 @@ export default function Chatbot() {
               ...prevMessages,
               {
                 from: "bot",
-                text: "Por favor, coloque su ingreso mensual neto.",
+                text: "Por favor, coloca tu ingreso mensual neto.",
               },
             ]);
             setStep(5);
@@ -302,7 +302,7 @@ export default function Chatbot() {
             ...prevMessages,
             {
               from: "bot",
-              text: "Por favor, selecciona una identidad válida.",
+              text: "Por favor, seleccione una identidad válida.",
             },
           ]);
         }
@@ -383,7 +383,7 @@ export default function Chatbot() {
       <div className="chatbot relative h-[600px]">
         <div className="flex justify-center  h-[60px] items-center text-white  border border-border rounded-lg ">
           <h2 className="text-lg font-semibold text-lightblue-primary">
-            Chatea con Tina
+            Chatea con Argento
           </h2>
         </div>
         <ScrollArea
@@ -451,7 +451,7 @@ export default function Chatbot() {
               selectedValue={selectedSexo}
               setSelectedValue={setSelectedSexo}
               options={genderOptions}
-              placeholder={"Seleccione su sexo"}
+              placeholder={"Selecciona tu sexo"}
             />
             <Button
               onClick={() => processInput(selectedSexo)}
@@ -525,7 +525,7 @@ export default function Chatbot() {
         {!isLoading && isConsultaStatus == "APPROVED" && (
           <div className="p-4 h-auto border-t border-border flex items-center justify-center absolute bottom-0 left-0 right-0">
             <Link
-              href="https://wa.me/541126785266"
+               href={`https://wa.me/541126785266?text=${encodeURIComponent("¡Hola! Argento me confirmó que mi préstamo fue aprobado. ¿Podrían indicarme los próximos pasos?")}`}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -563,11 +563,11 @@ export default function Chatbot() {
                 type="text"
                 placeholder={
                   step === 0
-                    ? "Ingrese su DNI..."
+                    ? "Ingresa tu DNI..."
                     : step === 3
-                    ? "Ingrese su número de teléfono..."
+                    ? "Ingresa tu número de teléfono..."
                     : step === 5
-                    ? "Inserte su ingreso neto..."
+                    ? "Inserta tu ingreso neto..."
                     : "Escribe un mensaje..."
                 }
                 value={input}
