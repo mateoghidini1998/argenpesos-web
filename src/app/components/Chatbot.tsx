@@ -91,7 +91,7 @@ export default function Chatbot() {
   const startChat = () => {
     setMessages((prevMessages) => [
       ...prevMessages,
-      { from: "bot", text: "Por favor, ingresá tu DNI." },
+      { from: "bot", text: "Por favor, ingresá tu DNI (Sin espacios ni puntos)." },
     ]);
     setStep(0);
   };
@@ -264,7 +264,11 @@ export default function Chatbot() {
             ...prevMessages,
             {
               from: "bot",
-              text: "Gracias por proporcionar tu información. Procesando la consulta de cupo...",
+              text: "Gracias por proporcionar tu información. El sistema se encuentra procesando la consulta de cupo..",
+            },
+            {
+              from: "bot",
+              text: "Descargate la app",
             },
           ]);
 
@@ -347,7 +351,7 @@ export default function Chatbot() {
         if (resultado === "RECHAZADO") {
           setIsConsultaStatus("REJECTED");
           finalMessage =
-            " Ups....por el momento no sería posible acceder a un préstamo. De todas formas puede volver a consultarlo en 30 días. Descárgate la app ..... para obtener más información y aprovechar todos nuestros beneficios";
+            "Ups....por el momento no sería posible acceder a un préstamo. De todas formas puede volver a consultarlo en 30 días. Descárgate la app ..... para obtener más información y aprovechar todos nuestros beneficios";
         } else if (resultado === "APROBADO SIN CUPO") {
           setIsConsultaStatus("PENDING");
           finalMessage = ` ¡Excelente! Tenes un préstamo pre-aprobado, sujeto a un análisis crediticio.`;
@@ -525,7 +529,7 @@ export default function Chatbot() {
         {!isLoading && isConsultaStatus == "APPROVED" && (
           <div className="p-4 h-auto border-t border-border flex items-center justify-center absolute bottom-0 left-0 right-0">
             <Link
-               href={`https://wa.me/541126785266?text=${encodeURIComponent("¡Hola! Argento me confirmó que mi préstamo fue aprobado. ¿Podrían indicarme los próximos pasos?")}`}
+              href={`https://wa.me/541126785266?text=${encodeURIComponent("¡Hola! Argento me confirmó que mi préstamo fue aprobado. ¿Podrían indicarme los próximos pasos?")}`}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -539,7 +543,7 @@ export default function Chatbot() {
         {!isLoading && isConsultaStatus == "PENDING" && (
           <div className="p-4 h-auto border-t border-border flex items-center justify-center absolute bottom-0 left-0 right-0">
             <Link
-              href="https://wa.me/541126785266"
+              href={`https://wa.me/541126785266?text=${encodeURIComponent("¡Hola! Argento me confirmó que mi préstamo fue pre-aprobado. ¿Podrían indicarme los próximos pasos?")}`}
               target="_blank"
               rel="noopener noreferrer"
             >

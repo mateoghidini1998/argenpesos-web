@@ -1,8 +1,8 @@
 import * as yup from 'yup';
 
 const PrestamoSchema = yup.object().shape({
-  nombre: yup.string().required('El nombre es obligatorio'),
-  apellido: yup.string().required('El apellido es obligatorio'),
+  nombre: yup.string().required('El nombre es obligatorio').matches(/^[A-Za-zÁÉÍÓÚáéíóúñÑ\s]+$/, 'El nombre solo puede contener letras y espacios'),
+  apellido: yup.string().required('El apellido es obligatorio').matches(/^[A-Za-zÁÉÍÓÚáéíóúñÑ\s]+$/, 'El apellido solo puede contener letras y espacios'),
   DNI: yup
     .string()
     .matches(/^\d{7,8}$/, 'El DNI debe ser un número de 7 u 8 dígitos sin puntos')

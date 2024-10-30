@@ -10,10 +10,10 @@ export default function AppPublicidad () {
     return (
         <>
             <section className="w-full h-[850px] px-[16px]  mb-[53px] md:px-12 md:py-20">
-                <div className="flex flex-col md:flex-row items-center justify-around w-full h-full bg-gradient-to-t pt-8 px-6 sm:px-10 md:px-0 from-[#5AD2F7] to-[#4DC4F1] rounded-[30px]">
+                <div className="flex flex-col md:flex-row items-center justify-around w-full h-full bg-gradient-to-t pt-8 px-6 sm:px-10 md:px-0 bg-[#00ADEE] rounded-[30px]">
                     <div className="h-full sm:w-full sm:px-20  md:w-[45%] lg:w-[55%] flex flex-col sm:gap-[30px] justify-around items-center  md:px-12 pb-0 md:py-14 ">
                         <div className="flex flex-col items-start justify-center">
-                            <h2 className="text-white text-center md:text-start w-auto text-[28px] sm:text-[34px] md:text-[46px] xl:text-[60px] mb-[20px] sm:leading-[2rem] md:leading-[2.5rem] xl:leading-[4rem]">¿Todavía no descargaste la app de ArgenPesos?</h2>
+                            <h2 className="text-white text-center md:text-start w-auto text-[28px] sm:text-[34px] md:text-[46px] xl:text-[60px] mb-[20px] sm:leading-[2rem] md:leading-[2.5rem] xl:leading-[4rem]">Descárgate la app de Argenpesos</h2>
                             <p className="text-white text-center md:text-start w-auto text-[18px] sm:text-[24px] md:text-[18px] lg:text-[24px] xl:text-[32px] mb-[10px] md:mb-[30px] font-medium leading-[1.5rem] md:leading-[2.5rem]">Recibe préstamos, compra productos, obtén descuentos y más beneficios.</p>
                         </div>
                         <div className="flex flex-col md:flex-row w-full items-center justify-start gap-[20px] xl:gap-[30px]">

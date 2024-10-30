@@ -47,7 +47,7 @@ export default function UsuarioFinanciero() {
                   3
               </div>
               <div className='flex flex-col flex-1 text-[10px] sm:text-base'>
-                <p>Toda consulta y/o recalamo será respondido dentro de un plazo máximo de diez (10) días hábiles. En caso de que este plazo, no fuese contestado o se encuentre disconforme con la respuesta brindada por el Proveedor podrá informar tal situación al Banco Central de la República Argentina. El Banco Central de la República Argentina dispone de un área de Protección al Usuario de Servicios Financieros que podrá contactar ingresando a: <Link className='text-lightblue-primary font-bold underline' href='www.usuariosfinanciero.gob.ar'>www.usuariosfinanciero.gob.ar</Link></p>
+                <p>Toda consulta y/o recalamo será respondido dentro de un plazo máximo de diez (10) días hábiles. En caso de que este plazo, no fuese contestado o se encuentre disconforme con la respuesta brindada por el Proveedor podrá informar tal situación al Banco Central de la República Argentina. El Banco Central de la República Argentina dispone de un área de Protección al Usuario de Servicios Financieros que podrá contactar ingresando a: <Link className='text-lightblue-primary font-bold underline' href='https://www.usuariosfinancieros.gob.ar' target='__blank'>www.usuariosfinancieros.gob.ar</Link></p>
               </div>
             </UsuarioFinancieroCard>
         </div>

@@ -28,6 +28,8 @@ export default function DynamicSelector({
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
         <Button
+          touchable
+          activeOpacity={0.7}
           variant="outline"
           role="combobox"
           aria-expanded={open}
