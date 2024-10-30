@@ -27,8 +27,8 @@ export default function MainBanner() {
                             </h1>
                             <DialogTrigger asChild>
                                 <Button 
-                                    
                                     className='mt-8 bg-[#17AAE1] hover:bg-[#2799c2] text-white text-[16px] md:text-base lg:text-[32px] font-bold py-2 px-4 rounded-full w-[160px] h-[50px] md:w-[170px] md:h-[50px] lg:w-[250px] lg:h-[80px]'
+                                    onClick={() => setIsChatOpen(true)}
                                 >
                                     Pedilo acá
                                 </Button>
