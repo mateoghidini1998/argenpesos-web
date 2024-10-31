@@ -67,7 +67,7 @@ const METODOS_DE_PAGO = [
     { 
       title: "Argenpesos.com.ar Consultá tu cuenta",
        image: <PC/>,
-       description1: "Para abonar la cuota de tu préstamo ingresa a nuestra página y selecciona “Ingresá a tu cuenta” ", 
+       description1: "Para abonar la cuota de tu préstamo ingresa a nuestra página y selecciona “Iniciar Sesión” ", 
        description2: "Si no tenés usuario ingresá a “Aún no tengo usuario” y generá uno solo con tu DNI y una clave.", 
        description3: "Ahí podrás abonar la cuota de tu préstamo y ver tu estado de cuenta", 
        description4: "", 
