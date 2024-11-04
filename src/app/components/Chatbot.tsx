@@ -500,7 +500,7 @@ export default function Chatbot() {
         {step === 4 && !isLoading && (
           <div className="dynamicselector p-4 border-t border-border flex gap-2 fixed bottom-0 left-0 right-0">
             <DynamicSelector
-              className="border border-gray-300 rounded-md px-4 py-2 mb-2 flex-grow"
+              className="border border-gray-300 rounded-md px-4 py-2 mb-2 overflow-y-auto"
               selectedValue={selectedBank}
               setSelectedValue={setSelectedBank}
               options={BANCOS.map((banco) => ({
