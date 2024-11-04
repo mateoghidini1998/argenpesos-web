@@ -39,7 +39,7 @@ export default function DynamicSelector({
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-[200px] overflow-y-auto p-0">
+      <PopoverContent className="w-[200px] max-h-[50vh] overflow-y-auto p-0">
         <Command role="listbox">
           <CommandInput placeholder={`Buscar ${placeholder.toLowerCase()}...`} />
           <CommandList>
