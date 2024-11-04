@@ -462,9 +462,9 @@ export default function Chatbot() {
         )}
 
         {step === 1 && !isLoading && (
-          <div className="dynamicselector p-4 border-t border-border flex gap-2 absolute bottom-0 left-0 right-0">
+          <div className="dynamicselector p-4 border-t border-border flex gap-2 fixed bottom-0 left-0 right-0">
             <DynamicSelector
-              className="border border-gray-300 rounded-md px-4 py-2 mb-2 overflow-hidden"
+              className="border border-gray-300 rounded-md px-4 py-2 mb-2 overflow-y-scroll"
               selectedValue={selectedSexo}
               setSelectedValue={setSelectedSexo}
               options={genderOptions}
@@ -480,9 +480,9 @@ export default function Chatbot() {
         )}
 
         {step === 2 && !isLoading && (
-          <div className="dynamicselector p-4 border-t border-border flex gap-2 absolute bottom-0 left-0 right-0">
+          <div className="dynamicselector p-4 border-t border-border flex gap-2 fixed bottom-0 left-0 right-0">
             <DynamicSelector
-              className="border border-gray-300 rounded-md px-4 py-2 mb-2 overflow-scroll"
+              className="border border-gray-300 rounded-md px-4 py-2 mb-2 overflow-y-scroll"
               selectedValue={selectedAreaCode}
               setSelectedValue={setSelectedAreaCode}
               options={phoneAreaOptions}
@@ -500,7 +500,7 @@ export default function Chatbot() {
         {step === 4 && !isLoading && (
           <div className="dynamicselector p-4 border-t border-border flex gap-2 fixed bottom-0 left-0 right-0">
             <DynamicSelector
-              className="border border-gray-300 rounded-md px-4 py-2 mb-2 overflow-scroll"
+              className="border border-gray-300 rounded-md px-4 py-2 mb-2 overflow-y-scroll"
               selectedValue={selectedBank}
               setSelectedValue={setSelectedBank}
               options={BANCOS.map((banco) => ({
@@ -519,9 +519,9 @@ export default function Chatbot() {
         )}
 
         {step === 6 && !isLoading && (
-          <div className="dynamicselector p-4 border-t border-border flex gap-2 absolute bottom-0 left-0 right-0">
+          <div className="dynamicselector p-4 border-t border-border flex gap-2 fixed bottom-0 left-0 right-0">
             <DynamicSelector
-              className="border border-gray-300 rounded-md px-4 py-2 mb-2"
+              className="border border-gray-300 rounded-md px-4 py-2 mb-2 overflow-y-scroll"
               selectedValue={selectedIdentidad}
               setSelectedValue={setSelectedIdentidad}
               options={identidades.map((identidad) => ({
