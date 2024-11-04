@@ -1,10 +1,12 @@
-import { useState } from "react";
+'use client'
+
+import { useState, useEffect } from "react";
 import {
   Popover,
   PopoverTrigger,
   PopoverContent,
-} from "@/components/ui/popover"; 
-import { Button } from "@/components/ui/button"; 
+} from "@/components/ui/popover";
+import { Button } from "@/components/ui/button";
 import {
   Command,
   CommandInput,
@@ -12,35 +14,47 @@ import {
   CommandEmpty,
   CommandGroup,
   CommandItem
-} from "@/components/ui/command"; 
-import { Check, ChevronsUpDown } from "lucide-react"; 
-import { cn } from "@/lib/utils"; 
+} from "@/components/ui/command";
+import { Check, ChevronsUpDown } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export default function DynamicSelector({
   options,
   selectedValue,
   setSelectedValue,
   placeholder,
+  className
 }) {
   const [open, setOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
         <Button
-          touchable
-          activeOpacity={0.7}
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className="w-[200px] justify-between flex-1"
+          className={cn("w-full justify-between", className)}
         >
           {selectedValue ? options.find(option => option.value === selectedValue)?.label : placeholder}
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-[200px] max-h-[50vh] overflow-y-auto p-0">
-        <Command role="listbox">
+      <PopoverContent className={cn(
+        "w-full p-0",
+        isMobile ? "h-[50vh] overflow-y-auto" : "max-h-[300px] overflow-y-auto"
+      )}>
+        <Command>
           <CommandInput placeholder={`Buscar ${placeholder.toLowerCase()}...`} />
           <CommandList>
             <CommandEmpty>No se encontraron opciones.</CommandEmpty>
@@ -49,7 +63,7 @@ export default function DynamicSelector({
                 <CommandItem
                   key={option.value}
                   onSelect={() => {
-                    setSelectedValue(option.value); // Make sure this updates the parent state
+                    setSelectedValue(option.value);
                     setOpen(false);
                   }}
                 >
