@@ -3,7 +3,7 @@ import React from 'react'
 export default function MiraTusCreditos({ className }: svgsPropTypes) {
   return (
     <svg className={className} viewBox="0 0 271 233" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g clip-path="url(#clip0_80_320)">
+        <g clipPath="url(#clip0_80_320)">
         <path d="M231.849 23.9454H40.5172C35.9433 23.9454 32.2354 27.6533 32.2354 32.2272V102.915C32.2354 107.489 35.9433 111.196 40.5172 111.196H231.849C236.423 111.196 240.131 107.489 240.131 102.915V32.2272C240.131 27.6533 236.423 23.9454 231.849 23.9454Z" fill="#00ADEE"/>
         <path d="M254.526 4.28668H16.975C10.4881 4.28668 5.22949 9.54532 5.22949 16.0322V158.564C5.22949 165.051 10.4881 170.31 16.975 170.31H254.526C261.013 170.31 266.271 165.051 266.271 158.564V16.0322C266.271 9.54532 261.013 4.28668 254.526 4.28668Z" stroke="#888888" stroke-width="8.57336" stroke-miterlimit="10"/>
         <path d="M5.22949 131.121H266.271" stroke="#888888" strokeWidth="8.57336" strokeMiterlimit="10"/>

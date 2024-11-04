@@ -3,7 +3,7 @@ import React from 'react'
 export default function Registrarse({className}: svgsPropTypes) {
   return (
     <svg className={className} viewBox="0 0 271 233" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g clip-path="url(#clip0_80_279)">
+        <g clipPath="url(#clip0_80_279)">
         <path d="M254.526 4.28668H16.975C10.4881 4.28668 5.22949 9.54532 5.22949 16.0322V158.564C5.22949 165.051 10.4881 170.31 16.975 170.31H254.526C261.013 170.31 266.271 165.051 266.271 158.564V16.0322C266.271 9.54532 261.013 4.28668 254.526 4.28668Z" stroke="#888888" stroke-width="8.57336" stroke-miterlimit="10"/>
         <path d="M5.22949 131.121H266.271" stroke="#888888" stroke-width="8.57336" stroke-miterlimit="10"/>
         <path d="M113.769 206.472H158.607C165.295 206.472 170.721 211.899 170.721 218.586V227.297C170.721 228.069 170.096 228.694 169.324 228.694H103.061C102.289 228.694 101.663 228.069 101.663 227.297V218.586C101.663 211.899 107.09 206.472 113.777 206.472H113.769Z" stroke="#888888" stroke-width="8.57336" stroke-miterlimit="10"/>

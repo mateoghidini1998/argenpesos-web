@@ -5,7 +5,7 @@ import React from 'react'
 export default function PagaTusCuotas({ className }: svgsPropTypes) {
   return (
     <svg className={className} viewBox="0 0 271 233" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <g clip-path="url(#clip0_80_352)">
+    <g clipPath="url(#clip0_80_352)">
     <path d="M231.152 23.9454H39.82C35.246 23.9454 31.5381 27.6533 31.5381 32.2273V102.915C31.5381 107.489 35.246 111.196 39.82 111.196H231.152C235.726 111.196 239.434 107.489 239.434 102.915V32.2273C239.434 27.6533 235.726 23.9454 231.152 23.9454Z" fill="#00ADEE"/>
     <path d="M254.026 4.28668H16.475C9.98813 4.28668 4.72949 9.54532 4.72949 16.0322V158.564C4.72949 165.051 9.98813 170.31 16.475 170.31H254.026C260.513 170.31 265.771 165.051 265.771 158.564V16.0322C265.771 9.54532 260.513 4.28668 254.026 4.28668Z" stroke="#888888" stroke-width="8.57336" stroke-miterlimit="10"/>
     <path d="M4.72949 131.121H265.771" stroke="#888888" strokeWidth="8.57336" strokeMiterlimit="10"/>

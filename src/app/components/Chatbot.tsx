@@ -395,6 +395,55 @@ export default function Chatbot() {
     }
   };
 
+  const renderSelector = () => {
+    switch (step) {
+      case 1:
+        return (
+          <DynamicSelector
+            selectedValue={selectedSexo}
+            setSelectedValue={setSelectedSexo}
+            options={genderOptions}
+            placeholder="Selecciona tu sexo"
+          />
+        )
+      case 2:
+        return (
+          <DynamicSelector
+            selectedValue={selectedAreaCode}
+            setSelectedValue={setSelectedAreaCode}
+            options={phoneAreaOptions}
+            placeholder="Seleccione el código de área"
+          />
+        )
+      case 4:
+        return (
+          <DynamicSelector
+            selectedValue={selectedBank}
+            setSelectedValue={setSelectedBank}
+            options={BANCOS.map((banco) => ({
+              value: banco.Codigo,
+              label: banco.Descripcion,
+            }))}
+            placeholder="Selecciona tu banco"
+          />
+        )
+      case 6:
+        return (
+          <DynamicSelector
+            selectedValue={selectedIdentidad}
+            setSelectedValue={setSelectedIdentidad}
+            options={identidades.map((identidad) => ({
+              value: identidad.cuil,
+              label: `${identidad.nombre} (CUIL: ${identidad.cuil})`,
+            }))}
+            placeholder="Seleccione su identidad"
+          />
+        )
+      default:
+        return null
+    }
+  }
+
   return (
     <>
       <div className="chatbot relative h-[600px]">
@@ -461,78 +510,17 @@ export default function Chatbot() {
           </div>
         )}
 
-        {step === 1 && !isLoading && (
-          <div className="dynamicselector p-4 border-t border-border flex gap-2 fixed bottom-0 left-0 right-0">
-            <DynamicSelector
-              className="border border-gray-300 rounded-md px-4 py-2 mb-2 overflow-y-scroll"
-              selectedValue={selectedSexo}
-              setSelectedValue={setSelectedSexo}
-              options={genderOptions}
-              placeholder={"Selecciona tu sexo"}
-            />
+        {!isLoading && [1, 2, 4, 6].includes(step) && (
+          <div className="p-4 border-t border-border flex gap-2 sticky bottom-0 bg-background">
+            {renderSelector()}
             <Button
-              onClick={() => processInput(selectedSexo)}
-              className="bg-blue-500 text-white px-4 py-2 rounded-lg w-[48px]"
-            >
-              <Send className="h-4 w-4" />
-            </Button>
-          </div>
-        )}
-
-        {step === 2 && !isLoading && (
-          <div className="dynamicselector p-4 border-t border-border flex gap-2 fixed bottom-0 left-0 right-0">
-            <DynamicSelector
-              className="border border-gray-300 rounded-md px-4 py-2 mb-2 overflow-y-scroll"
-              selectedValue={selectedAreaCode}
-              setSelectedValue={setSelectedAreaCode}
-              options={phoneAreaOptions}
-              placeholder={"Seleccione el código de área"}
-            />
-            <Button
-              onClick={() => processInput(selectedAreaCode)}
-              className="bg-blue-500 text-white px-4 py-2 rounded-lg"
-            >
-              <Send className="h-4 w-4" />
-            </Button>
-          </div>
-        )}
-
-        {step === 4 && !isLoading && (
-          <div className="dynamicselector p-4 border-t border-border flex gap-2 fixed bottom-0 left-0 right-0">
-            <DynamicSelector
-              className="border border-gray-300 rounded-md px-4 py-2 mb-2 overflow-y-auto"
-              selectedValue={selectedBank}
-              setSelectedValue={setSelectedBank}
-              options={BANCOS.map((banco) => ({
-                value: banco.Codigo,
-                label: banco.Descripcion,
-              }))}
-              placeholder={"Selecciona tu banco"}
-            />
-            <Button
-              onClick={() => processInput(selectedBank)}
-              className="bg-blue-500 text-white px-4 py-2 rounded-lg"
-            >
-              <Send className="h-4 w-4" />
-            </Button>
-          </div>
-        )}
-
-        {step === 6 && !isLoading && (
-          <div className="dynamicselector p-4 border-t border-border flex gap-2 fixed bottom-0 left-0 right-0">
-            <DynamicSelector
-              className="border border-gray-300 rounded-md px-4 py-2 mb-2 overflow-y-scroll"
-              selectedValue={selectedIdentidad}
-              setSelectedValue={setSelectedIdentidad}
-              options={identidades.map((identidad) => ({
-                value: identidad.cuil,
-                label: `${identidad.nombre} (CUIL: ${identidad.cuil})`,
-              }))}
-              placeholder={"Seleccione su identidad"}
-            />
-            <Button
-              onClick={() => processInput(selectedIdentidad)}
-              className="bg-blue-500 text-white px-4 py-2 rounded-lg"
+              onClick={() => processInput(
+                step === 1 ? selectedSexo :
+                step === 2 ? selectedAreaCode :
+                step === 4 ? selectedBank :
+                selectedIdentidad
+              )}
+              className="bg-primary text-primary-foreground px-4 py-2 rounded-lg w-[48px]"
             >
               <Send className="h-4 w-4" />
             </Button>

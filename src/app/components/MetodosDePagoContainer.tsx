@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import BilleteraVirtual from '../../../public/billetera_virtual.png';
-import Debito from '../../../public/debito.png';
 import PagoFacil from '../../../public/pagofacil.png';
 import RapiPago from '../../../public/rapipago.png';
 import MercadoPago from '../../../public/mercadopago.png';
@@ -20,7 +19,7 @@ const METODOS_DE_PAGO = [
       title: "Pago Facil",
        image: PagoFacil,
        description1: "Para abonar la cuota de tu préstamo en efectivo deberás asistir de manera presencial a cualquier sucursal de Pago Fácil y realizar un pago abierto a empresa sin factura a nombre de Argencred S.A o Argenpesos indicando tu DNI.", 
-       description2:  <>Ingresá a <a href="https://www.pagofacil.com.ar/" target="_blank" rel="noopener noreferrer">https://www.pagofacil.com.ar/</a> para encontrar la sucursal más cercana.</>,  
+       description2: <>Ingresá a <a href="https://www.pagofacil.com.ar/" target="_blank" rel="noopener noreferrer">https://www.pagofacil.com.ar/</a> para encontrar la sucursal más cercana.</>,  
        description3: <>Para abonar la cuota de tu préstamo de manera online deberás ingresar a <a href="https://www.e-pagofacil.com/" target="_blank" rel="noopener noreferrer">https://www.e-pagofacil.com/</a></>, 
        description4: "Luego deberás enviar un comprobante con tu número de DNI a atencionalcliente@argenpesos.com.ar o por WhatsApp al 011-6816-4074", 
     },
@@ -149,12 +148,17 @@ export default function MetodosDePagoContainer() {
                 {selectedMethod.description3 && (
                   <div className='flex items-center justify-center'>
                     {typeof selectedMethod.description3 === 'string' ? (
-                        <p className="text-base text-[#888]">{selectedMethod.description3}</p>
+                      <p className="text-base text-[#888]">{selectedMethod.description3}</p>
+                    ) : React.isValidElement(selectedMethod.description3) ? (
+                      // Renderizar el fragmento JSX
+                      selectedMethod.description3
                     ) : (
-                        <Image src={selectedMethod.description3} alt={selectedMethod.title} width={100} height={100} />
+                      // Mostrar un fallback si no es ni string ni un fragmento JSX
+                      <p className="text-base text-[#888]">Contenido no soportado</p>
                     )}
                   </div>
                 )}
+
                 {selectedMethod.description4 && (
                   <div className='flex items-center justify-center text-center text-white w-auto p-4 bg-[#00ADEE] rounded-[10px]'>
                     <p className="text-base">{selectedMethod.description4}</p>
