@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import {
   Popover,
   PopoverTrigger,
@@ -24,12 +24,6 @@ export default function DynamicSelector({
 }) {
   const [open, setOpen] = useState(false);
 
-  const handleSelect = useCallback((value: string) => {
-    setSelectedValue(value)
-    setOpen(false)
-  }, [setSelectedValue])
-
-
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
@@ -43,16 +37,19 @@ export default function DynamicSelector({
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="p-0">
+      <PopoverContent className="popover-content max-w-[300px] max-h-[60vh] p-0 overflow-y-auto overscroll-contain h-auto">
         <Command role="listbox">
           <CommandInput placeholder={`Buscar ${placeholder.toLowerCase()}...`} />
-          <CommandList className="overflow-y-auto max-h-[200px]">
+          <CommandList className="command-list overflow-y-scroll h-auto">
             <CommandEmpty>No se encontraron opciones.</CommandEmpty>
             <CommandGroup>
               {options.map((option) => (
                 <CommandItem
-                key={option.value}
-                onSelect={() => handleSelect(option.value)}
+                  key={option.value}
+                  onSelect={() => {
+                    setSelectedValue(option.value);
+                    setOpen(false);
+                  }}
                 >
                   <Check
                     className={cn(

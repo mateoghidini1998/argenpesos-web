@@ -22,6 +22,26 @@
   font-style: normal;
 }
 
+.dynamicselector {
+  overflow-y: auto;
+  touch-action: pan-y;
+  -webkit-overflow-scrolling: touch; /* Habilita el desplazamiento suave en iOS */
+}
+
+.popover-content {
+  max-height: 50vh; /* Limita la altura para activar el desplazamiento */
+  overflow-y: auto;
+  overscroll-behavior: contain; /* Evita el desplazamiento accidental del fondo */
+  -webkit-overflow-scrolling: touch;
+}
+
+.command-list {
+  max-height: 200px; /* Define la altura máxima del contenido */
+  overflow-y: auto;
+  touch-action: pan-y;
+  -webkit-overflow-scrolling: touch;
+}
+
 .gotham {
   font-family: 'Gotham'
 }
