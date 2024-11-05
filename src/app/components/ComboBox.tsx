@@ -9,6 +9,7 @@ import {
 import { Button } from "@/components/ui/button"; 
 import { ChevronsUpDown } from "lucide-react"; 
 import CustomDropdown from "./CustomDropdown";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 interface Option {
   value: string
@@ -36,25 +37,27 @@ export default function DynamicSelector({
   };
 
   return (
-    <Popover open={open} onOpenChange={setOpen}>
-      <PopoverTrigger asChild>
-        <Button
-          variant="outline"
-          role="combobox"
-          aria-expanded={open}
-          className="w-[200px] justify-between flex-1"
-        >
-          {selectedValue ? options.find(option => option.value === selectedValue)?.label : placeholder}
-          <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-        </Button>
-      </PopoverTrigger>
-      <PopoverContent className="popover-content max-w-[300px] max-h-[50vh] p-0 overflow-y-auto overscroll-contain h-auto">
-        <CustomDropdown 
-            options={options}
-            placeholder={placeholder}
-            onSelect={handleSelect}
-        />
-      </PopoverContent>
-    </Popover>
+    <ScrollArea>
+      <Popover open={open} onOpenChange={setOpen}>
+        <PopoverTrigger asChild>
+          <Button
+            variant="outline"
+            role="combobox"
+            aria-expanded={open}
+            className="w-[200px] justify-between flex-1"
+          >
+            {selectedValue ? options.find(option => option.value === selectedValue)?.label : placeholder}
+            <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+          </Button>
+        </PopoverTrigger>
+        <PopoverContent className="popover-content max-w-[300px] max-h-[50vh] p-0 overflow-y-auto overscroll-contain h-auto">
+            <CustomDropdown 
+                options={options}
+                placeholder={placeholder}
+                onSelect={handleSelect}
+            />
+        </PopoverContent>
+      </Popover>
+    </ScrollArea>
   );
 }
