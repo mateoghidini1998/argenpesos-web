@@ -40,7 +40,7 @@ export default function MainBanner() {
             </div>
 
             <DialogPortal>
-                <DialogContent className='h-[600px]'>
+                <DialogContent className="h-[600px] overflow-y-auto overscroll-y-contain touch-scroll">
                     <Chatbot />
                 </DialogContent>
             </DialogPortal>
