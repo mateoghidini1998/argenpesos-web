@@ -9,7 +9,7 @@ export default function Navbar({ onNavbarToggle }) {
   const LINKS = [
     { text: "Inicio", url: "/" },
     {
-      text: "Argencompras",
+      text: "ArgenCompras",
       url: "https://www.argencompras.com.ar",
       target: "_blank",
     },

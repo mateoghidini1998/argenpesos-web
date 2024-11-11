@@ -22,37 +22,15 @@
   font-style: normal;
 }
 
-.dynamicselector {
-  overflow-y: auto;
-  touch-action: pan-y;
-  -webkit-overflow-scrolling: touch; /* Habilita el desplazamiento suave en iOS */
-}
-
-.popover-content {
-  max-height: 50vh; /* Limita la altura para activar el desplazamiento */
-  overflow-y: auto;
-  overscroll-behavior: contain; /* Evita el desplazamiento accidental del fondo */
-  -webkit-overflow-scrolling: touch;
-}
-
-.command-list {
-  max-height: 200px; /* Define la altura máxima del contenido */
-  overflow-y: auto;
-  touch-action: pan-y;
-  -webkit-overflow-scrolling: touch;
-}
-
-@media (max-width: 768px) {
-  .dialog-content {
-    max-height: 80vh;
-    overflow-y: auto;
-  }
-}
-
-
 .gotham {
   font-family: 'Gotham'
 }
+
+[aria-roledescription="carousel"] > div {
+  width: 100%;
+  height: 100%;
+}
+
 
 .parent:has(.chatbot) {
   padding: 0 !important;
@@ -90,7 +68,9 @@
   fill: white !important; /* Change fill color of path and rect when parent is hovered */
 }
 
-
+.dynamicselector > div {
+  width: calc(100% - 48px);
+}
 
 .custom-carousel {
   position: relative;

@@ -3,7 +3,7 @@ import BotonBajaForm from '../components/forms/BotonBajaForm'
 
 export default function BotonBaja() {
   return (
-    <section className='w-full h-full flex flex-col items-center justify-center mt-[132px]'>
+    <section className='w-full h-full flex flex-col items-center justify-center mt-[152px]'>
         <div className='boton_arrepentimiento flex items-center justify-center w-full'>
             <h1 className='text-white text-center w-[450px] my-[50px] tracking-widest-[2px] text-[50px]'>BAJA DE TU PRÉSTAMO POR PRECANCELACIÓN</h1>
         </div>

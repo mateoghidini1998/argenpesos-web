@@ -3,7 +3,7 @@ import BotonArrepentimientoForm from '../components/forms/BotonArrepentimientoFo
 
 export default function BotonArrepentimiento() {
   return (
-    <section className='w-full h-full flex flex-col items-center justify-center mt-[132px]'>
+    <section className='w-full h-full flex flex-col items-center justify-center mt-[152px]'>
         <div className='boton_arrepentimiento flex items-center justify-center w-full'>
             <h1 className='text-white text-center w-[360px] my-[50px] tracking-widest-[2px] text-[50px]'>DEVOLUCIÓN DE TU PRÉSTAMO</h1>
         </div>

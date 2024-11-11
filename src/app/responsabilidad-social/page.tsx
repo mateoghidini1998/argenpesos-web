@@ -5,7 +5,7 @@ import ResponsabilidadPost from '../components/ResponsabilidadPost'
 
 export default function ResponsabilidadSocial() {
   return (
-    <section className='w-full h-full mt-[80px] md:mt-[100px] lg:mt-[132px] py-8'>
+    <section className='w-full h-full mt-[80px] md:mt-[100px] lg:mt-[152px] py-8'>
         <h1 className="text-[#82CC6D] text-center text-[34px] md:text-heading mb-20">
           <b>RESPONSABILIDAD</b> SOCIAL
         </h1>

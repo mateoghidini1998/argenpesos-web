@@ -5,7 +5,7 @@ import { AccordionInstitucional } from '../components/Accordion'
 export default function Institucional() {
   return (
     <>
-    <main className='w-full h-full mt-[80px] md:mt-[100px] lg:mt-[132px] p-8 sm:p-12 md:p-20 lg:p-32'>
+    <main className='w-full h-full mt-[80px] md:mt-[100px] lg:mt-[152px] p-8 sm:p-12 md:p-20 lg:p-32'>
         <h1 className="text-lightblue-primary text-center text-2xl md:text-heading mb-10">
           <b>¿QUIÉNES</b> SOMOS?
         </h1>

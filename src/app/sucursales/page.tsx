@@ -118,7 +118,7 @@ const SUCURSALES = [
 
 export default function Sucursales() {
   return (
-    <main className="w-full h-full mt-[80px] md:mt-[100px] lg:mt-[132px]" >
+    <main className="w-full h-full mt-[80px] md:mt-[100px] lg:mt-[152px]" >
       <section className=" p-8">
         <h2 className="text-lightblue-primary text-center text-2xl md:text-heading mb-10">Sucursales</h2>
         <div className="grid grid-cols-1 place-items-center md:grid-cols-2 lg:grid-cols-2 gap-8">

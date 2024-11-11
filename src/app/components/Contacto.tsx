@@ -52,7 +52,7 @@ export default function ContactSection() {
                 </div>
             </div>
             <div className="bg-[#EC5647] text-white text-[12px] md:text-[24px] py-2 px-4 md:py-[27px] md:px-[16px] rounded-lg mx-auto w-full md:w-3/4">
-                <p>Horarios de atención: Lunes a viernes de 08 a 20 hs. - Sábados: de 09 a 13 hs.</p>
+                <p>Horarios de atención: Lunes a viernes de 8:00 a 20:00 Hs. - Sábados: de 9:00 a 13:00 Hs.</p>
             </div>
         </section>
     );

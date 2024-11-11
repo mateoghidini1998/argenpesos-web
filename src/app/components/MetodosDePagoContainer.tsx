@@ -18,66 +18,66 @@ const METODOS_DE_PAGO = [
     { 
       title: "Pago Facil",
        image: PagoFacil,
-       description1: "Para abonar la cuota de tu préstamo en efectivo deberás asistir de manera presencial a cualquier sucursal de Pago Fácil y realizar un pago abierto a empresa sin factura a nombre de Argencred S.A o Argenpesos indicando tu DNI.", 
-       description2: <>Ingresá a <a href="https://www.pagofacil.com.ar/" target="_blank" rel="noopener noreferrer">https://www.pagofacil.com.ar/</a> para encontrar la sucursal más cercana.</>,  
-       description3: <>Para abonar la cuota de tu préstamo de manera online deberás ingresar a <a href="https://www.e-pagofacil.com/" target="_blank" rel="noopener noreferrer">https://www.e-pagofacil.com/</a></>, 
-       description4: "Luego deberás enviar un comprobante con tu número de DNI a atencionalcliente@argenpesos.com.ar o por WhatsApp al 011-6816-4074", 
+       description1: <p className="text-lg text-[#888]">Para abonar la cuota de tu préstamo en efectivo, acercate de manera presencial a cualquier sucursal de Pago Fácil y realizá un pago abierto a empresa sin factura a nombre de Argencred S.A o ArgenPesos indicando tu DNI.</p>, 
+       description2: <p className="text-lg whitespace-pre-line">Ingresá a <a href="https://www.pagofacil.com.ar/" target="_blank" rel="noopener noreferrer" className='font-bold'>https://www.pagofacil.com.ar/</a> para encontrar la sucursal más cercana.</p>,  
+       description3: <p className="text-lg text-[#888]">Para abonar la cuota de tu préstamo de manera online deberás ingresar a <a href="https://www.e-pagofacil.com/" target="_blank" rel="noopener noreferrer" className='font-bold'>https://www.e-pagofacil.com/</a></p>, 
+       description4: <p className="text-lg">Luego enviá el comprobante con tu número de DNI a atencionalcliente@argenpesos.com.ar o por WhatsApp al 011-6816-4074</p>, 
     },
     { 
       title: "Rapi Pago",
        image: RapiPago,
-       description1: <>Para abonar la cuota de tu préstamo por Rapipago deberás asistir de manera presencial a cualquier sucursal (ingresá a <a href="https://rapipago.com.ar" target="_blank" rel="noopener noreferrer">https://rapipago.com.ar</a> para encontrar la sucursal más cercana). Deberás realizar un pago abierto a empresa sin factura a nombre de Argencred S.A o Argenpesos.</>,
-       description2: "Indicar CUIL (titular del préstamo) y monto a abonar. ", 
-       description3: "", 
-       description4: "Luego deberás enviar un comprobante con tu número de DNI a atencionalcliente@argenpesos.com.ar o por whatsapp al 011-6816-4074", 
+       description1: <p className="text-lg text-[#888]">Para abonar la cuota de tu préstamo por RapiPago acercate de manera presencial a cualquier sucursal. Realizá un pago abierto a empresa sin factura a nombre de Argencred S.A o ArgenPesos indicando el CUIL del titular del préstamo y monto a abonar.</p>,
+       description2: <p className="text-lg whitespace-pre-line">Indicar CUIL (titular del préstamo) y monto a abonar.</p>, 
+       description3: <></>, 
+       description4: <p className="text-lg">Luego deberás enviar el comprobante con tu número de DNI a atencionalcliente@argenpesos.com.ar o por whatsapp al 011-6816-4074</p> 
     },
     { 
       title: "Mercado Pago",
        image: MercadoPago,
-       description1: "Para abonar la cuota de tu préstamo por Mercado Pago debes comunicarte por WhatsApp con el sector de cobranzas. Ahí te enviaremos un link de pago con el importe de la cuota para que puedas pagar", 
-       description2: "El pago puede hacerse con dinero en cuenta, tarjeta de débito o crédito (este último posee interés).", 
-       description3: "", 
-       description4: "Luego deberás enviar un comprobante con tu número de DNI a cobranzas@argenpesos.com.ar o por WhatsApp al 011-5022-5639", 
+       description1: <p className="text-lg text-[#888]">•	Para abonar la cuota de tu préstamo por Mercado Pago comunicate por WhatsApp con el sector de cobranzas, donde te enviaremos un link de pago con el importe de la cuota para que puedas pagar.</p>, 
+       description2: <p className="text-lg whitespace-pre-line">El pago puede hacerse con dinero en cuenta, tarjeta de débito o crédito (este último posee interés).</p>, 
+       description3: <></>, 
+       description4: <p className="text-lg">Luego deberás enviar un comprobante con tu número de DNI a cobranzas@argenpesos.com.ar o por WhatsApp al 011-5022-5639</p>, 
     },
     { 
       title: "Billetera Virtual",
        image: <QR/>,
-       description1: "Para abonar la cuota de tu préstamo escanea el QR desde tu billetera virtual favorita y luego ingresá el monto a pagar", 
+       description1: <p className="text-lg text-[#888]">Para abonar la cuota de tu préstamo escanea el QR desde tu billetera virtual favorita e ingresá el monto a pagar</p>, 
        description2: "", 
-       description3: BilleteraVirtual, 
-       description4: "Luego deberás enviar un comprobante con tu número de DNI a atencionalcliente@argenpesos.com.ar o por WhatsApp al 011-6816-4074", 
+       description3:  <Image src={BilleteraVirtual} alt={"Billetera Virtual"} width={100} height={100}/>, 
+       description4: <p className="text-lg">Luego deberás enviar el comprobante con tu número de DNI a atencionalcliente@argenpesos.com.ar o por whatsapp al 011-6816-4074</p>, 
     },
     { 
       title: "Tarjeta de débito",
        image: <Tarjeta/>,
-       description1: "Para abonar la cuota de tu préstamo escanea el QR desde tu billetera virtual favorita y luego ingresá el monto a pagar",
+       description1: <p className="text-lg text-[#888]">Para abonar la cuota de tu préstamo en línea, comunicate al 0800 - 220 - 2743 opción 2 con el sector de atención al cliente.Luego uno de nuestros operadores atenderá tu llamado para abonar.</p>,
        description2: "", 
-       description3: "Paga directamente con tu tarjeta de débito.", 
-       description4: "Paga directamente con tu tarjeta de débito.", 
+       description3: <p className="text-lg text-[#888]">Paga directamente con tu tarjeta de débito.</p>, 
+       description4: <p className="text-lg">Paga directamente con tu tarjeta de débito.</p>, 
     },
     { 
       title: "Sucursal Argenpesos",
        image: <Market/>,
-       description1: "Para abonar la cuota de tu préstamo en una de nuestras sucursales, solamente tenés que acercarte a la más cercana con tu DNI.", 
-       description2: <>Consulta tu sucursal más cercana aquí <a href="https://www.argenpesos.com.ar/sucursales" target="_blank" rel="noopener noreferrer">https://www.argenpesos.com.ar/sucursales</a></>, 
-       description3: "", 
-       description4: "", 
+       description1: <p className="text-lg text-[#888]">Para abonar la cuota de tu préstamo acercate con tu DNI en una de nuestras sucursales.</p>, 
+       description2: <p className="text-lg whitespace-pre-line">Consulta tu sucursal más cercana aquí <a href="https://www.argenpesos.com.ar/sucursales" target="_blank" rel="noopener noreferrer" className='font-bold'>https://www.argenpesos.com.ar/sucursales</a></p>, 
+       description3: <></>, 
+       description4: <></>, 
     },
     { 
       title: "Argenpesos.com.ar Consultá tu cuenta",
        image: <PC/>,
-       description1: "Para abonar la cuota de tu préstamo ingresa a nuestra página y selecciona “Iniciar Sesión” ", 
-       description2: "Si no tenés usuario ingresá a “Aún no tengo usuario” y generá uno solo con tu DNI y una clave.", 
-       description3: "Ahí podrás abonar la cuota de tu préstamo y ver tu estado de cuenta", 
+       description1: <p className="text-lg text-[#888]">Para abonar la cuota de tu préstamo ingresa a nuestra página y selecciona “Iniciar Sesión”</p>, 
+       description2: <p className="text-lg whitespace-pre-line">Si no tenés usuario ingresá a “Aún no tengo usuario” y generá uno solo con tu DNI y una clave.</p>, 
+       description3: <p className="text-lg text-[#888]">Ahí podrás abonar la cuota de tu préstamo y ver tu estado de cuenta</p>, 
        description4: "", 
     },
     { 
       title: "Transferencia Deposito Bancario",
        image: <Banco/>,
-       description1: " Para abonar la cuota de tu préstamo por este medio deberás realizar una transferencia / depósito a una de las siguientes cuentas: ", 
-       description2: "BANCO GALICIA\nCuenta Corriente en Pesos 3424/1 068/6\nTransferencia CBU 0070068920000003424164\nBBVA FRANCES\nCuenta Corriente en Pesos 039/2222/2\n   Transferencia CBU 01700398-20000000222228", 
-       description3: "", 
-       description4: "Luego deberás enviar el comprobante con tu número de DNI a atencionalcliente@argenpesos.com.ar o por whatsapp al 011-6816-4074", 
+       description1: <p className="text-lg text-[#888]">Para abonar la cuota de tu préstamo por este medio deberás realizar una transferencia / depósito a una de las siguientes cuentas: </p>, 
+       description2: <p className="text-lg whitespace-pre-line">BANCO GALICIA <br/> Cuenta Corriente en Pesos 3424/1 068/6<br/>Transferencia CBU 0070068920000003424164<br/>BBVA FRANCES<br/>Cuenta Corriente en Pesos 039/2222/2<br/>  Transferencia CBU 01700398-20000000222228</p>, 
+       description3: <></>, 
+       description4: <p className="text-lg">Luego deberás enviar el comprobante con tu número de DNI a atencionalcliente@argenpesos.com.ar o por whatsapp al 011-6816-4074</p>, 
     },
 ];
 
@@ -140,28 +140,18 @@ export default function MetodosDePagoContainer() {
                 )}
                 {selectedMethod.description2 && (
                   <div className='flex items-center justify-center text-center text-white w-auto p-4 bg-[#00ADEE] rounded-[10px]'>
-                    <p className="text-base whitespace-pre-line">
-                      {selectedMethod.description2}
-                    </p>
+                    {selectedMethod.description2}
                   </div>
                 )}
                 {selectedMethod.description3 && (
                   <div className='flex items-center justify-center'>
-                    {typeof selectedMethod.description3 === 'string' ? (
-                      <p className="text-base text-[#888]">{selectedMethod.description3}</p>
-                    ) : React.isValidElement(selectedMethod.description3) ? (
-                      // Renderizar el fragmento JSX
-                      selectedMethod.description3
-                    ) : (
-                      // Mostrar un fallback si no es ni string ni un fragmento JSX
-                      <p className="text-base text-[#888]">Contenido no soportado</p>
-                    )}
+                    {selectedMethod.description3}
                   </div>
                 )}
 
                 {selectedMethod.description4 && (
                   <div className='flex items-center justify-center text-center text-white w-auto p-4 bg-[#00ADEE] rounded-[10px]'>
-                    <p className="text-base">{selectedMethod.description4}</p>
+                    {selectedMethod.description4}
                   </div>
                 )}
               </div>
@@ -191,27 +181,23 @@ export default function MetodosDePagoContainer() {
             </h2>
             <div className='flex flex-col items-center gap-[20px] px-[160px]'>
               {selectedMethod.description1 && (
-                <p className="text-lg text-[#888]">{selectedMethod.description1}</p>
+                <>
+                  {selectedMethod.description1}
+                </>
               )}
               {selectedMethod.description2 && (
                 <div className='flex items-center justify-center text-center text-white w-auto max-w-[1000px] md:px-[80px] py-7 min-h-[80px] md:h-auto bg-[#00ADEE] md:rounded-[20px]'>
-                  <p className="text-lg whitespace-pre-line">
                     {selectedMethod.description2}
-                  </p>
                 </div>
               )}
               {selectedMethod.description3 && (
                 <div className='flex items-center justify-center'>
-                  {typeof selectedMethod.description3 === 'string' ? (
-                      <p className="text-lg text-[#888]">{selectedMethod.description3}</p>
-                  ) : (
-                      <Image src={selectedMethod.description3} alt={selectedMethod.title} width={100} height={100} />
-                  )}
+                  {selectedMethod.description3}
                 </div>
               )}
               {selectedMethod.description4 && (
                 <div className='flex items-center justify-center text-center text-white w-auto md:px-[80px] py-7 md:h-[100px] bg-[#00ADEE] md:rounded-[20px]'>
-                  <p className="text-lg">{selectedMethod.description4}</p>
+                  {selectedMethod.description4}
                 </div>
               )}
             </div>

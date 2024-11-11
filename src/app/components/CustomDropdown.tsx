@@ -1,5 +1,7 @@
+import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command";
+import { Check } from "lucide-react";
 import { useState } from "react";
-import { ScrollArea } from "@/components/ui/scroll-area";
+import { cn } from "@/lib/utils"; 
 
 interface Option {
   value: string;
@@ -9,13 +11,15 @@ interface Option {
 interface CustomDropdownProps {
   options: Option[];
   placeholder: string;
-  onSelect: (value: string) => void;
+  selectedValue: string;
+  setSelectedValue: (value: string) => void;
 }
 
 export default function CustomDropdown({
   options,
   placeholder,
-  onSelect,
+  selectedValue,
+  setSelectedValue,
 }: CustomDropdownProps) {
   const [search, setSearch] = useState("");
 
@@ -24,28 +28,31 @@ export default function CustomDropdown({
   );
 
   return (
-    <div className="p-2">
-      <input
-        type="text"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-        placeholder={placeholder}
-        className="w-full p-2 mb-2 border rounded"
+    <Command role="listbox">
+      <CommandInput 
+        placeholder={`Buscar ${placeholder.toLowerCase()}...`} 
+        value={search} 
+        onChange={(e) => setSearch(e.target.value)} 
       />
-      <ul className="max-h-60 overflow-y-auto">
-        {filteredOptions.map((option) => (
-          <li
-            key={option.value}
-            onClick={() => onSelect(option.value)}
-            className="p-2 hover:bg-gray-100 cursor-pointer"
-          >
-            {option.label}
-          </li>
-        ))}
-        {filteredOptions.length === 0 && (
-          <li className="p-2 text-gray-500">No options found</li>
-        )}
-      </ul>
-    </div>
+      <CommandList>
+        <CommandEmpty>No se encontraron opciones.</CommandEmpty>
+        <CommandGroup>
+          {filteredOptions.map((option) => (
+            <CommandItem
+              key={option.value}
+              onSelect={() => setSelectedValue(option.value)}
+            >
+              <Check
+                className={cn(
+                  "mr-2 h-4 w-4",
+                  selectedValue === option.value ? "opacity-100" : "opacity-0"
+                )}
+              />
+              {option.label}
+            </CommandItem>
+          ))}
+        </CommandGroup>
+      </CommandList>
+    </Command>
   );
 }

@@ -7,7 +7,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Send } from "lucide-react";
 import DynamicSelector from "./ComboBox";
 import Loader from "./Loader";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import Bot from "./svgs/Bot";
 import User from "./svgs/User";
 import Link from "next/link";
@@ -91,7 +91,10 @@ export default function Chatbot() {
   const startChat = () => {
     setMessages((prevMessages) => [
       ...prevMessages,
-      { from: "bot", text: "Por favor, ingresá tu DNI (Sin espacios ni puntos)." },
+      {
+        from: "bot",
+        text: "Por favor, ingresá tu DNI (Sin espacios ni puntos).",
+      },
     ]);
     setStep(0);
   };
@@ -265,7 +268,7 @@ export default function Chatbot() {
             {
               from: "bot",
               text: "Gracias por proporcionar tu información. El sistema se encuentra procesando la consulta de cupo..",
-            }
+            },
           ]);
 
           setTimeout(() => {
@@ -350,17 +353,16 @@ export default function Chatbot() {
             "Ups....por el momento no sería posible acceder a un préstamo. De todas formas puede volver a consultarlo en 30 días.";
           const messagePart2 =
             "Descárgate la app ..... para obtener más información y aprovechar todos nuestros beneficios";
-          
+
           setMessages((prevMessages) => [
             ...prevMessages,
             { from: "bot", text: messagePart1 },
           ]);
-        
+
           setMessages((prevMessages) => [
             ...prevMessages,
             { from: "bot", text: messagePart2 },
           ]);
-        
         } else if (resultado === "APROBADO SIN CUPO") {
           setIsConsultaStatus("PENDING");
           finalMessage = ` ¡Excelente! Tenes un préstamo pre-aprobado, sujeto a un análisis crediticio.`;
@@ -368,7 +370,6 @@ export default function Chatbot() {
             ...prevMessages,
             { from: "bot", text: finalMessage },
           ]);
-        
         } else if (resultado === "APROBADO CON CUPO") {
           finalMessage = ` ¡Excelente! Tenes un préstamo aprobado por $${maximoCapital} en 12 cuotas de $${maximoCuota}. Sujeto a un análisis crediticio.`;
           setIsConsultaStatus("APPROVED");
@@ -464,7 +465,7 @@ export default function Chatbot() {
         {step === 1 && !isLoading && (
           <div className="dynamicselector p-4 border-t border-border flex gap-2 fixed bottom-0 left-0 right-0">
             <DynamicSelector
-              className="border border-gray-300 rounded-md px-4 py-2 mb-2 overflow-y-scroll"
+              className="border border-gray-300 rounded-md px-4 py-2 mb-2 overflow-y-scroll "
               selectedValue={selectedSexo}
               setSelectedValue={setSelectedSexo}
               options={genderOptions}
@@ -472,7 +473,7 @@ export default function Chatbot() {
             />
             <Button
               onClick={() => processInput(selectedSexo)}
-              className="bg-blue-500 text-white px-4 py-2 rounded-lg w-[48px]"
+              className="bg-blue-500 text-white px-4 py-2 rounded-lg w-[48px] flex-shrink-0"
             >
               <Send className="h-4 w-4" />
             </Button>
@@ -482,7 +483,7 @@ export default function Chatbot() {
         {step === 2 && !isLoading && (
           <div className="dynamicselector p-4 border-t border-border flex gap-2 fixed bottom-0 left-0 right-0">
             <DynamicSelector
-              className="border border-gray-300 rounded-md px-4 py-2 mb-2 overflow-y-scroll"
+              className="border border-gray-300 rounded-md px-4 py-2 mb-2 overflow-y-scroll flex-grow"
               selectedValue={selectedAreaCode}
               setSelectedValue={setSelectedAreaCode}
               options={phoneAreaOptions}
@@ -542,7 +543,9 @@ export default function Chatbot() {
         {!isLoading && isConsultaStatus == "APPROVED" && (
           <div className="p-4 h-auto border-t border-border flex items-center justify-center absolute bottom-0 left-0 right-0">
             <Link
-              href={`https://wa.me/541126785266?text=${encodeURIComponent("¡Hola! Argento me confirmó que mi préstamo fue aprobado. ¿Podrían indicarme los próximos pasos?")}`}
+              href={`https://wa.me/541126785266?text=${encodeURIComponent(
+                "¡Hola! Argento me confirmó que mi préstamo fue aprobado. ¿Podrían indicarme los próximos pasos?"
+              )}`}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -556,7 +559,9 @@ export default function Chatbot() {
         {!isLoading && isConsultaStatus == "PENDING" && (
           <div className="p-4 h-auto border-t border-border flex items-center justify-center absolute bottom-0 left-0 right-0">
             <Link
-              href={`https://wa.me/541126785266?text=${encodeURIComponent("¡Hola! Argento me confirmó que mi préstamo fue pre-aprobado. ¿Podrían indicarme los próximos pasos?")}`}
+              href={`https://wa.me/541126785266?text=${encodeURIComponent(
+                "¡Hola! Argento me confirmó que mi préstamo fue pre-aprobado. ¿Podrían indicarme los próximos pasos?"
+              )}`}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -580,9 +585,9 @@ export default function Chatbot() {
                 type="text"
                 placeholder={
                   step === 0
-                    ? "Ingresa tu DNI..."
+                    ? "Ingresá tu DNI..."
                     : step === 3
-                    ? "Ingresa tu número de teléfono..."
+                    ? "Ingresá tu número de teléfono..."
                     : step === 5
                     ? "Inserta tu ingreso neto..."
                     : "Escribe un mensaje..."

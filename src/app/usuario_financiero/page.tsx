@@ -7,7 +7,7 @@ import BajaProducto from "../../../public/Afiche-A3-BCRA_Normas-BAJA-DE-PRODUCTO
 
 export default function UsuarioFinanciero() {
   return (
-    <section className='w-full h-full flex flex-col items-center justify-center mt-[80px] md:mt-[100px] lg:mt-[132px]'>
+    <section className='w-full h-full flex flex-col items-center justify-center mt-[80px] md:mt-[100px] lg:mt-[152px]'>
         <div className='boton_arrepentimiento flex items-center justify-center w-full'>
             <h1 className='text-white text-center w-[600px] my-[50px] tracking-widest-[2px] text-[40px] md:text-[50px]'>
             INFORMACIÓN PARA

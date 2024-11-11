@@ -40,7 +40,7 @@ export default function ArgenCompras() {
 
   return (
     <>
-      <div className="w-full flex flex-col items-center justify-center gap-[8px] md:gap-[30px] md:justify-between min-h-[430px] bg-[#E84729]  text-white p-[16px] md:p-[24px] lg:p-[14px] xl:p-[24px] ">
+      <div className="w-full flex flex-col items-center justify-center gap-[8px] md:gap-[30px] md:justify-between min-h-[430px]  bg-[#E84729]  text-white p-[16px] md:p-[24px] lg:p-[14px] xl:p-[24px] ">
         <div className="flex flex-col md:flex-row-reverse gap-[15px] md:gap-[30px] justify-center md:justify-between items-center text-white w-full ">
           <div className="w-full md:w-[260px] flex justify-end">
             <Image
@@ -59,11 +59,11 @@ export default function ArgenCompras() {
               align: "start",
               loop: true,
             }}
-            /* plugins={[
-                            Autoplay({
-                                delay:3500
-                            })
-                          ]} */
+            plugins={[
+                Autoplay({
+                  delay:3500
+                })
+              ]}
             className="w-full custom-carousel max-w-sm sm:max-w-md  lg:max-w-5xl xl:max-w-7xl mx-auto"
           >
             <CarouselContent>

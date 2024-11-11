@@ -178,7 +178,7 @@ export default function Footer() {
                 <p className='mb-[40px]'>Préstamos personales con cuotas fijas y en pesos. Otorgamos máximo $1.000.000 y mínimo $30.000 en un plazo máximo de 15 meses y un mínimo de 6 meses. El efectivo otorgamiento del préstamo y sus condiciones se encuentran sujetos a verificación del departamento de análisis de riesgo crediticio. Tasa nominal anual (TNA): mínima 381,59%, máxima 458,40%. Ejemplo de préstamo: Cliente nuevo, te prestamos $10.000 en 12 cuotas y nos devolvés $3.300 por mes.
                 Cliente renovador, te prestamos $10.000 en 12 cuotas y nos devolvés $2.900 por mes. Préstamo destinado a consumo, te prestamos $10.000 en 12 cuotas y nos devolvés $2.600 por mes. Tasa efectiva anual (TEA): mínima: 381,59%, máxima: 458,40%. 
                 <span className='font-bold'>COSTO FINANCIERO TOTAL NOMINAL ANUAL</span> (CFTNA): mínima:381,59%, máxima: 458,40%</p>
-                <p>Argencred S. A. CUIT 30-70910041-2 - Reconquista 660 CABA - <span className='font-bold'>info@argenpesos.com.ar</span></p>
+                <p>Argencred S. A. CUIT 30-70910041-2 - Reconquista 660 CABA - <Link href="mailto:info@argenpesos.com.ar" target='__blank'><span className='font-bold'>info@argenpesos.com.ar</span></Link></p>
             </div>
         </footer>
     )

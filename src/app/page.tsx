@@ -7,7 +7,7 @@ import Responsabilidad from "./components/Responsabilidad";
 
 export default function Home() {
   return (
-    <main className="w-full h-full mt-[80px] md:mt-[100px] lg:mt-[132px]" >
+    <main className="w-full h-full mt-[80px] md:mt-[100px] lg:mt-[152px]" >
       <MainBanner/>
       <Actions/>
       <AppPublicidad/>
