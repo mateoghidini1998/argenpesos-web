@@ -25,7 +25,7 @@ export default function ResponsabilidadPost({
     <div
       className={`w-full ${backgroundColor} text-[#82CC6D] p-8 sm:p-12 md:p-12 mx-auto flex flex-col items-center justify-center md:flex md:flex-row ${
         reverse ? 'md:flex-row-reverse' : ''
-      } gap-8 mb-12`}
+      } gap-8 `}
     >
       <div className="w-full md:w-1/3 rounded-[0.5rem]">
         <Image
