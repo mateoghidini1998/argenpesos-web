@@ -18,6 +18,7 @@ export default function ResponsabilidadSocial() {
           subtitle={post.subtitle}
           content={post.content}
           reverse={index % 2 === 1}
+          index={index}
         />
         ))}
     </section>

@@ -1,0 +1,26 @@
+[
+    {
+        "title": "Club Vattone Florencio Varela",
+        "subtitle":"#Clubes de Barrio",
+        "image": "/responsabilidad-social.png",
+        "imageMobile": "/varela-m.png"
+    },
+    {
+        "title": "Presentes en Club Torino",
+        "subtitle":"#Clubes de Barrio",
+        "image": "/seguimos-presentes.jpeg",
+        "imageMobile": "/torino-m.png"
+    },
+    {
+        "title": "Make a Wish",
+        "subtitle":"",
+        "image": "/make-a-wish.png",
+        "imageMobile": "/make-a-wish-m.png"
+    },
+    {
+        "title": "¡Llegamos a Merlo!",
+        "subtitle":"#Comunidad",
+        "image": "/merlo.png",
+        "imageMobile": "/merlo-m.png"
+    }
+]
