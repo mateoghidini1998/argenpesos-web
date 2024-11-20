@@ -1,7 +1,6 @@
-import logo from "../../../public/logo-blanco-slogan.png"
 import appstore from "../../../public/appstore.png"
 import googleplay from "../../../public/googleplay.png"
-import appImg from "../../../public/app.png"
+import appImg from "../../../public/PhoneWeb.png"
 import Image from "next/image"
 import DownloadSVG from "./svgs/Download"
 import Link from "next/link"
@@ -9,7 +8,7 @@ import Link from "next/link"
 export default function AppPublicidad () {
     return (
         <>
-            <section className="w-full h-[850px] px-[16px]  mb-[53px] md:px-12 md:py-20">
+            <section className="w-full h-[900px] px-[16px]  mb-[53px] md:px-12 md:py-20">
                 <div className="flex flex-col md:flex-row items-center justify-around w-full h-full bg-gradient-to-t pt-8 px-6 sm:px-10 md:px-0 bg-[#00ADEE] rounded-[30px]">
                     <div className="h-full sm:w-full sm:px-20  md:w-[45%] lg:w-[55%] flex flex-col sm:gap-[30px] justify-around items-center  md:px-12 pb-0 md:py-14 ">
                         <div className="flex flex-col items-start justify-center">
@@ -26,16 +25,16 @@ export default function AppPublicidad () {
                             </div>
                             <div className="flex flex-col items-center justify-center gap-2 md:gap-4">
                                 <Link href="">
-                                    <Image src={appstore} alt="appstore" className="h-[40px] w-[120px] sm:h-[52px] sm:w-[180px]"/>
+                                    <Image src={appstore} alt="appstore" className="h-[30px] w-[100px] sm:h-[40px] sm:w-[110px] md:h-[52px] md:w-[180px]"/>
                                 </Link>
-                                    <Image src={googleplay} alt="google-play"  className=" h-[40px] w-[120px] sm:h-[52px] sm:w-[180px] "/>
+                                    <Image src={googleplay} alt="google-play"  className=" h-[30px] w-[100px] sm:h-[40px] sm:w-[110px] md:h-[52px] md:w-[180px] "/>
                                 <Link href="">
                                 </Link>
                             </div>
                         </div>
                     </div>
-                    <div className="w-[35%] h-[350px] sm:h-[450px] sm:w-[40%] md:h-full lg:w-[25%] flex justify-center items-end relative">
-                        <Image src={appImg} alt="Application Argenpesos" className="absolute h-full"/>
+                    <div className="w-[35%] h-[550px] sm:h-[800px] sm:w-[30%] md:h-3/4 lg:h-full lg:w-[20%] flex justify-center items-end relative">
+                        <Image src={appImg} alt="Application Argenpesos" className="absolute h-full "/>
                     </div>
                 </div>
             </section>
