@@ -24,7 +24,7 @@
         "title": "¡Llegamos a Merlo!",
         "subtitle":"#Comunidad",
         "image": "/merlo.png",
-        "imageMobile": "/merlo-m.png",
+        "imageMobile": "/merlo_m.png",
         "text-position": "down"
     }
 ]

@@ -75,19 +75,32 @@ export default function Responsabilidad() {
                   {/* Contenido del banner */}
                   <div
                     className={`absolute ${
-                      item["text-position"] === "down" ? "bottom-0" : "top-0"
+                      item["text-position"] === "down" && !isMobile
+                        ? "bottom-0"
+                        : "top-0"
                     } left-0 w-full p-10`}
                   >
                     <div className="text-white max-w-4xl">
                       {item.subtitle && (
-                        <p className="text-2xl md:text-3xl font-semibold">
-                          {item.subtitle}
-                        </p>
+                        <p className="text-2xl md:text-3xl">{item.subtitle}</p>
                       )}
                       <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold mb-2">
                         {item.title}
                       </h2>
                     </div>
+                  </div>
+                  <div
+                    className={`absolute ${
+                      isMobile ? "-bottom-2 -right-2" : "-bottom-[20px] -right-[20px]"
+                    }`}
+                  >
+                    <Image
+                      src={LOGO}
+                      alt="Logo"
+                      width={isMobile ? 100 : 250}
+                      height={isMobile ? 100 : 250}
+                      className="object-contain"
+                    />
                   </div>
                 </Link>
               </div>
