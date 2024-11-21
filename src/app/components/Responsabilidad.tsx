@@ -9,7 +9,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import LOGO from '../../../public/logo-rse.png';
+import LOGO from "../../../public/logo-rse.png";
 import BANNERS from "../../data/banners.json";
 import { useState, useEffect } from "react";
 import Link from "next/link";
@@ -59,42 +59,43 @@ export default function Responsabilidad() {
               <div className="relative w-full h-full">
                 {/* Link que cubre toda la imagen */}
                 <Link href="/responsabilidad-social">
+                  {/* Imagen del banner */}
                   <Image
-                    src={isMobile && item.imageMobile ? item.imageMobile : item.image}
+                    src={
+                      isMobile && item.imageMobile
+                        ? item.imageMobile
+                        : item.image
+                    }
                     alt={item.title}
                     fill
                     className="object-cover object-top"
                   />
-                  <div className="absolute inset-0 bg-black bg-opacity-30 flex items-start justify-start p-6">
+                  {/* Fondo con opacidad */}
+                  <div className="absolute inset-0 bg-black bg-opacity-20"></div>
+                  {/* Contenido del banner */}
+                  <div
+                    className={`absolute ${
+                      item["text-position"] === "down" ? "bottom-0" : "top-0"
+                    } left-0 w-full p-10`}
+                  >
                     <div className="text-white max-w-4xl">
+                      {item.subtitle && (
+                        <p className="text-2xl md:text-3xl font-semibold">
+                          {item.subtitle}
+                        </p>
+                      )}
                       <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold mb-2">
                         {item.title}
                       </h2>
-                      {item.subtitle && (
-                        <p className="text-4xl mb-2 font-semibold">{item.subtitle}</p>
-                      )}
                     </div>
                   </div>
                 </Link>
-                <div className="absolute bottom-4 right-4">
-                  <Image
-                    src={LOGO}
-                    alt="Logo"
-                    width={200}
-                    height={200}
-                    className="object-contain"
-                  />
-                </div>
               </div>
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious
-          className="absolute left-4 top-1/2 -translate-y-1/2 z-20 cursor-pointer"
-        />
-        <CarouselNext
-          className="absolute right-4 top-1/2 -translate-y-1/2 z-20 cursor-pointer"
-        />
+        <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-20 cursor-pointer" />
+        <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-20 cursor-pointer" />
       </Carousel>
     </div>
   );
