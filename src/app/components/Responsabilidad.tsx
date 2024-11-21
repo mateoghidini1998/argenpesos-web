@@ -9,7 +9,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import LOGO from '../../../public/logo-rse.png'
+import LOGO from '../../../public/logo-rse.png';
 import BANNERS from "../../data/banners.json";
 import { useState, useEffect } from "react";
 import Link from "next/link";
@@ -31,7 +31,7 @@ export default function Responsabilidad() {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 515); // Considera mobile si el ancho es <= 768px
+      setIsMobile(window.innerWidth <= 515);
     };
     handleResize();
     window.addEventListener("resize", handleResize);
@@ -39,31 +39,33 @@ export default function Responsabilidad() {
   }, []);
 
   return (
-    <div className="w-full h-[650px] md:h-[600px] xl:h-[800px] bg-transparent">
-      <Link href="/responsabilidad-social">
-        <Carousel
-          opts={{
-            align: "start",
-            loop: true,
-          }}
-          plugins={[
-            Autoplay({
-              delay: 5000,
-            }),
-          ]}
-          className="w-full h-full"
-        >
-          <CarouselContent className="h-full">
-            {BANNERS.map((item, index) => (
-              <CarouselItem key={index} className="h-full">
-                <div className="relative w-full h-full">
+    <div className="relative w-full h-[650px] md:h-[600px] xl:h-[800px] bg-transparent">
+      {/* Carousel */}
+      <Carousel
+        opts={{
+          align: "start",
+          loop: true,
+        }}
+        plugins={[
+          Autoplay({
+            delay: 5000,
+          }),
+        ]}
+        className="w-full h-full"
+      >
+        <CarouselContent className="h-full">
+          {BANNERS.map((item, index) => (
+            <CarouselItem key={index} className="h-full">
+              <div className="relative w-full h-full">
+                {/* Link que cubre toda la imagen */}
+                <Link href="/responsabilidad-social">
                   <Image
                     src={isMobile && item.imageMobile ? item.imageMobile : item.image}
                     alt={item.title}
                     fill
                     className="object-cover object-top"
                   />
-                  <div className="absolute inset-0 bg-black bg-opacity-50 flex items-start justify-start p-6">
+                  <div className="absolute inset-0 bg-black bg-opacity-30 flex items-start justify-start p-6">
                     <div className="text-white max-w-4xl">
                       <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold mb-2">
                         {item.title}
@@ -73,23 +75,27 @@ export default function Responsabilidad() {
                       )}
                     </div>
                   </div>
-                    <div className="absolute bottom-4 right-4">
-                      <Image
-                        src={LOGO}
-                        alt="Logo"
-                        width={200}
-                        height={200}
-                        className="object-contain"
-                      />
-                    </div>
+                </Link>
+                <div className="absolute bottom-4 right-4">
+                  <Image
+                    src={LOGO}
+                    alt="Logo"
+                    width={200}
+                    height={200}
+                    className="object-contain"
+                  />
                 </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-10" />
-          <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-10" />
-        </Carousel>
-      </Link>
+              </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious
+          className="absolute left-4 top-1/2 -translate-y-1/2 z-20 cursor-pointer"
+        />
+        <CarouselNext
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-20 cursor-pointer"
+        />
+      </Carousel>
     </div>
   );
 }
