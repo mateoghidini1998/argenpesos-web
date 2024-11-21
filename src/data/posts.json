@@ -18,12 +18,6 @@
         "image": "/responsabilidad-social.png"
     },
     {
-        "title": "CLUB SOLANO JUNIORS",
-        "subtitle":"San Francisco Solano ",
-        "content":"¡Nos ponemos la 10 también en San Francisco Solano! El Club Solano Junior nos abrió cálidamente sus puertas para recibirnos. Nos acercamos a otro club de la zona de nuestras Sucursales, para entregarle a distintas categorías de fútbol femenino y masculino, camisetas de fútbol y pelotas para entrenar. Nos entusiasma que cada chico y cada chica puedan utilizar y disfrutar de los recursos necesarios para entrenar.",
-        "image": "/placeholder.webp"
-    },
-    {
         "title": "CREANDO CONCIENCIA",
         "subtitle":"Mates realizados a base de plástico reciclado",
         "content":"En ArgenPesos concientizamos sobre el uso del material reciclable a través de distintas prácticas sustentables. Una de ellas es la compra de mates realizados por la cooperativa Creando Conciencia a base de material plástico reciclado.",
@@ -42,12 +36,6 @@
         "image": "/hospital-larcade.jpeg"
     },
     {
-        "title": "CLUB PACHECO SUR",
-        "subtitle":"San Fernando",
-        "content":"Pacheco Sur es otro de los clubes que nos abrió las puertas, y junto con nuestros colaboradores, asistimos en el horario de entreamiento para sorprender a los chicos con pelotas y camisetas para todos.",
-        "image": "/placeholder.webp"
-    },
-    {
         "title": "SEGUIMOS ESTANDO PRESENTES",
         "subtitle":"Club Torino Juniors de Pablo Nogués",
         "content":"Asistimos junto a nuestros colaboradores una vez más al Club El Torino Junior con pelotas, camisetas de fútbol para distintas categorías y compartimos una merienda con todos los chicos y chicas que asistieron al evento.",
@@ -64,17 +52,5 @@
         "subtitle":"Pablo Nogués, Diciembre 2019",
         "content":"En nuestro primer acercamiento a este club, colaboramos en la confección de las camisetas del equipo junior del Torino Juniors.",
         "image": "/torino.jpeg"
-    },
-    {
-        "title": "PRESENTES EN EL BINGO SOLIDARIO",
-        "subtitle":"Diciembre 2018",
-        "content":"Participamos en el Bingo solidario organizado por El Merendero Móvil con la donación de pelotas y lapiceras. El fin del evento fue para ayudar a las pequeñas Gabriela y Valeria.",
-        "image": "/placeholder.webp"
-    },
-    {
-        "title": "ACCIONES MUNDIAL 2018",
-        "subtitle":"",
-        "content":"En el mes del mundial, por cada préstamo de $20.000 o más, donamos una pelota a un club o escuela de barrio cercanos a nuestras Sucursales para que los chicos puedan jugar y divertirse.",
-        "image": "/placeholder.webp"
     }
 ]
