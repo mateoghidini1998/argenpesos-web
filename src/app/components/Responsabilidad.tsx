@@ -67,7 +67,7 @@ export default function Responsabilidad() {
                       {item.title}
                     </h2>
                     {item.subtitle && (
-                      <p className="text-3xl mb-2">{item.subtitle}</p>
+                      <p className="text-4xl mb-2 font-semibold">{item.subtitle}</p>
                     )}
                   </div>
                 </div>

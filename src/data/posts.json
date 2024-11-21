@@ -1,5 +1,17 @@
 [
     {
+        "title": "MAKE A WISH",
+        "subtitle":"",
+        "content":"A través de la fundación Make A Wish acompañamos a soñadores valientes que a pesar de sus diagnósticos nunca dejan de sonreír y nos enseñan que, con  fuerza y esperanza, todo es posible. Sus historias nos recuerdan que los deseos no solo se sueñan, sino también se cumplen.",
+        "image": "/make-a-wish.png"
+    },
+    {
+        "title": "¡LLEGAMOS A MERLO!",
+        "subtitle":"",
+        "content":"Abrimos nuestra sucursal número 15 en el corazón de Merlo. Visítanos en Av. del Libertador 674 de 9 a 18:45 hs, donde estaremos listos para brindarte nuestras soluciones crediticias en minutos. ¡Te esperamos!",
+        "image": "/merlo.png"
+    },
+    {
         "title": "CLUB VILLA VATTEONE",
         "subtitle":"Florencio Varela",
         "content":"En el marco de nuestro plan vinculado al deporte, nos acercamos a otro club ubicado en la zona de nuestras Sucursales, para contribuir con pelotas y camisetas para distintas categorías de Vatteone.",
@@ -9,7 +21,7 @@
         "title": "CLUB SOLANO JUNIORS",
         "subtitle":"San Francisco Solano ",
         "content":"¡Nos ponemos la 10 también en San Francisco Solano! El Club Solano Junior nos abrió cálidamente sus puertas para recibirnos. Nos acercamos a otro club de la zona de nuestras Sucursales, para entregarle a distintas categorías de fútbol femenino y masculino, camisetas de fútbol y pelotas para entrenar. Nos entusiasma que cada chico y cada chica puedan utilizar y disfrutar de los recursos necesarios para entrenar.",
-        "image": "/creando-conciencia.jpeg"
+        "image": "/placeholder.webp"
     },
     {
         "title": "CREANDO CONCIENCIA",
@@ -33,7 +45,7 @@
         "title": "CLUB PACHECO SUR",
         "subtitle":"San Fernando",
         "content":"Pacheco Sur es otro de los clubes que nos abrió las puertas, y junto con nuestros colaboradores, asistimos en el horario de entreamiento para sorprender a los chicos con pelotas y camisetas para todos.",
-        "image": "/responsabilidad-social.png"
+        "image": "/placeholder.webp"
     },
     {
         "title": "SEGUIMOS ESTANDO PRESENTES",
@@ -57,12 +69,12 @@
         "title": "PRESENTES EN EL BINGO SOLIDARIO",
         "subtitle":"Diciembre 2018",
         "content":"Participamos en el Bingo solidario organizado por El Merendero Móvil con la donación de pelotas y lapiceras. El fin del evento fue para ayudar a las pequeñas Gabriela y Valeria.",
-        "image": "/responsabilidad-social.png"
+        "image": "/placeholder.webp"
     },
     {
         "title": "ACCIONES MUNDIAL 2018",
         "subtitle":"",
         "content":"En el mes del mundial, por cada préstamo de $20.000 o más, donamos una pelota a un club o escuela de barrio cercanos a nuestras Sucursales para que los chicos puedan jugar y divertirse.",
-        "image": "/responsabilidad-social.png"
+        "image": "/placeholder.webp"
     }
 ]
