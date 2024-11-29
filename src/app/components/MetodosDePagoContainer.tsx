@@ -59,7 +59,7 @@ const METODOS_DE_PAGO = [
       title: "Sucursal Argenpesos",
        image: <Market/>,
        description1: <p className="text-lg text-[#888]">Para abonar la cuota de tu préstamo acercate con tu DNI en una de nuestras sucursales.</p>, 
-       description2: <p className="text-lg whitespace-pre-line">Consulta tu sucursal más cercana aquí <a href="https://www.argenpesos.com.ar/sucursales" target="_blank" rel="noopener noreferrer" className='font-bold'>https://www.argenpesos.com.ar/sucursales</a></p>, 
+       description2: <p className="text-lg whitespace-pre-line">Consulta tu sucursal más cercana aquí <a href="/sucursales" target="_blank" rel="noopener noreferrer" className='font-bold'>https://www.argenpesos.com.ar/sucursales</a></p>, 
        description3: null, 
        description4: null, 
     },
