@@ -94,7 +94,7 @@ export default function Navbar({ onNavbarToggle }) {
           isOpen
             ? "flex flex-col  flex-1 justify-center lg:flex-row"
             : "hidden lg:flex"
-        } lg:items-center gap-8 md:gap-2 lg:gap-4 xl:gap-8 w-full`}
+        } lg:items-center lg:justify-end gap-8 md:gap-2 lg:gap-4 xl:gap-8 w-full`}
       >
         <div className="mb-[50px] block lg:hidden mx-auto">
           <img
@@ -103,21 +103,23 @@ export default function Navbar({ onNavbarToggle }) {
             className=" w-[150px] h-[80px] "
           />
         </div>
-        {LINKS.map((LINK, index) => (
-          <a
-            key={index}
-            href={LINK.url}
-            target={LINK.target || "_self"} 
-            rel={LINK.target === "_blank" ? "noopener noreferrer" : undefined}
-            className={`block text-grey-primary text-lg lg:text-sm xl:text-lg hover:text-lightblue-primary px-4 py-2 md:px-0 md:py-0 text-center ${
-              activeLink === LINK.url
-                ? "font-bold !text-lightblue-primary underline underline-offset-4"
-                : "font-medium"
-            }`}
-          >
-            {LINK.text}
-          </a>
-        ))}
+        <div className="flex flex-col lg:flex-row gap-4 md:gap-8 lg:justify-end">
+          {LINKS.map((LINK, index) => (
+            <a
+              key={index}
+              href={LINK.url}
+              target={LINK.target || "_self"} 
+              rel={LINK.target === "_blank" ? "noopener noreferrer" : undefined}
+              className={`block text-grey-primary text-lg lg:text-sm xl:text-lg hover:text-lightblue-primary px-4 py-2 md:px-0 md:py-0 text-center ${
+                activeLink === LINK.url
+                  ? "font-bold !text-lightblue-primary underline underline-offset-4"
+                  : "font-medium"
+              }`}
+            >
+              {LINK.text}
+            </a>
+          ))}
+        </div>
       </div>
     </nav>
   );
