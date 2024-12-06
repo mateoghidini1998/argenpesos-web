@@ -7,7 +7,7 @@ import Seguro from './svgs/Seguro';
 
 export default function ChatBanner() {
   return (
-    <div className='flex flex-col gap-8 items-center justify-apart p-8'>
+    <div className='flex flex-col gap-8 items-center justify-apart py-8 px-2 sm:px-4 lg:px-8'>
         <h3 className='font-bold text-2xl lg:text-5xl text-nowrap'>TE PRESTAMOS HASTA</h3>
         <div className='bg-[#00adee] px-8 py-4 rounded-xl'>
             <span className='text-white font-bold text-[20px] md:text-[30px] lg:text-[44px] 2xl:text-[72px]'>$3.000.000</span>

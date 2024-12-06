@@ -398,7 +398,7 @@ export default function Chatbot() {
 
   return (
     <>
-      <div className="chatbot relative min-h-[500px] lg:w-[330px] xl:w-[550px] border-[#00adee] border-[5px] rounded-xl overflow-hidden lg:overflow-auto">
+      <div className="chatbot relative min-h-[500px] lg:w-[330px] xl:w-[550px] border-[#00adee] border-[5px] rounded-xl overflow-hidden">
         <div className="flex justify-center w-full h-[60px] items-center bg-[#00adee] text-white border-b-[#00adee] rounded-b-[12px] ">
           <h2 className="text-lg font-semibold text-white">
             Chatea con ArgenBot

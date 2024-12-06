@@ -41,7 +41,7 @@ export default function MainBanner() {
             </div>
 
             <DialogPortal>
-                <DialogContent className="flex flex-col lg:flex-row items-center justify-start lg:justify-center p-8 lg:h-auto min-h-[600px] h-[600px] w-full overflow-y-auto">
+                <DialogContent className="flex flex-col lg:flex-row items-center justify-start lg:justify-center p-8 lg:h-auto min-h-[600px] h-[600px] w-full overflow-y-auto overflow-x-hidden">
                     <ChatBanner/>
                     <Chatbot />
                 </DialogContent>
