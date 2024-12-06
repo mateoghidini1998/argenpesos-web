@@ -352,7 +352,7 @@ export default function Chatbot() {
           const messagePart1 =
             "Ups....por el momento no sería posible acceder a un préstamo. De todas formas puede volver a consultarlo en 30 días.";
           const messagePart2 =
-            "Descárgate la app ..... para obtener más información y aprovechar todos nuestros beneficios";
+            "Descárgate la app... para obtener más información y aprovechar todos nuestros beneficios";
 
           setMessages((prevMessages) => [
             ...prevMessages,
@@ -398,17 +398,17 @@ export default function Chatbot() {
 
   return (
     <>
-      <div className="chatbot relative h-[600px]">
-        <div className="flex justify-center  h-[60px] items-center text-white  border border-border rounded-lg ">
-          <h2 className="text-lg font-semibold text-lightblue-primary">
-            Chatea con Argento
+      <div className="chatbot relative min-h-[500px] lg:w-[330px] xl:w-[550px] border-[#00adee] border-[5px] rounded-xl overflow-hidden">
+        <div className="flex justify-center w-full h-[60px] items-center bg-[#00adee] text-white border-b-[#00adee] rounded-b-[12px] ">
+          <h2 className="text-lg font-semibold text-white">
+            Chatea con ArgenBot
           </h2>
         </div>
         <ScrollArea
           className={`${
             (isFlowComplete && !isConsultaStatus) || isLoading
-              ? "h-[calc(100% - 60px)] max-h-[535px]"
-              : "h-[calc(100% - 60px)] max-h-[450px]"
+              ? "h-[calc(100% - 70px)] max-h-[465px]"
+              : "h-[calc(100% - 70px)] max-h-[380px]"
           } flex-grow p-4 overflow-y-auto`}
         >
           {messages.map((message, index) => (
@@ -463,9 +463,9 @@ export default function Chatbot() {
         )}
 
         {step === 1 && !isLoading && (
-          <div className="dynamicselector p-4 border-t border-border flex gap-2 fixed bottom-0 left-0 right-0">
+          <div className="dynamicselector p-4 border-t border-border flex gap-2 absolute bottom-0 left-0 right-0 bg-white z-50">
             <DynamicSelector
-              className="border border-gray-300 rounded-md px-4 py-2 mb-2 overflow-y-scroll "
+              className="border border-gray-300 rounded-md px-4 py-2 mb-2 flex-grow"
               selectedValue={selectedSexo}
               setSelectedValue={setSelectedSexo}
               options={genderOptions}
@@ -473,7 +473,7 @@ export default function Chatbot() {
             />
             <Button
               onClick={() => processInput(selectedSexo)}
-              className="bg-blue-500 text-white px-4 py-2 rounded-lg w-[48px] flex-shrink-0"
+              className="bg-blue-500 text-white px-4 py-2 rounded-lg flex-shrink-0"
             >
               <Send className="h-4 w-4" />
             </Button>
@@ -481,7 +481,7 @@ export default function Chatbot() {
         )}
 
         {step === 2 && !isLoading && (
-          <div className="dynamicselector p-4 border-t border-border flex gap-2 fixed bottom-0 left-0 right-0">
+          <div className="dynamicselector p-4 border-t border-border flex gap-2 absolute bottom-0 left-0 right-0 bg-white z-50">
             <DynamicSelector
               className="border border-gray-300 rounded-md px-4 py-2 mb-2 overflow-y-scroll flex-grow"
               selectedValue={selectedAreaCode}
@@ -499,7 +499,7 @@ export default function Chatbot() {
         )}
 
         {step === 4 && !isLoading && (
-          <div className="dynamicselector overflow-y-auto touch-pan-y p-4 border-t border-border flex gap-2 fixed bottom-0 left-0 right-0">
+          <div className="dynamicselector p-4 border-t border-border flex gap-2 absolute bottom-0 left-0 right-0 bg-white z-50">
             <DynamicSelector
               className="border border-gray-300 rounded-md px-4 py-2 mb-2 overflow-y-auto"
               selectedValue={selectedBank}
@@ -520,7 +520,7 @@ export default function Chatbot() {
         )}
 
         {step === 6 && !isLoading && (
-          <div className="dynamicselector p-4 border-t border-border flex gap-2 fixed bottom-0 left-0 right-0">
+          <div className="dynamicselector p-4 border-t border-border flex gap-2 absolute bottom-0 left-0 right-0 bg-white z-50">
             <DynamicSelector
               className="border border-gray-300 rounded-md px-4 py-2 mb-2 overflow-y-scroll touch-auto"
               selectedValue={selectedIdentidad}

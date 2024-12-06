@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import Chatbot from './Chatbot';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import ChatBanner from './ChatBanner';
 
 export default function MainBanner() {
 
@@ -40,7 +41,8 @@ export default function MainBanner() {
             </div>
 
             <DialogPortal>
-                <DialogContent className="h-[600px] overflow-y-auto overscroll-y-contain touch-scroll">
+                <DialogContent className="flex flex-col lg:flex-row items-center justify-start lg:justify-center p-8 lg:h-auto min-h-[600px] h-[600px] w-full overflow-y-auto">
+                    <ChatBanner/>
                     <Chatbot />
                 </DialogContent>
             </DialogPortal>

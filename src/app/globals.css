@@ -101,8 +101,8 @@
 }
 
 #radix-\:R37qcq\: {
-  width:600px !important;
-  padding: 0;
+  max-width: fit-content !important;
+  padding: 20px;
 }
 
 #radix-\:Rpuja\: {
@@ -119,7 +119,7 @@
 
 @media (max-width: 767px) {
   #radix-\:R37qcq\: {
-    width:75% !important;
+    width:100% !important;
     padding: 0;
   }
   
