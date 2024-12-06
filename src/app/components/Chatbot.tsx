@@ -419,23 +419,31 @@ export default function Chatbot() {
               }`}
             >
               {message.from === "bot" && (
-                <Avatar className="mr-2 h-10 w-10 ">
+                <Avatar className="mr-4 h-10 w-10">
                   <AvatarFallback>
                     <Bot />
                   </AvatarFallback>
                 </Avatar>
               )}
               <div
-                className={`p-2  ${
+                className={`relative p-2 ${
                   message.from === "user"
                     ? "text-white font-bold bg-[#17AAE1] rounded-bl-lg rounded-t-lg"
                     : "bg-[#EEE] text-[#505050] rounded-b-lg rounded-tr-lg mt-[15px]"
                 } max-w-[55%]`}
               >
+                {/* Triángulo para el mensaje */}
+                <span
+                  className={`absolute ${
+                    message.from === "user"
+                      ? "right-[-10px] w-0 h-0 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-l-[10px] border-l-[#17AAE1]  bottom-0"
+                      : "left-[-10px] w-0 h-0 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-r-[10px] border-r-[#EEE] top-0"
+                  }`}
+                ></span>
                 {message.text}
               </div>
               {message.from === "user" && (
-                <Avatar className="ml-1 h-10 w-10 mt-[20px]">
+                <Avatar className="ml-4 h-10 w-10 mt-[20px]">
                   <AvatarFallback>
                     <User />
                   </AvatarFallback>
@@ -443,6 +451,7 @@ export default function Chatbot() {
               )}
             </div>
           ))}
+
           {isLoading && (
             <div className="mt-2">
               <Loader />
