@@ -398,224 +398,232 @@ export default function Chatbot() {
 
   return (
     <>
-      <div className="chatbot relative min-h-[500px] lg:w-[330px] xl:w-[550px] border-[#00adee] border-[5px] rounded-xl overflow-hidden">
-        <div className="flex justify-center w-full h-[60px] items-center bg-[#00adee] text-white border-b-[#00adee] rounded-b-[12px] ">
-          <h2 className="text-lg font-semibold text-white">
-            Chatea con ArgenBot
-          </h2>
-        </div>
-        <ScrollArea
-          className={`${
-            (isFlowComplete && !isConsultaStatus) || isLoading
-              ? "h-[calc(100% - 70px)] max-h-[465px]"
-              : "h-[calc(100% - 70px)] max-h-[380px]"
-          } flex-grow p-4 overflow-y-auto`}
+      <div className="chatbot relative min-h-[500px] lg:w-[330px] xl:w-[550px] bg-gradient-to-r from-[#00adee] to-[#0093ee] rounded-xl p-[5px] overflow-hidden z-10">
+        <div
+          className={`flex flex-col bg-[#FCFCFC] min-h-[500px] w-full z-20 ${
+            (isFlowComplete && !isConsultaStatus) || isLoading || isConsultaStatus == "REJECTED"
+              ? "h-[calc(100%-70px)]"
+              : "h-[calc(100%-70px)]"
+          } rounded-xl`}
         >
-          {messages.map((message, index) => (
-            <div
-              key={index}
-              className={`mb-4 flex items-start ${
-                message.from === "user" ? "justify-end" : "justify-start"
-              }`}
-            >
-              {message.from === "bot" && (
-                <Avatar className="mr-4 h-10 w-10">
-                  <AvatarFallback>
-                    <Bot />
-                  </AvatarFallback>
-                </Avatar>
-              )}
+          <div className="flex justify-center w-full h-[60px] items-center bg-gradient-to-r from-[#00adee] to-[#0093ee] text-white border-b-[#00adee] rounded-b-[12px] ">
+            <h2 className="text-lg font-semibold text-white">
+              Chatea con ArgenBot
+            </h2>
+          </div>
+          <ScrollArea
+            className={`${
+              (isFlowComplete && !isConsultaStatus) || isLoading || isConsultaStatus == "REJECTED"
+                ? "h-[calc(100%-70px)] max-h-[465px]"
+                : "h-[calc(100%-70px)] max-h-[380px]"
+            } flex-grow p-4 overflow-y-auto`}
+          >
+            {messages.map((message, index) => (
               <div
-                className={`relative p-2 ${
-                  message.from === "user"
-                    ? "text-white font-bold bg-[#17AAE1] rounded-bl-lg rounded-t-lg"
-                    : "bg-[#EEE] text-[#505050] rounded-b-lg rounded-tr-lg mt-[15px]"
-                } max-w-[55%]`}
+                key={index}
+                className={`mb-4 flex items-start ${
+                  message.from === "user" ? "justify-end" : "justify-start"
+                }`}
               >
-                {/* Triángulo para el mensaje */}
-                <span
-                  className={`absolute ${
+                {message.from === "bot" && (
+                  <Avatar className="mr-4 h-10 w-10">
+                    <AvatarFallback>
+                      <Bot />
+                    </AvatarFallback>
+                  </Avatar>
+                )}
+                <div
+                  className={`relative p-2 ${
                     message.from === "user"
-                      ? "right-[-10px] w-0 h-0 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-l-[10px] border-l-[#17AAE1]  bottom-0"
-                      : "left-[-10px] w-0 h-0 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-r-[10px] border-r-[#EEE] top-0"
-                  }`}
-                ></span>
-                {message.text}
+                      ? "text-black font-bold bg-white rounded-bl-lg rounded-t-lg shadow-lg"
+                      : "bg-gradient-to-r from-[#00adee] to-[#0093ee] text-white rounded-b-lg rounded-tr-lg mt-[15px]"
+                  } max-w-[55%]`}
+                >
+                  {/* Triángulo para el mensaje */}
+                  <span
+                    className={`absolute ${
+                      message.from === "user"
+                        ? "right-[-10px] w-0 h-0 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-l-[10px] border-l-[#FFF]  bottom-0 shadow-l-"
+                        : "left-[-10px] w-0 h-0 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-r-[10px] border-r-[#00adee] top-0"
+                    }`}
+                  ></span>
+                  {message.text}
+                </div>
+                {message.from === "user" && (
+                  <Avatar className="ml-4 h-10 w-10 mt-[20px]">
+                    <AvatarFallback>
+                      <User />
+                    </AvatarFallback>
+                  </Avatar>
+                )}
               </div>
-              {message.from === "user" && (
-                <Avatar className="ml-4 h-10 w-10 mt-[20px]">
-                  <AvatarFallback>
-                    <User />
-                  </AvatarFallback>
-                </Avatar>
-              )}
-            </div>
-          ))}
+            ))}
 
-          {isLoading && (
-            <div className="mt-2">
-              <Loader />
+            {isLoading && (
+              <div className="mt-2">
+                <Loader />
+              </div>
+            )}
+            <div ref={messagesEndRef} />
+          </ScrollArea>
+
+          {step === -1 && !isLoading && (
+            <div className="p-4 h-auto border-t border-border flex items-center justify-center bottom-0 left-0 right-0 ">
+              <Button
+                onClick={startChat}
+                className="bg-gradient-to-r from-[#00adee] to-[#0093ee] text-white px-4 py-2 rounded-lg"
+              >
+                Comenzar Chat
+              </Button>
             </div>
           )}
-          <div ref={messagesEndRef} />
-        </ScrollArea>
 
-        {step === -1 && !isLoading && (
-          <div className="p-4 h-auto border-t border-border flex items-center justify-center absolute bottom-0 left-0 right-0">
-            <Button
-              onClick={startChat}
-              className="bg-[#17AEE1] text-white px-4 py-2 rounded-lg"
-            >
-              Comenzar Chat
-            </Button>
-          </div>
-        )}
-
-        {step === 1 && !isLoading && (
-          <div className="dynamicselector p-4 border-t border-border flex gap-2 absolute bottom-0 left-0 right-0 bg-white z-50">
-            <DynamicSelector
-              className="border border-gray-300 rounded-md px-4 py-2 mb-2 flex-grow"
-              selectedValue={selectedSexo}
-              setSelectedValue={setSelectedSexo}
-              options={genderOptions}
-              placeholder={"Selecciona tu sexo"}
-            />
-            <Button
-              onClick={() => processInput(selectedSexo)}
-              className="bg-blue-500 text-white px-4 py-2 rounded-lg flex-shrink-0"
-            >
-              <Send className="h-4 w-4" />
-            </Button>
-          </div>
-        )}
-
-        {step === 2 && !isLoading && (
-          <div className="dynamicselector p-4 border-t border-border flex gap-2 absolute bottom-0 left-0 right-0 bg-white z-50">
-            <DynamicSelector
-              className="border border-gray-300 rounded-md px-4 py-2 mb-2 overflow-y-scroll flex-grow"
-              selectedValue={selectedAreaCode}
-              setSelectedValue={setSelectedAreaCode}
-              options={phoneAreaOptions}
-              placeholder={"Seleccione el código de área"}
-            />
-            <Button
-              onClick={() => processInput(selectedAreaCode)}
-              className="bg-blue-500 text-white px-4 py-2 rounded-lg"
-            >
-              <Send className="h-4 w-4" />
-            </Button>
-          </div>
-        )}
-
-        {step === 4 && !isLoading && (
-          <div className="dynamicselector p-4 border-t border-border flex gap-2 absolute bottom-0 left-0 right-0 bg-white z-50">
-            <DynamicSelector
-              className="border border-gray-300 rounded-md px-4 py-2 mb-2 overflow-y-auto"
-              selectedValue={selectedBank}
-              setSelectedValue={setSelectedBank}
-              options={BANCOS.map((banco) => ({
-                value: banco.Codigo,
-                label: banco.Descripcion,
-              }))}
-              placeholder={"Selecciona tu banco"}
-            />
-            <Button
-              onClick={() => processInput(selectedBank)}
-              className="bg-blue-500 text-white px-4 py-2 rounded-lg"
-            >
-              <Send className="h-4 w-4" />
-            </Button>
-          </div>
-        )}
-
-        {step === 6 && !isLoading && (
-          <div className="dynamicselector p-4 border-t border-border flex gap-2 absolute bottom-0 left-0 right-0 bg-white z-50">
-            <DynamicSelector
-              className="border border-gray-300 rounded-md px-4 py-2 mb-2 overflow-y-scroll touch-auto"
-              selectedValue={selectedIdentidad}
-              setSelectedValue={setSelectedIdentidad}
-              options={identidades.map((identidad) => ({
-                value: identidad.cuil,
-                label: `${identidad.nombre} (CUIL: ${identidad.cuil})`,
-              }))}
-              placeholder={"Seleccione su identidad"}
-            />
-            <Button
-              onClick={() => processInput(selectedIdentidad)}
-              className="bg-blue-500 text-white px-4 py-2 rounded-lg"
-            >
-              <Send className="h-4 w-4" />
-            </Button>
-          </div>
-        )}
-
-        {!isLoading && isConsultaStatus == "APPROVED" && (
-          <div className="p-4 h-auto border-t border-border flex items-center justify-center absolute bottom-0 left-0 right-0">
-            <Link
-              href={`https://wa.me/541126785266?text=${encodeURIComponent(
-                "¡Hola! Argento me confirmó que mi préstamo fue aprobado. ¿Podrían indicarme los próximos pasos?"
-              )}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button className="bg-[#17AEE1] text-white px-4 py-2 rounded-lg">
-                LO QUIERO
-              </Button>
-            </Link>
-          </div>
-        )}
-
-        {!isLoading && isConsultaStatus == "PENDING" && (
-          <div className="p-4 h-auto border-t border-border flex items-center justify-center absolute bottom-0 left-0 right-0">
-            <Link
-              href={`https://wa.me/541126785266?text=${encodeURIComponent(
-                "¡Hola! Argento me confirmó que mi préstamo fue pre-aprobado. ¿Podrían indicarme los próximos pasos?"
-              )}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button className="bg-[#17AEE1] text-white px-4 py-2 rounded-lg">
-                ME INTERESA
-              </Button>
-            </Link>
-          </div>
-        )}
-
-        {!isFlowComplete &&
-          !isConsultaStatus &&
-          !isLoading &&
-          step !== -1 &&
-          step !== 1 &&
-          step !== 2 &&
-          step !== 4 &&
-          step !== 6 && (
-            <div className="p-4 border-t border-border flex absolute bottom-0 left-0 right-0">
-              <Input
-                type="text"
-                placeholder={
-                  step === 0
-                    ? "Ingresá tu DNI..."
-                    : step === 3
-                    ? "Ingresá tu número de teléfono..."
-                    : step === 5
-                    ? "Inserta tu ingreso neto..."
-                    : "Escribe un mensaje..."
-                }
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                onKeyPress={(e) => e.key === "Enter" && handleSend()}
-                className="flex-grow mr-2"
+          {step === 1 && !isLoading && (
+            <div className="w-full dynamicselector border-t border-border flex gap-2 bottom-0 left-0 right-0 p-4">
+              <DynamicSelector
+                className="border border-gray-300 rounded-md px-4 py-2 mb-2 flex-grow"
+                selectedValue={selectedSexo}
+                setSelectedValue={setSelectedSexo}
+                options={genderOptions}
+                placeholder={"Selecciona tu sexo"}
               />
               <Button
-                onClick={handleSend}
-                size="icon"
-                aria-label="Send message"
-                className="bg-[#00ADEE]"
+                onClick={() => processInput(selectedSexo)}
+                className="bg-blue-500 text-white px-4 py-2 rounded-lg flex-shrink-0"
               >
                 <Send className="h-4 w-4" />
               </Button>
             </div>
           )}
+
+          {step === 2 && !isLoading && (
+            <div className="w-full dynamicselector border-t border-border flex gap-2 bottom-0 left-0 right-0 p-4">
+              <DynamicSelector
+                className="border border-gray-300 rounded-md px-4 py-2 mb-2 overflow-y-scroll flex-grow"
+                selectedValue={selectedAreaCode}
+                setSelectedValue={setSelectedAreaCode}
+                options={phoneAreaOptions}
+                placeholder={"Seleccione el código de área"}
+              />
+              <Button
+                onClick={() => processInput(selectedAreaCode)}
+                className="bg-blue-500 text-white px-4 py-2 rounded-lg"
+              >
+                <Send className="h-4 w-4" />
+              </Button>
+            </div>
+          )}
+
+          {step === 4 && !isLoading && (
+            <div className="w-full dynamicselector border-t border-border flex gap-2 bottom-0 left-0 right-0 p-4">
+              <DynamicSelector
+                className="border border-gray-300 rounded-md px-4 py-2 mb-2 overflow-y-auto"
+                selectedValue={selectedBank}
+                setSelectedValue={setSelectedBank}
+                options={BANCOS.map((banco) => ({
+                  value: banco.Codigo,
+                  label: banco.Descripcion,
+                }))}
+                placeholder={"Selecciona tu banco"}
+              />
+              <Button
+                onClick={() => processInput(selectedBank)}
+                className="bg-gradient-to-r from-[#00adee] to-[#0093ee] text-white px-4 py-2 rounded-lg"
+              >
+                <Send className="h-4 w-4" />
+              </Button>
+            </div>
+          )}
+
+          {step === 6 && !isLoading && (
+            <div className="w-full dynamicselector border-t border-border flex gap-2 bottom-0 left-0 right-0 p-4">
+              <DynamicSelector
+                className="border border-gray-300 rounded-md px-4 py-2 mb-2 overflow-y-scroll touch-auto"
+                selectedValue={selectedIdentidad}
+                setSelectedValue={setSelectedIdentidad}
+                options={identidades.map((identidad) => ({
+                  value: identidad.cuil,
+                  label: `${identidad.nombre} (CUIL: ${identidad.cuil})`,
+                }))}
+                placeholder={"Seleccione su identidad"}
+              />
+              <Button
+                onClick={() => processInput(selectedIdentidad)}
+                className="bg-gradient-to-r from-[#00adee] to-[#0093ee] text-white px-4 py-2 rounded-lg"
+              >
+                <Send className="h-4 w-4" />
+              </Button>
+            </div>
+          )}
+
+          {!isLoading && isConsultaStatus == "APPROVED" && (
+            <div className="p-4 h-auto border-t border-border flex items-center justify-center bottom-0 left-0 right-0">
+              <Link
+                href={`https://wa.me/541126785266?text=${encodeURIComponent(
+                  "¡Hola! Argento me confirmó que mi préstamo fue aprobado. ¿Podrían indicarme los próximos pasos?"
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button className="bg-gradient-to-r from-[#00adee] to-[#0093ee] text-white px-4 py-2 rounded-lg">
+                  LO QUIERO
+                </Button>
+              </Link>
+            </div>
+          )}
+
+          {!isLoading && isConsultaStatus == "PENDING" && (
+            <div className="p-4 h-auto border-t border-border flex items-center justify-center absolute bottom-0 left-0 right-0">
+              <Link
+                href={`https://wa.me/541126785266?text=${encodeURIComponent(
+                  "¡Hola! Argento me confirmó que mi préstamo fue pre-aprobado. ¿Podrían indicarme los próximos pasos?"
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button className="bg-gradient-to-r from-[#00adee] to-[#0093ee] text-white px-4 py-2 rounded-lg">
+                  ME INTERESA
+                </Button>
+              </Link>
+            </div>
+          )}
+
+          {!isFlowComplete &&
+            !isConsultaStatus &&
+            !isLoading &&
+            step !== -1 &&
+            step !== 1 &&
+            step !== 2 &&
+            step !== 4 &&
+            step !== 6 && (
+              <div className="p-4 border-t border-border flex w-full bottom-0 left-0 right-0">
+                <Input
+                  type="text"
+                  placeholder={
+                    step === 0
+                      ? "Ingresá tu DNI..."
+                      : step === 3
+                      ? "Ingresá tu número de teléfono..."
+                      : step === 5
+                      ? "Inserta tu ingreso neto..."
+                      : "Escribe un mensaje..."
+                  }
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                  onKeyPress={(e) => e.key === "Enter" && handleSend()}
+                  className="flex-grow mr-2"
+                />
+                <Button
+                  onClick={handleSend}
+                  size="icon"
+                  aria-label="Send message"
+                  className="bg-gradient-to-r from-[#00adee] to-[#0093ee]"
+                >
+                  <Send className="h-4 w-4" />
+                </Button>
+              </div>
+            )}
+        </div>
       </div>
     </>
   );
