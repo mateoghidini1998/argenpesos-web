@@ -38,7 +38,7 @@
 
 .hero-background {
   @apply bg-no-repeat bg-top bg-cover;
-  @apply bg-[url('/main-banner.jpeg')];  
+  @apply bg-[url('/christmas-banner.png')];  
 }
 
 .metodo-svg {
