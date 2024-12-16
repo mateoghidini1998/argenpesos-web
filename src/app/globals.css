@@ -46,7 +46,7 @@
 }
 
 .metodo-svg svg path {
-  fill: #00AEE1 !important; /* Default fill color for path and rect */
+  fill: #00AEE1 !important; 
 }
 
 .metodo-svg:hover svg g rect {
