@@ -27,7 +27,6 @@ export default function ArgenCompras() {
         const response = await fetch("/api/argencompras");
         const result = await response.json();
         setData(result);
-        console.log(result);
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
