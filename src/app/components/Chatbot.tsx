@@ -319,7 +319,7 @@ export default function Chatbot() {
 
     const requestBody = {
       ticket: "EB56789C-B3B9-4D4A-A6C8-98235B1179C8",
-      usuario: "PRUEBAWEB",
+      usuario: "ONLINEWEB",
       sexo: sexo,
       productoId: 10,
       entidadFinancieraCodigo: bankCodigo,
