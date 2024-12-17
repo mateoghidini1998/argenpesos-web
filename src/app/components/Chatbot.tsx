@@ -14,7 +14,7 @@ import Link from "next/link";
 
 export default function Chatbot() {
   const [messages, setMessages] = useState([
-    { from: "bot", text: "Soy Argento, el asistente virtual de Argenpesos." },
+    { from: "bot", text: "Soy ArgenBot, el asistente virtual de Argenpesos." },
     {
       from: "bot",
       text: "Te voy a estar guiando en tu consulta de préstamos.",
@@ -560,7 +560,7 @@ export default function Chatbot() {
             <div className="p-4 h-auto border-t border-border flex items-center justify-center bottom-0 left-0 right-0">
               <Link
                 href={`https://wa.me/541126785266?text=${encodeURIComponent(
-                  "¡Hola! Argento me confirmó que mi préstamo fue aprobado. ¿Podrían indicarme los próximos pasos?"
+                  "¡Hola! ArgenBot me confirmó que mi préstamo fue aprobado. ¿Podrían indicarme los próximos pasos?"
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -576,7 +576,7 @@ export default function Chatbot() {
             <div className="p-4 h-auto border-t border-border flex items-center justify-center absolute bottom-0 left-0 right-0">
               <Link
                 href={`https://wa.me/541126785266?text=${encodeURIComponent(
-                  "¡Hola! Argento me confirmó que mi préstamo fue pre-aprobado. ¿Podrían indicarme los próximos pasos?"
+                  "¡Hola! ArgenBot me confirmó que mi préstamo fue pre-aprobado. ¿Podrían indicarme los próximos pasos?"
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"
