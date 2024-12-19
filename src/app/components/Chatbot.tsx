@@ -103,7 +103,7 @@ export default function Chatbot() {
     setIsLoading(true);
     try {
       const response = await fetch(
-        `/api/validacionidentidad?ticket=EB56789C-B3B9-4D4A-A6C8-98235B1179C8&documento=${dni}&sexo=${sexoNumerico}`
+        `/api/validacionidentidad?ticket=${process.env.NEXT_PUBLIC_SMARTER_TICKET}&documento=${dni}&sexo=${sexoNumerico}`
       );
       const data = await response.json();
 
@@ -318,10 +318,10 @@ export default function Chatbot() {
     const { dni, cuil, sexo, bankCodigo, ingresos } = userData;
 
     const requestBody = {
-      ticket: "EB56789C-B3B9-4D4A-A6C8-98235B1179C8",
-      usuario: "ONLINEWEB",
+      ticket: process.env.NEXT_PUBLIC_SMARTER_TICKET,
+      usuario: process.env.NEXT_PUBLIC_SMARTER_USER,
       sexo: sexo,
-      productoId: 10,
+      productoId: parseInt(process.env.NEXT_PUBLIC_SMARTER_PRODUCT || "0", 10),
       entidadFinancieraCodigo: bankCodigo,
       ingresos: ingresos,
     };
@@ -575,7 +575,7 @@ export default function Chatbot() {
           {!isLoading && isConsultaStatus == "PENDING" && (
             <div className="p-4 h-auto border-t border-border flex items-center justify-center absolute bottom-0 left-0 right-0">
               <Link
-                href={`https://wa.me/541126785266?text=${encodeURIComponent(
+                href={`https://wa.me/541161231754?text=${encodeURIComponent(
                   "¡Hola! ArgenBot me confirmó que mi préstamo fue pre-aprobado. ¿Podrían indicarme los próximos pasos?"
                 )}`}
                 target="_blank"
