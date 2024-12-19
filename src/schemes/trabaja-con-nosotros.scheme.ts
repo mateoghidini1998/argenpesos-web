@@ -16,14 +16,18 @@ const TrabajaConNosotrosSchema = yup.object().shape({
     .email('El mail debe ser válido')
     .required('El mail es obligatorio'),
   comentarios: yup.string().nullable(),
-  /* adjuntarCV: yup
-    .mixed()
-    .required('Adjuntar el CV es obligatorio')
-    .test(
-      'fileFormat',
-      'El formato del CV debe ser PDF o DOC',
-      value => value && ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'].includes(value.type)
-    ) */
+  cv: yup
+  .mixed()
+  .required('Adjuntar el CV es obligatorio')
+  .test(
+    'fileFormat',
+    'El formato del CV debe ser PDF o DOC',
+    (value) =>
+      value &&
+      ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'].includes(
+        value.type
+      )
+  ),
 });
 
 export default TrabajaConNosotrosSchema;
