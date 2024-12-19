@@ -17,7 +17,7 @@ interface FormData {
 }
 
 function GenericForm<T extends FormData>({ title, fields, onSubmit, errors }: GenericFormProps<T>) {
-  const initialFormData = {} as T; // Puedes agregar valores predeterminados aquí si deseas
+  const initialFormData = {} as T;
   const [formData, setFormData] = useState<T>(initialFormData);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -29,7 +29,6 @@ function GenericForm<T extends FormData>({ title, fields, onSubmit, errors }: Ge
     e.preventDefault();
     onSubmit(formData);
     
-    // Verifica si hay errores y solo resetea si no hay errores
     if (!Object.values(errors).some(error => error !== undefined)) {
       setFormData(initialFormData);
     }
@@ -50,7 +49,7 @@ function GenericForm<T extends FormData>({ title, fields, onSubmit, errors }: Ge
                 label={field.label}
                 inputType={field.inputType}
                 inputProps={{
-                  value: formData[field.name] || '', // Valor predeterminado en caso de estar vacío
+                  value: formData[field.name] || '',
                   onChange: handleChange,
                   name: field.name,
                 }}
