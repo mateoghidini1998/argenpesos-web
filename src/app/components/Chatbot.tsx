@@ -315,7 +315,7 @@ export default function Chatbot() {
 
   const sendConsultaCupo = async (userData) => {
     setIsLoading(true);
-    const { dni, cuil, sexo, bankCodigo, ingresos } = userData;
+    const { dni, cuil, sexo, bankCodigo, ingresos, telefono, areaCode } = userData;
 
     const requestBody = {
       ticket: process.env.NEXT_PUBLIC_SMARTER_TICKET,
@@ -324,6 +324,7 @@ export default function Chatbot() {
       productoId: parseInt(process.env.NEXT_PUBLIC_SMARTER_PRODUCT || "0", 10),
       entidadFinancieraCodigo: bankCodigo,
       ingresos: ingresos,
+      telefono: `${areaCode}${telefono}`
     };
 
     if (cuil) {
