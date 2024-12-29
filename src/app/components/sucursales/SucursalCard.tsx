@@ -5,7 +5,7 @@ import Location from "../svgs/Location";
 import Whatsapp from "../svgs/Whatsapp";
 import { Card } from "@/components/ui/card";
 
-export default function SucursalCard({ sucursal, telefono, celular, direccion, link_whatsapp, link_maps }) {
+export default function SucursalCard({ sucursal, telefono, celular, direccion, link_whatsapp, link_maps, image }) {
     return (
 
         <div className="w-full max-w-4xl mx-auto overflow-hidden">
@@ -14,7 +14,7 @@ export default function SucursalCard({ sucursal, telefono, celular, direccion, l
                             <Image
                                 className="object-cover w-full h-full rounded-t-[0.75rem] sm:rounded-l-[0.75rem] sm:rounded-tr-none"
                                 height="100%"
-                                src={sucursalImg} 
+                                src={image || sucursalImg} 
                                 alt='sucursal' 
                                 style={{
                                 aspectRatio: "300/400",
