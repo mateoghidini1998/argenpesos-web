@@ -11,6 +11,7 @@ import QUILMES from "../../../public/QUILMES.png";
 import SANFERNANDO from "../../../public/SAN-FERNANDO.png";
 import SANJUSTO from "../../../public/SAN-JUSTO.jpg";
 import VARELA from "../../../public/VARELA.png";
+import SOLANO from "../../../public/SOLANO.png";
 
 const SUCURSALES = [
   {
@@ -56,7 +57,7 @@ const SUCURSALES = [
       "direccion": "Calle 844 Nº2364",
       "link_whatsapp": "https://qrco.de/beahnt",
       "link_maps": "https://maps.app.goo.gl/YSX3GBodgJ1XRNbb9",
-      "image": null
+      "image": SOLANO
   },
   {
       "sucursal": "FLORENCIO VARELA",
@@ -144,7 +145,7 @@ const SUCURSALES = [
       "telefono": "0237-4602291",
       "celular": "15-2169-7799",
       "direccion": "Belgrano 3371",
-      "link_whatsapp": "https://qrco.de/beai2y",
+      "link_whatsapp": "https://maps.app.goo.gl/o66ADxzPw3S9Yqbh9",
       "link_maps": "",
       "image": null
   },
@@ -153,7 +154,7 @@ const SUCURSALES = [
       "telefono": "0237-4602291",
       "celular": "15-2184-6156",
       "direccion": "Av. Libertador 674",
-      "link_whatsapp": "https://qrco.de/beai2y",
+      "link_whatsapp": "https://maps.app.goo.gl/s1VvnFB37dRZnuiP9",
       "link_maps": "",
       "image": MERLO
   },
