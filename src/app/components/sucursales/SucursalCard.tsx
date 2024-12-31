@@ -27,7 +27,9 @@ export default function SucursalCard({ sucursal, telefono, celular, direccion, l
                             <div>
                                 <h2 className="text-2xl font-bold text-lightblue-primary mb-4">{sucursal}</h2>
                                 <p className="text-[#888] text-muted-foreground mb-2">{direccion}</p>
-                                <p className="text-[#888] text-muted-foreground mb-2">{telefono}</p>
+                                {telefono && (
+                                    <p className="text-[#888] text-muted-foreground mb-2">{telefono}</p>
+                                )}
                                 <p className="text-[#888] text-muted-foreground mb-2">{celular}</p>
                                 <p className="text-[#888] text-muted-foreground mb-2">Lun a Vier 9:00 a 18:45 hs</p>
                                 <p className="text-[#888] text-muted-foreground mb-6">Sab 9:00 a 13:00 hs</p>
