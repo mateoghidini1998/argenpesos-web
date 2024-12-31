@@ -12,6 +12,8 @@ import SANFERNANDO from "../../../public/SAN-FERNANDO.png";
 import SANJUSTO from "../../../public/SAN-JUSTO.jpg";
 import VARELA from "../../../public/VARELA.png";
 import SOLANO from "../../../public/SOLANO.png";
+import SANMIGUEL from "../../../public/SAN-MIGUEL.png";
+import SANJOSE from "../../../public/SAN-JOSE.png";
 
 const SUCURSALES = [
   {
@@ -75,7 +77,7 @@ const SUCURSALES = [
       "direccion": "Salta 87",
       "link_whatsapp": "https://qrco.de/beahrP",
       "link_maps": "https://maps.app.goo.gl/SRtqbhgj4ZnT5A3F8",
-      "image": null
+      "image": SANJOSE
   },
   {
       "sucursal": "QUILMES",
@@ -102,7 +104,7 @@ const SUCURSALES = [
       "direccion": "Presidente Perón 1185",
       "link_whatsapp": "https://qrco.de/beahxK",
       "link_maps": "https://maps.app.goo.gl/wLmBh5KQbJQvmCmo6",
-      "image": null
+      "image": SANMIGUEL
   },
   {
       "sucursal": "SAN JUSTO",
