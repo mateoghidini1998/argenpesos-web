@@ -144,7 +144,7 @@ const SUCURSALES = [
   },
   {
       "sucursal": "SAN MARTIN",
-      "telefono": "0237-4602291",
+      "telefono": null,
       "celular": "15-2169-7799",
       "direccion": "Belgrano 3371",
       "link_whatsapp": "https://maps.app.goo.gl/o66ADxzPw3S9Yqbh9",
@@ -153,7 +153,7 @@ const SUCURSALES = [
   },
   {
       "sucursal": "MERLO",
-      "telefono": "0237-4602291",
+      "telefono": null,
       "celular": "15-2184-6156",
       "direccion": "Av. Libertador 674",
       "link_whatsapp": "https://maps.app.goo.gl/s1VvnFB37dRZnuiP9",
