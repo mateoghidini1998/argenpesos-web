@@ -36,34 +36,35 @@ async function sendEmail(formData, formType) {
     ...formData,
     venta_al_publico: formData.venta_al_publico ? 'Si' : 'No',
   };
-
+  
+  const emailContent = { ...transformedFormData };
+  delete emailContent.cv;
+  
   const attachments = formData.cv
     ? [
         {
-          content: formData.cv.base64,
+          content: formData.cv.base64.split(',')[1],
           filename: formData.cv.name,
           type: formData.cv.type,
         },
       ]
     : [];
-
+  
   try {
     const { data, error } = await resend.emails.send({
       from: Array.isArray(recipientEmail) ? recipientEmail[0] : recipientEmail,
       to: recipientEmail,
       subject,
-      react: EmailTemplate({ title: subject, formData: transformedFormData }),
+      react: EmailTemplate({ title: subject, formData: emailContent }),
       attachments,
     });
-
+  
     if (error) {
       throw new Error(error.message);
     }
     return data;
   } catch (error) {
     console.error('Error enviando el correo:', error);
-    console.error('RESEND_API_KEY utilizada:', process.env.RESEND_API_KEY?.slice(0, 5) + '*****'); // Log parcial para seguridad
-    console.error('Recipient Email:', recipientEmail);
     throw error;
   }
 }

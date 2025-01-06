@@ -47,18 +47,18 @@ export default function FormGroup({
         />
       )}
       {error && <div className="text-red-500 text-[10px] mt-1">{error}</div>}
-
-      {inputType === "textarea" && (
-        <textarea
-          className="border border-gray-300 rounded w-full px-2 py-2 md:px-4 h-24 focus:outline-none focus:border-lightblue-primary"
-          {...(inputProps as React.TextareaHTMLAttributes<HTMLTextAreaElement>)}
-        />
-      )}
       {inputType === "file" && (
         <input
           type="file"
           className="border border-gray-300 rounded w-full px-2 py-2 md:px-4 focus:outline-none focus:border-lightblue-primary"
           {...(inputProps as React.InputHTMLAttributes<HTMLInputElement>)}
+        />
+      )}
+
+      {inputType === "textarea" && (
+        <textarea
+          className="border border-gray-300 rounded w-full px-2 py-2 md:px-4 h-24 focus:outline-none focus:border-lightblue-primary"
+          {...(inputProps as React.TextareaHTMLAttributes<HTMLTextAreaElement>)}
         />
       )}
 

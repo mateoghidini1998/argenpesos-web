@@ -83,7 +83,7 @@ export default function FooterForms() {
       </div>
       <DialogPortal>
         <DialogContent className="w-[90%] h-[90%] md:h-auto sm:w-full overflow-scroll">
-          <form className="max-w-[20rem] sm:max-w-lg mx-auto relative">
+          <form className="max-w-[20rem] sm:max-w-lg mx-auto relative p-4">
             {modalContent === "Trabaja con nosotros" && <TrabajaConNosotros />}
             {modalContent === "Convertite en comercializador" && (
               <ConvertiteEnComercializadorForm />

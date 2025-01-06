@@ -28,12 +28,11 @@ const handleSubmit = async (
 
     const result = await response.json();
   } catch (error) {
-    // Si hay errores de Yup, lanzamos el error para que el componente que llama lo maneje
+
     if (error.name === 'ValidationError') {
-      throw error; // Lanzar el error para que el componente superior lo capture
+      throw error; 
     }
-    
-    // Si es un error de red o de envío del formulario
+
     throw new Error('Error enviando el formulario');
   }
 };
