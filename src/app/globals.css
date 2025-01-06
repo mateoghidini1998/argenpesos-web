@@ -101,7 +101,8 @@
 }
 
 #radix-\:R37qcq\:,
-#radix-\:Rpuja\:  {
+#radix-\:Rpuja\:,
+#radix-\:r0\:{
   max-width: fit-content !important;
   padding: 20px;
 }
@@ -116,7 +117,8 @@
 
 @media (max-width: 767px) {
   #radix-\:R37qcq\:,
-  #radix-\:Rpuja\: {
+  #radix-\:Rpuja\:,
+  #radix-\:r0\:{
     width:100% !important;
     padding: 0;
   }

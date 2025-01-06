@@ -62,6 +62,8 @@ async function sendEmail(formData, formType) {
     return data;
   } catch (error) {
     console.error('Error enviando el correo:', error);
+    console.error('RESEND_API_KEY utilizada:', process.env.RESEND_API_KEY?.slice(0, 5) + '*****'); // Log parcial para seguridad
+    console.error('Recipient Email:', recipientEmail);
     throw error;
   }
 }

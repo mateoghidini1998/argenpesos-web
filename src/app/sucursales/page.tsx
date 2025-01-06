@@ -1,4 +1,19 @@
 import SucursalCard from "../components/sucursales/SucursalCard";
+import AVELLANEDA from "../../../public/AVELLANEDA.png";
+import BERAZATEGUI from "../../../public/BERAZATEGUI.png";
+import LANUS from "../../../public/LANUS.png";
+import LAFERRERE from "../../../public/LAFERRERE.png";
+import LINIERS from "../../../public/LINIERS.png";
+import LOMAS from "../../../public/LOMAS.png";
+import MERLO from "../../../public/MERLO.png";
+import MORENO from "../../../public/MORENO.png";
+import QUILMES from "../../../public/QUILMES.png";
+import SANFERNANDO from "../../../public/SAN-FERNANDO.png";
+import SANJUSTO from "../../../public/SAN-JUSTO.jpg";
+import VARELA from "../../../public/VARELA.png";
+import SOLANO from "../../../public/SOLANO.png";
+import SANMIGUEL from "../../../public/SAN-MIGUEL.png";
+import SANJOSE from "../../../public/SAN-JOSE.png";
 
 const SUCURSALES = [
   {
@@ -7,7 +22,8 @@ const SUCURSALES = [
       "celular": "15-3252-5817",
       "direccion": "Av. Mitre 531",
       "link_whatsapp": "https://qrco.de/beahcy",
-      "link_maps": "https://maps.app.goo.gl/dyjeuAQBq9rFYHVaA"
+      "link_maps": "https://maps.app.goo.gl/dyjeuAQBq9rFYHVaA",
+      "image": AVELLANEDA
   },
   {
       "sucursal": "BERAZATEGUI",
@@ -15,7 +31,8 @@ const SUCURSALES = [
       "celular": "15-3252-4896",
       "direccion": "Av.14 N°5022",
       "link_whatsapp": "https://qrco.de/beahhm",
-      "link_maps": "https://maps.app.goo.gl/EgjxkRgRTsHp11X79"
+      "link_maps": "https://maps.app.goo.gl/EgjxkRgRTsHp11X79",
+      "image": BERAZATEGUI
   },
   {
       "sucursal": "LANUS",
@@ -23,7 +40,8 @@ const SUCURSALES = [
       "celular": "15-3252-4303",
       "direccion": "9 de Julio 1101, Esquina 29 de septiembre",
       "link_whatsapp": "https://qrco.de/beahjp",
-      "link_maps": "https://maps.app.goo.gl/jAkfFnGD7CNv7Uvg6"
+      "link_maps": "https://maps.app.goo.gl/jAkfFnGD7CNv7Uvg6",
+      "image": LANUS
   },
   {
       "sucursal": "LOMAS DE ZAMORA",
@@ -31,7 +49,8 @@ const SUCURSALES = [
       "celular": "15-3252-4297",
       "direccion": "Av. Meeks 101",
       "link_whatsapp": "https://qrco.de/beahlU",
-      "link_maps": "https://maps.app.goo.gl/k7LYYxtXYZPbGC5V9"
+      "link_maps": "https://maps.app.goo.gl/k7LYYxtXYZPbGC5V9",
+      "image": LOMAS
   },
   {
       "sucursal": "SOLANO",
@@ -39,7 +58,8 @@ const SUCURSALES = [
       "celular": "11 2664-9025",
       "direccion": "Calle 844 Nº2364",
       "link_whatsapp": "https://qrco.de/beahnt",
-      "link_maps": "https://maps.app.goo.gl/YSX3GBodgJ1XRNbb9"
+      "link_maps": "https://maps.app.goo.gl/YSX3GBodgJ1XRNbb9",
+      "image": SOLANO
   },
   {
       "sucursal": "FLORENCIO VARELA",
@@ -47,7 +67,8 @@ const SUCURSALES = [
       "celular": "15-3252-4920",
       "direccion": "Monteagudo 3053 ex 345",
       "link_whatsapp": "https://qrco.de/beahq8",
-      "link_maps": "https://maps.app.goo.gl/FiTxmVem8eRKEmKW6"
+      "link_maps": "https://maps.app.goo.gl/FiTxmVem8eRKEmKW6",
+      "image": VARELA
   },
   {
       "sucursal": "SAN JOSE",
@@ -55,7 +76,8 @@ const SUCURSALES = [
       "celular": "15-2165-4919",
       "direccion": "Salta 87",
       "link_whatsapp": "https://qrco.de/beahrP",
-      "link_maps": "https://maps.app.goo.gl/SRtqbhgj4ZnT5A3F8"
+      "link_maps": "https://maps.app.goo.gl/SRtqbhgj4ZnT5A3F8",
+      "image": SANJOSE
   },
   {
       "sucursal": "QUILMES",
@@ -63,7 +85,8 @@ const SUCURSALES = [
       "celular": "15-6551-0711",
       "direccion": "Av. Rivadavia 96",
       "link_whatsapp": "https://qrco.de/beahsn",
-      "link_maps": "https://maps.app.goo.gl/Qf9QD96hyDhz6Mfc8"
+      "link_maps": "https://maps.app.goo.gl/Qf9QD96hyDhz6Mfc8",
+      "image": QUILMES
   },
   {
       "sucursal": "SAN FERNANDO",
@@ -71,7 +94,8 @@ const SUCURSALES = [
       "celular": "15-3252-4072",
       "direccion": "Constitución 198",
       "link_whatsapp": "https://qrco.de/beahwA",
-      "link_maps": "https://maps.app.goo.gl/4Q1nkTLjyTeqUMdb9"
+      "link_maps": "https://maps.app.goo.gl/4Q1nkTLjyTeqUMdb9",
+      "image": SANFERNANDO
   },
   {
       "sucursal": "SAN MIGUEL",
@@ -79,7 +103,8 @@ const SUCURSALES = [
       "celular": "15-3252-3061",
       "direccion": "Presidente Perón 1185",
       "link_whatsapp": "https://qrco.de/beahxK",
-      "link_maps": "https://maps.app.goo.gl/wLmBh5KQbJQvmCmo6"
+      "link_maps": "https://maps.app.goo.gl/wLmBh5KQbJQvmCmo6",
+      "image": SANMIGUEL
   },
   {
       "sucursal": "SAN JUSTO",
@@ -87,7 +112,8 @@ const SUCURSALES = [
       "celular": "15-3252-2397",
       "direccion": "Arieta 3320",
       "link_whatsapp": "https://qrco.de/beahyr",
-      "link_maps": "https://maps.app.goo.gl/vLaqkb2jedXs1sr89"
+      "link_maps": "https://maps.app.goo.gl/vLaqkb2jedXs1sr89",
+      "image": SANJUSTO
   },
   {
       "sucursal": "LINIERS",
@@ -95,7 +121,8 @@ const SUCURSALES = [
       "celular": "15-2660-0019",
       "direccion": "Av. Rivadavia 11640",
       "link_whatsapp": "https://qrco.de/beai0C",
-      "link_maps": "https://maps.app.goo.gl/r5qc65pnWdqLuDH3A"
+      "link_maps": "https://maps.app.goo.gl/r5qc65pnWdqLuDH3A",
+      "image": LINIERS
   },
   {
       "sucursal": "LAFERRERE",
@@ -103,7 +130,8 @@ const SUCURSALES = [
       "celular": "15-7144-8047",
       "direccion": "Av. Luro 6096",
       "link_whatsapp": "https://qrco.de/beai1I",
-      "link_maps": "https://maps.app.goo.gl/u6CcuiaeAeH9H7uM9"
+      "link_maps": "https://maps.app.goo.gl/u6CcuiaeAeH9H7uM9",
+      "image": LAFERRERE
   },
   {
       "sucursal": "MORENO",
@@ -111,8 +139,27 @@ const SUCURSALES = [
       "celular": "15-7144-8042",
       "direccion": "Av. Libertador 165",
       "link_whatsapp": "https://qrco.de/beai2y",
-      "link_maps": ""
-  }
+      "link_maps": "",
+      "image": MORENO
+  },
+  {
+      "sucursal": "SAN MARTIN",
+      "telefono": null,
+      "celular": "15-2169-7799",
+      "direccion": "Belgrano 3371",
+      "link_whatsapp": "https://maps.app.goo.gl/o66ADxzPw3S9Yqbh9",
+      "link_maps": "",
+      "image": null
+  },
+  {
+      "sucursal": "MERLO",
+      "telefono": null,
+      "celular": "15-2184-6156",
+      "direccion": "Av. Libertador 674",
+      "link_whatsapp": "https://maps.app.goo.gl/s1VvnFB37dRZnuiP9",
+      "link_maps": "",
+      "image": MERLO
+  },
 ]
 
 
@@ -131,6 +178,7 @@ export default function Sucursales() {
                   direccion={sucursal.direccion}
                   link_whatsapp={sucursal.link_whatsapp}
                   link_maps={sucursal.link_maps}
+                  image={sucursal.image}
               />
           ))}
         </div>
