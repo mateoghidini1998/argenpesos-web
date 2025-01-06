@@ -18,7 +18,7 @@ const TrabajaConNosotros = () => {
   const [errors, setErrors] = useState({});
 
   const onSubmit = async (data) => {
-    if (data.cv) {
+    if (data.cv instanceof File) { 
       const file = data.cv;
       const reader = new FileReader();
       reader.onloadend = async () => {
@@ -65,6 +65,7 @@ const TrabajaConNosotros = () => {
       }
     }
   };
+  
   
   return <GenericForm title="Trabajá con nosotros" fields={fields} onSubmit={onSubmit} errors={errors}/>;
 };
