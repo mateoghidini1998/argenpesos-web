@@ -66,8 +66,6 @@ const TrabajaConNosotros = () => {
     }
   };
   
-
-
   return <GenericForm title="Trabajá con nosotros" fields={fields} onSubmit={onSubmit} errors={errors}/>;
 };
 

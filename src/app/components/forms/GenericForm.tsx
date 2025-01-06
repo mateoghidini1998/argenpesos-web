@@ -20,9 +20,13 @@ function GenericForm<T extends FormData>({ title, fields, onSubmit, errors }: Ge
   const initialFormData = {} as T;
   const [formData, setFormData] = useState<T>(initialFormData);
 
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = event.target;
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
+    const { name, value, files } = event.target as HTMLInputElement;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: files ? files[0] : value, 
+    }));
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
