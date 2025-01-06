@@ -1,5 +1,5 @@
 import { EmailTemplate } from '@/app/components/EmailTemplate';
-import { Resend } from 'resend'
+import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -10,7 +10,10 @@ async function sendEmail(formData, formType) {
     'solicitar_contrato_suscripto': process.env.CONTRATO_SUSCRIPTO_MAIL,
     'trabajar_con_nosotros': process.env.TRABAJA_CON_NOSOTROS_MAIL,
     'adherente': process.env.TRABAJA_CON_NOSOTROS_MAIL,
-    'comercio': process.env.CONVERTITE_COMERZIALIZADOR_MAIL,
+    'comercio': [
+      process.env.CONVERTITE_COMERZIALIZADOR_MAIL,
+      process.env.CONVERTITE_COMERZIALIZADOR_MAIL_SECUNDARIO,
+    ],
   };
 
   const emailSubjects = {
@@ -31,15 +34,26 @@ async function sendEmail(formData, formType) {
 
   const transformedFormData = {
     ...formData,
-    venta_al_publico: formData.venta_al_publico ? 'Si' : 'No', 
+    venta_al_publico: formData.venta_al_publico ? 'Si' : 'No',
   };
+
+  const attachments = formData.cv
+    ? [
+        {
+          content: formData.cv.base64,
+          filename: formData.cv.name,
+          type: formData.cv.type,
+        },
+      ]
+    : [];
 
   try {
     const { data, error } = await resend.emails.send({
-      from: recipientEmail,
+      from: Array.isArray(recipientEmail) ? recipientEmail[0] : recipientEmail,
       to: recipientEmail,
       subject,
-      react: EmailTemplate({ title: subject, formData: transformedFormData }), 
+      react: EmailTemplate({ title: subject, formData: transformedFormData }),
+      attachments,
     });
 
     if (error) {
@@ -50,7 +64,6 @@ async function sendEmail(formData, formType) {
     console.error('Error enviando el correo:', error);
     throw error;
   }
-};
-
+}
 
 export default sendEmail;

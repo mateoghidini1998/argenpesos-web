@@ -390,7 +390,7 @@ export default function Chatbot() {
     } catch (error) {
       setMessages((prevMessages) => [
         ...prevMessages,
-        { from: "bot", text: "Ocurrió un error." },
+        { from: "bot", text: "Tenes una solicitud pendiente." },
       ]);
     } finally {
       setIsLoading(false);
