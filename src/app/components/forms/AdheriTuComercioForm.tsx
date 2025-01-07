@@ -22,7 +22,7 @@ const AdheriTuComercioForm = () => {
 
   const onSubmit = async (data) => {
     try {
-      await handleSubmit(data, AdherirComercioSchema, 'adherir_comercio');
+      await handleSubmit(data, AdherirComercioSchema, 'adherente');
       setErrors({}); 
     } catch (err) {
       if (err.inner) {

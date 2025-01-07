@@ -29,7 +29,7 @@ export default function Footer() {
                         <ul className="space-y-1">
                         <li className="text-[#17AAE1] font-bold whitespace-nowrap">- PRÉSTAMOS</li>
                         <li className="text-[#EC5647] font-bold whitespace-nowrap overflow-hidden">
-                            <Link href="https://www.argencompras.com.ar" target='_blank'>
+                            <Link href="https://www.argencompras.ar" target='_blank'>
                             - ARGENCOMPRAS
                             </Link>
                         </li>

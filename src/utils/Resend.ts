@@ -9,7 +9,7 @@ async function sendEmail(formData, formType) {
     'boton_baja': process.env.BOTON_BAJA_MAIL,
     'solicitar_contrato_suscripto': process.env.CONTRATO_SUSCRIPTO_MAIL,
     'trabajar_con_nosotros': process.env.TRABAJA_CON_NOSOTROS_MAIL,
-    'adherente': process.env.TRABAJA_CON_NOSOTROS_MAIL,
+    'adherente': process.env.ADHERI_TU_COMERCIO_MAIL,
     'comercio': [
       process.env.CONVERTITE_COMERZIALIZADOR_MAIL,
       process.env.CONVERTITE_COMERZIALIZADOR_MAIL_SECUNDARIO,
