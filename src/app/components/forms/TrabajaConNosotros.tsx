@@ -47,8 +47,6 @@ const TrabajaConNosotros = ({ title }) => {
         TrabajaConNosotrosSchema,
         "trabajar_con_nosotros"
       );
-      setFormValues({});
-      setErrors({});
     } catch (error) {
       console.error(error);
     } finally {
