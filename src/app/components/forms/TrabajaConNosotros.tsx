@@ -2,11 +2,25 @@
 import TrabajaConNosotrosSchema from "@/schemes/trabaja-con-nosotros.scheme";
 import handleSubmit from "@/utils/submitForm";
 import FormGroup from "./FormGroup";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import FormTitle from "./FormTitle";
 
 const TrabajaConNosotros = ({ title }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const initialFormValues = {
+    nombre: "",
+    apellido: "",
+    dni: "",
+    celular: "",
+    mail: "",
+    comentarios: "",
+    cv: undefined,
+  };
+
+  const [formValues, setFormValues] = useState(initialFormValues);
+  const [errors, setErrors] = useState({});
+  const fileInputRef = useRef(null);
+
   const fields = [
     { label: "Nombre", inputType: "input", name: "nombre" },
     { label: "Apellido", inputType: "input", name: "apellido" },
@@ -17,10 +31,7 @@ const TrabajaConNosotros = ({ title }) => {
     { label: "Adjuntar CV", inputType: "file", name: "cv" },
   ];
 
-  const [formValues, setFormValues] = useState({});
-  const [errors, setErrors] = useState({});
-
-  const handleChange = async (name: string, value: any) => {
+  const handleChange = async (name, value) => {
     if (name === "cv" && value instanceof File) {
       const file = value;
       const base64 = await convertFileToBase64(file);
@@ -37,9 +48,9 @@ const TrabajaConNosotros = ({ title }) => {
     }
   };
 
-  const onSubmit = async (e: React.FormEvent) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    if (isSubmitting) return; 
+    if (isSubmitting) return;
     setIsSubmitting(true);
     try {
       await handleSubmit(
@@ -47,6 +58,13 @@ const TrabajaConNosotros = ({ title }) => {
         TrabajaConNosotrosSchema,
         "trabajar_con_nosotros"
       );
+      setErrors({});
+      setFormValues(initialFormValues);
+
+      // Limpia el campo de archivo manualmente
+      if (fileInputRef.current) {
+        fileInputRef.current.value = "";
+      }
     } catch (error) {
       console.error(error);
     } finally {
@@ -74,6 +92,10 @@ const TrabajaConNosotros = ({ title }) => {
                 inputType={field.inputType as any}
                 inputProps={{
                   name: field.name,
+                  value:
+                    field.inputType === "file"
+                      ? undefined // Los campos de tipo file no usan value
+                      : formValues[field.name] || "", // Vincula los demás campos al estado
                   onChange: (e) => {
                     const value =
                       field.inputType === "file"
@@ -82,30 +104,37 @@ const TrabajaConNosotros = ({ title }) => {
                     handleChange(field.name, value);
                   },
                   id: field.name,
+                  ...(field.inputType === "file" && { ref: fileInputRef }),
                 }}
                 error={errors[field.name]}
               />
             </div>
           ))}
         </div>
-          <div className="flex justify-center mt-4 w-full">
-            <button
-              type="submit"
-              onClick={onSubmit}
-              className="bg-[#00ADEE] w-full text-white py-2 px-8 rounded-[8px] focus:outline-none"
-            >
-              Enviar
-            </button>
-          </div>
+        <div className="flex justify-center mt-4 w-full relative">
+          <button
+            type="submit"
+            onClick={onSubmit}
+            className={`bg-[#00ADEE] w-full text-white py-2 px-8 rounded-[8px] focus:outline-none ${isSubmitting ? "opacity-50 cursor-not-allowed" : ""}`}
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? "Enviando..." : "Enviar"}
+          </button>
+          {isSubmitting && (
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="loader border-t-4 border-b-4 border-white rounded-full w-6 h-6 animate-spin"></div>
+            </div>
+          )}
+        </div>
       </div>
     </>
   );
 };
 
-const convertFileToBase64 = (file: File): Promise<string> => {
+const convertFileToBase64 = (file) => {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
-    reader.onload = () => resolve(reader.result as string);
+    reader.onload = () => resolve(reader.result);
     reader.onerror = (error) => reject(error);
     reader.readAsDataURL(file);
   });
