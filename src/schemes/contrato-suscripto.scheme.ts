@@ -12,7 +12,7 @@ const ContratoSuscriptoScheme = yup.object().shape({
       "El DNI debe ser un número de 7 u 8 dígitos sin puntos"
     )
     .required("El DNI es obligatorio"),
-  phone: yup
+  celular: yup
     .string()
     .matches(/^\d+$/, "El celular debe contener solo números")
     .required("El celular es obligatorio"),

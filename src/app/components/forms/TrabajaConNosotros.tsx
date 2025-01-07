@@ -39,8 +39,7 @@ const TrabajaConNosotros = ({ title }) => {
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (isSubmitting) return; // Prevenir doble envío
-    console.log("Datos del formulario:", formValues);
+    if (isSubmitting) return; 
     setIsSubmitting(true);
     try {
       await handleSubmit(
@@ -48,7 +47,6 @@ const TrabajaConNosotros = ({ title }) => {
         TrabajaConNosotrosSchema,
         "trabajar_con_nosotros"
       );
-      alert("Formulario enviado correctamente");
     } catch (error) {
       console.error(error);
     } finally {
@@ -104,7 +102,6 @@ const TrabajaConNosotros = ({ title }) => {
   );
 };
 
-// Función para convertir archivos a base64
 const convertFileToBase64 = (file: File): Promise<string> => {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();

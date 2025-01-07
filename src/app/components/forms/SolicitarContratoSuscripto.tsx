@@ -22,8 +22,9 @@ const SolicitarContratoSuscripto = () => {
   const onSubmit = async (data) => {
     try {
       await handleSubmit(data, ContratoSuscriptoScheme, 'solicitar_contrato_suscripto');
-      setErrors({}); 
+      setErrors({});
     } catch (err) {
+      console.error('Error al enviar formulario:', err);
       if (err.inner) {
         const formErrors = err.inner.reduce((acc, currentError) => {
           acc[currentError.path] = currentError.message;
@@ -35,6 +36,7 @@ const SolicitarContratoSuscripto = () => {
       }
     }
   };
+  
 
 
 
