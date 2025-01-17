@@ -14,6 +14,7 @@ import VARELA from "../../../public/VARELA.png";
 import SOLANO from "../../../public/SOLANO.png";
 import SANMIGUEL from "../../../public/SAN-MIGUEL.png";
 import SANJOSE from "../../../public/SAN-JOSE.png";
+import SANMARTIN from "../../../public/SAN-MARTIN.jpg";
 
 const SUCURSALES = [
   {
@@ -149,7 +150,7 @@ const SUCURSALES = [
       "direccion": "Belgrano 3371",
       "link_whatsapp": "https://maps.app.goo.gl/o66ADxzPw3S9Yqbh9",
       "link_maps": "",
-      "image": null
+      "image": SANMARTIN
   },
   {
       "sucursal": "MERLO",
