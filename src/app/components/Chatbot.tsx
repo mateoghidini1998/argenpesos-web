@@ -389,9 +389,16 @@ export default function Chatbot() {
         ]);
       }
     } catch (error) {
+      let errorMessage = "Ocurrió un error";
+      if (
+        error.ExceptionMessage ===
+        "El solicitante ya tiene una solicitud por Verificar. Imposible continuar."
+      ) {
+        errorMessage = "Tenes una solicitud pendiente.";
+      }
       setMessages((prevMessages) => [
         ...prevMessages,
-        { from: "bot", text: "Tenes una solicitud pendiente." },
+        { from: "bot", text: errorMessage },
       ]);
     } finally {
       setIsLoading(false);
