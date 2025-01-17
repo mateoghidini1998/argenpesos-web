@@ -315,7 +315,8 @@ export default function Chatbot() {
 
   const sendConsultaCupo = async (userData) => {
     setIsLoading(true);
-    const { dni, cuil, sexo, bankCodigo, ingresos, telefono, areaCode } = userData;
+    const { dni, cuil, sexo, bankCodigo, ingresos, telefono, areaCode } =
+      userData;
 
     const requestBody = {
       ticket: process.env.NEXT_PUBLIC_SMARTER_TICKET,
@@ -324,7 +325,7 @@ export default function Chatbot() {
       productoId: parseInt(process.env.NEXT_PUBLIC_SMARTER_PRODUCT || "0", 10),
       entidadFinancieraCodigo: bankCodigo,
       ingresos: ingresos,
-      telefono: `${areaCode}${telefono}`
+      telefono: `${areaCode}${telefono}`,
     };
 
     if (cuil) {
@@ -402,7 +403,9 @@ export default function Chatbot() {
       <div className="chatbot relative min-h-[500px] lg:w-[330px] xl:w-[550px] bg-gradient-to-r from-[#00adee] to-[#0093ee] rounded-xl p-[5px] overflow-hidden z-10">
         <div
           className={`flex flex-col bg-[#FCFCFC] min-h-[500px] w-full z-20 ${
-            (isFlowComplete && !isConsultaStatus) || isLoading || isConsultaStatus == "REJECTED"
+            (isFlowComplete && !isConsultaStatus) ||
+            isLoading ||
+            isConsultaStatus == "REJECTED"
               ? "h-[calc(100%-70px)]"
               : "h-[calc(100%-70px)]"
           } rounded-xl`}
@@ -414,7 +417,9 @@ export default function Chatbot() {
           </div>
           <ScrollArea
             className={`${
-              (isFlowComplete && !isConsultaStatus) || isLoading || isConsultaStatus == "REJECTED"
+              (isFlowComplete && !isConsultaStatus) ||
+              isLoading ||
+              isConsultaStatus == "REJECTED"
                 ? "h-[calc(100%-70px)] max-h-[465px]"
                 : "h-[calc(100%-70px)] max-h-[380px]"
             } flex-grow p-4 overflow-y-auto`}
@@ -577,7 +582,7 @@ export default function Chatbot() {
             <div className="p-4 h-auto border-t border-border flex items-center justify-center absolute bottom-0 left-0 right-0">
               <Link
                 href={`https://wa.me/541161231754?text=${encodeURIComponent(
-                   `¡Hola! ArgenBot me confirmó que mi préstamo fue aprobado, mi número de DNI es ${userData.dni}. ¿Podrían indicarme los próximos pasos?`
+                  `¡Hola! ArgenBot me confirmó que mi préstamo fue aprobado, mi número de DNI es ${userData.dni}. ¿Podrían indicarme los próximos pasos?`
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -610,7 +615,17 @@ export default function Chatbot() {
                       : "Escribe un mensaje..."
                   }
                   value={input}
-                  onChange={(e) => setInput(e.target.value)}
+                  onChange={(e) => {
+                    const value = e.target.value;
+                    if (step === 3) {
+                      const regex = /^[0-9\b]{0,8}$/;
+                      if (regex.test(value)) {
+                        setInput(value);
+                      }
+                    } else {
+                      setInput(value);
+                    }
+                  }}
                   onKeyPress={(e) => e.key === "Enter" && handleSend()}
                   className="flex-grow mr-2"
                 />
