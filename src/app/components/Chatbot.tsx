@@ -629,8 +629,13 @@ export default function Chatbot() {
                   value={input}
                   onChange={(e) => {
                     const value = e.target.value;
-                    if (step === 3) {
+                    if (step === 3 || step === 0) {
                       const regex = /^[0-9\b]{0,8}$/;
+                      if (regex.test(value)) {
+                        setInput(value);
+                      }
+                    } else if (step === 5) {
+                      const regex = /^[0-9]+$/;
                       if (regex.test(value)) {
                         setInput(value);
                       }
