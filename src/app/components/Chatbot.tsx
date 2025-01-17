@@ -315,9 +315,8 @@ export default function Chatbot() {
 
   const sendConsultaCupo = async (userData) => {
     setIsLoading(true);
-    const { dni, cuil, sexo, bankCodigo, ingresos, telefono, areaCode } =
-      userData;
-
+    const { dni, cuil, sexo, bankCodigo, ingresos, telefono, areaCode } = userData;
+  
     const requestBody = {
       ticket: process.env.NEXT_PUBLIC_SMARTER_TICKET,
       usuario: process.env.NEXT_PUBLIC_SMARTER_USER,
@@ -327,13 +326,13 @@ export default function Chatbot() {
       ingresos: ingresos,
       telefono: `${areaCode}${telefono}`,
     };
-
+  
     if (cuil) {
       requestBody.cuil = cuil;
     } else {
       requestBody.documento = dni;
     }
-
+  
     try {
       const response = await fetch("/api/consultacupo", {
         method: "POST",
@@ -342,12 +341,23 @@ export default function Chatbot() {
         },
         body: JSON.stringify(requestBody),
       });
-
+  
       const data = await response.json();
-
+  
+      // Verifica si la respuesta tiene un error explícito
+      if (data.ResponseException?.IsError) {
+        const errorMessage = data.ResponseException.ExceptionMessage || "Ocurrió un error inesperado.";
+        setMessages((prevMessages) => [
+          ...prevMessages,
+          { from: "bot", text: errorMessage },
+        ]);
+        return; // Detenemos aquí porque es un error manejado
+      }
+  
+      // Manejo de respuesta exitosa
       if (response.ok) {
         const { resultado, maximoCapital, maximoCuota } = data.result;
-
+  
         let finalMessage = "";
         if (resultado === "RECHAZADO") {
           setIsConsultaStatus("REJECTED");
@@ -355,55 +365,50 @@ export default function Chatbot() {
             "Ups....por el momento no sería posible acceder a un préstamo. De todas formas puede volver a consultarlo en 30 días.";
           const messagePart2 =
             "Descárgate la app... para obtener más información y aprovechar todos nuestros beneficios";
-
+  
           setMessages((prevMessages) => [
             ...prevMessages,
             { from: "bot", text: messagePart1 },
           ]);
-
+  
           setMessages((prevMessages) => [
             ...prevMessages,
             { from: "bot", text: messagePart2 },
           ]);
         } else if (resultado === "APROBADO SIN CUPO") {
           setIsConsultaStatus("PENDING");
-          finalMessage = ` ¡Excelente! Tenes un préstamo pre-aprobado, sujeto a un análisis crediticio.`;
+          finalMessage = `¡Excelente! Tenés un préstamo pre-aprobado, sujeto a un análisis crediticio.`;
           setMessages((prevMessages) => [
             ...prevMessages,
             { from: "bot", text: finalMessage },
           ]);
         } else if (resultado === "APROBADO CON CUPO") {
-          finalMessage = ` ¡Excelente! Tenes un préstamo aprobado por $${maximoCapital} en 12 cuotas de $${maximoCuota}. Sujeto a un análisis crediticio.`;
+          finalMessage = `¡Excelente! Tenés un préstamo aprobado por $${maximoCapital} en 12 cuotas de $${maximoCuota}. Sujeto a un análisis crediticio.`;
           setIsConsultaStatus("APPROVED");
           setMessages((prevMessages) => [
             ...prevMessages,
             { from: "bot", text: finalMessage },
           ]);
         }
-
+  
         setIsFlowComplete(true);
       } else {
         setMessages((prevMessages) => [
           ...prevMessages,
-          { from: "bot", text: `Error: ${data.message}` },
+          { from: "bot", text: `Error: ${data.Message}` },
         ]);
       }
     } catch (error) {
-      let errorMessage = "Ocurrió un error";
-      if (
-        error.ExceptionMessage ===
-        "El solicitante ya tiene una solicitud por Verificar. Imposible continuar."
-      ) {
-        errorMessage = "Tenes una solicitud pendiente.";
-      }
+      console.error("Error inesperado:", error);
       setMessages((prevMessages) => [
         ...prevMessages,
-        { from: "bot", text: errorMessage },
+        { from: "bot", text: "Ocurrió un error inesperado." },
       ]);
     } finally {
       setIsLoading(false);
     }
   };
+  
 
   return (
     <>
