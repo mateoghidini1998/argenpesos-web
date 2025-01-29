@@ -24,25 +24,18 @@ export default function Chatbot() {
   const [step, setStep] = useState(-1);
   const [isLoading, setIsLoading] = useState(false);
   const [isFlowComplete, setIsFlowComplete] = useState(false);
-  const [selectedSexo, setSelectedSexo] = useState("");
   const [selectedAreaCode, setSelectedAreaCode] = useState("");
   const [selectedBank, setSelectedBank] = useState("");
   const [identidades, setIdentidades] = useState([]);
   const [selectedIdentidad, setSelectedIdentidad] = useState("");
   const [isConsultaStatus, setIsConsultaStatus] = useState(null);
   const [userData, setUserData] = useState({
-    sexo: "",
     dni: "",
     bankCodigo: "",
     telefono: "",
     areaCode: "",
     ingresos: "",
   });
-
-  const genderOptions = [
-    { value: "M", label: "Masculino" },
-    { value: "F", label: "Femenino" },
-  ];
 
   const phoneAreaOptions = [
     { value: "11", label: "11" },
@@ -99,11 +92,11 @@ export default function Chatbot() {
     setStep(0);
   };
 
-  const validateIdentidad = async (dni: string, sexoNumerico: number) => {
+  const validateIdentidad = async (dni: string) => {
     setIsLoading(true);
     try {
       const response = await fetch(
-        `/api/validacionidentidad?ticket=${process.env.NEXT_PUBLIC_SMARTER_TICKET}&documento=${dni}&sexo=${sexoNumerico}`
+        `/api/validacionidentidad?ticket=${process.env.NEXT_PUBLIC_SMARTER_TICKET}&documento=${dni}`
       );
       const data = await response.json();
 
@@ -152,37 +145,24 @@ export default function Chatbot() {
     switch (step) {
       case 0:
         setUserData((prevData) => ({ ...prevData, dni: inputText }));
-        setMessages((prevMessages) => [
-          ...prevMessages,
-          { from: "bot", text: "Por favor, selecciona tu sexo:" },
-        ]);
-        setStep(1);
-        break;
-      case 1:
-        if (selectedSexo) {
-          setIsLoading(true);
+        setIsLoading(true);
 
-          const selectedOption = genderOptions.find(
-            (option) => option.value === selectedSexo
-          );
-
-          const sexoNumerico = selectedSexo === "M" ? 1 : 2;
-          setUserData((prevData) => ({ ...prevData, sexo: sexoNumerico }));
-
+        // Llama a la función validateIdentidad directamente después de obtener el DNI
+        try {
+          await validateIdentidad(inputText);
           setMessages((prevMessages) => [
             ...prevMessages,
-            { from: "user", text: selectedOption?.label || selectedSexo },
+            { from: "bot", text: "Identidad validada correctamente." },
           ]);
-
-          validateIdentidad(userData.dni, sexoNumerico);
-        } else {
+          // Continúa con el siguiente paso después de la validación
+          setStep(2); // Ajusta el número del paso según tu flujo
+        } catch (error) {
           setMessages((prevMessages) => [
             ...prevMessages,
-            {
-              from: "bot",
-              text: "Por favor, selecciona un sexo válido: M o F",
-            },
+            { from: "bot", text: "Error al validar identidad." },
           ]);
+        } finally {
+          setIsLoading(false);
         }
         break;
 
@@ -315,24 +295,24 @@ export default function Chatbot() {
 
   const sendConsultaCupo = async (userData) => {
     setIsLoading(true);
-    const { dni, cuil, sexo, bankCodigo, ingresos, telefono, areaCode } = userData;
-  
+    const { dni, cuil, bankCodigo, ingresos, telefono, areaCode } =
+      userData;
+
     const requestBody = {
       ticket: process.env.NEXT_PUBLIC_SMARTER_TICKET,
       usuario: process.env.NEXT_PUBLIC_SMARTER_USER,
-      sexo: sexo,
       productoId: parseInt(process.env.NEXT_PUBLIC_SMARTER_PRODUCT || "0", 10),
       entidadFinancieraCodigo: bankCodigo,
       ingresos: ingresos,
       telefono: `${areaCode}${telefono}`,
     };
-  
+
     if (cuil) {
       requestBody.cuil = cuil;
     } else {
       requestBody.documento = dni;
     }
-  
+
     try {
       const response = await fetch("/api/consultacupo", {
         method: "POST",
@@ -341,23 +321,25 @@ export default function Chatbot() {
         },
         body: JSON.stringify(requestBody),
       });
-  
+
       const data = await response.json();
-  
+
       // Verifica si la respuesta tiene un error explícito
       if (data.ResponseException?.IsError) {
-        const errorMessage = data.ResponseException.ExceptionMessage || "Ocurrió un error inesperado.";
+        const errorMessage =
+          data.ResponseException.ExceptionMessage ||
+          "Ocurrió un error inesperado.";
         setMessages((prevMessages) => [
           ...prevMessages,
           { from: "bot", text: errorMessage },
         ]);
         return; // Detenemos aquí porque es un error manejado
       }
-  
+
       // Manejo de respuesta exitosa
       if (response.ok) {
         const { resultado, maximoCapital, maximoCuota } = data.result;
-  
+
         let finalMessage = "";
         if (resultado === "RECHAZADO") {
           setIsConsultaStatus("REJECTED");
@@ -365,12 +347,12 @@ export default function Chatbot() {
             "Ups....por el momento no sería posible acceder a un préstamo. De todas formas puede volver a consultarlo en 30 días.";
           const messagePart2 =
             "Descárgate la app... para obtener más información y aprovechar todos nuestros beneficios";
-  
+
           setMessages((prevMessages) => [
             ...prevMessages,
             { from: "bot", text: messagePart1 },
           ]);
-  
+
           setMessages((prevMessages) => [
             ...prevMessages,
             { from: "bot", text: messagePart2 },
@@ -390,7 +372,7 @@ export default function Chatbot() {
             { from: "bot", text: finalMessage },
           ]);
         }
-  
+
         setIsFlowComplete(true);
       } else {
         setMessages((prevMessages) => [
@@ -408,7 +390,6 @@ export default function Chatbot() {
       setIsLoading(false);
     }
   };
-  
 
   return (
     <>
@@ -495,25 +476,6 @@ export default function Chatbot() {
               </Button>
             </div>
           )}
-
-          {step === 1 && !isLoading && (
-            <div className="w-full dynamicselector border-t border-border flex gap-2 bottom-0 left-0 right-0 p-4">
-              <DynamicSelector
-                className="border border-gray-300 rounded-md px-4 py-2 mb-2 flex-grow"
-                selectedValue={selectedSexo}
-                setSelectedValue={setSelectedSexo}
-                options={genderOptions}
-                placeholder={"Selecciona tu sexo"}
-              />
-              <Button
-                onClick={() => processInput(selectedSexo)}
-                className="bg-blue-500 text-white px-4 py-2 rounded-lg flex-shrink-0"
-              >
-                <Send className="h-4 w-4" />
-              </Button>
-            </div>
-          )}
-
           {step === 2 && !isLoading && (
             <div className="w-full dynamicselector border-t border-border flex gap-2 bottom-0 left-0 right-0 p-4">
               <DynamicSelector
