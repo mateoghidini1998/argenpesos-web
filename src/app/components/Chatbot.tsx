@@ -37,6 +37,10 @@ export default function Chatbot() {
     ingresos: "",
   });
 
+  const genderOptions = [
+    { value: "M", label: "Masculino" },
+    { value: "F", label: "Femenino" },
+  ];
   const phoneAreaOptions = [
     { value: "11", label: "11" },
     { value: "351", label: "351" },
@@ -92,7 +96,7 @@ export default function Chatbot() {
     setStep(0);
   };
 
-  const validateIdentidad = async (dni: string) => {
+  const validateIdentidad = async (dni) => {
     setIsLoading(true);
     try {
       const response = await fetch(
@@ -106,10 +110,7 @@ export default function Chatbot() {
           ...prevMessages,
           { from: "bot", text: `Identidad validada: ${identidad.nombre}` },
         ]);
-        setUserData((prevData) => ({
-          ...prevData,
-          cuil: identidad.cuil,
-        }));
+        setUserData((prevData) => ({ ...prevData, cuil: identidad.cuil }));
         setStep(2);
       } else if (data.statusCode === 201 && data.result.length > 1) {
         setIdentidades(data.result);
@@ -141,60 +142,23 @@ export default function Chatbot() {
     }
   };
 
-  const processInput = async (inputText: string) => {
+  const processInput = async (inputText) => {
     switch (step) {
       case 0:
         setUserData((prevData) => ({ ...prevData, dni: inputText }));
-        setIsLoading(true);
-
-        // Llama a la función validateIdentidad directamente después de obtener el DNI
-        try {
-          await validateIdentidad(inputText);
-          setMessages((prevMessages) => [
-            ...prevMessages,
-            { from: "bot", text: "Identidad validada correctamente." },
-          ]);
-          // Continúa con el siguiente paso después de la validación
-          setStep(2); // Ajusta el número del paso según tu flujo
-        } catch (error) {
-          setMessages((prevMessages) => [
-            ...prevMessages,
-            { from: "bot", text: "Error al validar identidad." },
-          ]);
-        } finally {
-          setIsLoading(false);
-        }
+        validateIdentidad(inputText);
         break;
-
       case 2:
-        if (selectedAreaCode) {
-          setUserData((prevData) => ({
-            ...prevData,
-            areaCode: selectedAreaCode,
-          }));
-
-          setMessages((prevMessages) => [
-            ...prevMessages,
-            { from: "user", text: selectedAreaCode },
-          ]);
-
-          setMessages((prevMessages) => [
-            ...prevMessages,
-            {
-              from: "bot",
-              text: "Ingresá tu número de teléfono. (Sin 0 y sin 15)",
-            },
-          ]);
-          setStep(3);
-        } else {
-          setMessages((prevMessages) => [
-            ...prevMessages,
-            {
-              from: "bot",
-              text: "Por favor, selecciona un código de área válido.",
-            },
-          ]);
-        }
+        setMessages((prevMessages) => [
+          ...prevMessages,
+          { from: "user", text: inputText },
+        ]);
+        setUserData((prevData) => ({ ...prevData, areaCode: inputText }));
+        setMessages((prevMessages) => [
+          ...prevMessages,
+          { from: "bot", text: "Ingresá tu número de teléfono." },
+        ]);
+        setStep(3);
         break;
       case 3:
         setUserData((prevData) => ({ ...prevData, telefono: inputText }));
@@ -213,16 +177,14 @@ export default function Chatbot() {
             (banco) => banco.Codigo === Number(selectedBank)
           );
           if (bancoSeleccionado) {
-            setUserData((prevData) => ({
-              ...prevData,
-              bankCodigo: bancoSeleccionado.Codigo,
-            }));
-
             setMessages((prevMessages) => [
               ...prevMessages,
               { from: "user", text: bancoSeleccionado.Descripcion },
             ]);
-
+            setUserData((prevData) => ({
+              ...prevData,
+              bankCodigo: bancoSeleccionado.Codigo,
+            }));
             setMessages((prevMessages) => [
               ...prevMessages,
               {
@@ -232,62 +194,39 @@ export default function Chatbot() {
             ]);
             setStep(5);
           }
-        } else {
-          setMessages((prevMessages) => [
-            ...prevMessages,
-            { from: "bot", text: "Por favor, selecciona un banco válido." },
-          ]);
         }
         break;
       case 5:
-        if (!userData.ingresos) {
-          setUserData((prevData) => ({ ...prevData, ingresos: inputText }));
-
-          setMessages((prevMessages) => [
-            ...prevMessages,
-            {
-              from: "bot",
-              text: "Gracias por proporcionar tu información. El sistema se encuentra procesando la consulta de cupo..",
-            },
-          ]);
-
-          setTimeout(() => {
-            sendConsultaCupo({
-              ...userData,
-              ingresos: inputText,
-            });
-          }, 0);
-        }
+        setUserData((prevData) => ({ ...prevData, ingresos: inputText }));
+        setMessages((prevMessages) => [
+          ...prevMessages,
+          { from: "bot", text: "Procesando tu consulta..." },
+        ]);
+        setTimeout(
+          () => sendConsultaCupo({ ...userData, ingresos: inputText }),
+          0
+        );
         break;
-
       case 6:
         if (selectedIdentidad) {
           const identidadSeleccionada = identidades.find(
             (identidad) => identidad.cuil === Number(selectedIdentidad)
           );
-
           if (identidadSeleccionada) {
             setMessages((prevMessages) => [
               ...prevMessages,
               { from: "user", text: identidadSeleccionada.nombre },
-              { from: "bot", text: "Identidad seleccionada correctamente." },
-              { from: "bot", text: "¿Cuál es tu código de área?" },
             ]);
-
             setUserData((prevData) => ({
               ...prevData,
               cuil: identidadSeleccionada.cuil,
             }));
+            setMessages((prevMessages) => [
+              ...prevMessages,
+              { from: "bot", text: "¿Cuál es tu código de área?" },
+            ]);
             setStep(2);
           }
-        } else {
-          setMessages((prevMessages) => [
-            ...prevMessages,
-            {
-              from: "bot",
-              text: "Por favor, seleccione una identidad válida.",
-            },
-          ]);
         }
         break;
     }
@@ -295,8 +234,7 @@ export default function Chatbot() {
 
   const sendConsultaCupo = async (userData) => {
     setIsLoading(true);
-    const { dni, cuil, bankCodigo, ingresos, telefono, areaCode } =
-      userData;
+    const { dni, cuil, bankCodigo, ingresos, telefono, areaCode } = userData;
 
     const requestBody = {
       ticket: process.env.NEXT_PUBLIC_SMARTER_TICKET,
@@ -540,7 +478,7 @@ export default function Chatbot() {
             <div className="p-4 h-auto border-t border-border flex items-center justify-center bottom-0 left-0 right-0">
               <Link
                 href={`https://wa.me/541126785266?text=${encodeURIComponent(
-                  `¡Hola! ArgenBot me confirmó que mi préstamo fue aprobado, mi número de DNI es ${userData.dni}. ¿Podrían indicarme los próximos pasos?`
+                  `¡Hola! ArgenBot me confirmó que mi préstamo fue aprobado, mi número de DNI es ${userData.dni}. ¿Podrían indicarme los próximos pasos?`
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -555,8 +493,8 @@ export default function Chatbot() {
           {!isLoading && isConsultaStatus == "PENDING" && (
             <div className="p-4 h-auto border-t border-border flex items-center justify-center absolute bottom-0 left-0 right-0">
               <Link
-                href={`https://wa.me/541121825108?text=${encodeURIComponent(
-                  `¡Hola! ArgenBot me confirmó que mi préstamo fue aprobado, mi número de DNI es ${userData.dni}. ¿Podrían indicarme los próximos pasos?`
+                href={`https://wa.me/541161231754?text=${encodeURIComponent(
+                  `¡Hola! ArgenBot me confirmó que mi préstamo fue aprobado, mi número de DNI es ${userData.dni}. ¿Podrían indicarme los próximos pasos?`
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"
