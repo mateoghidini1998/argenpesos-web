@@ -200,7 +200,7 @@ export default function Chatbot() {
         setUserData((prevData) => ({ ...prevData, ingresos: inputText }));
         setMessages((prevMessages) => [
           ...prevMessages,
-          { from: "bot", text: "Procesando tu consulta..." },
+          { from: "bot", text: "Gracias por proporcionar tu información. El sistema se encuentra procesando la consulta de cupo..." },
         ]);
         setTimeout(
           () => sendConsultaCupo({ ...userData, ingresos: inputText }),
