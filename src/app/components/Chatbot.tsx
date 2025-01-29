@@ -535,7 +535,7 @@ export default function Chatbot() {
                         setInput(value);
                       }
                     } else if (step === 5) {
-                      const regex = /^[0-9]+$/;
+                      const regex = /^[0-9]*$/;
                       if (regex.test(value)) {
                         setInput(value);
                       }
