@@ -200,7 +200,10 @@ export default function Chatbot() {
         setUserData((prevData) => ({ ...prevData, ingresos: inputText }));
         setMessages((prevMessages) => [
           ...prevMessages,
-          { from: "bot", text: "Gracias por proporcionar tu información. El sistema se encuentra procesando la consulta de cupo..." },
+          {
+            from: "bot",
+            text: "Gracias por proporcionar tu información. El sistema se encuentra procesando la consulta de cupo...",
+          },
         ]);
         setTimeout(
           () => sendConsultaCupo({ ...userData, ingresos: inputText }),
@@ -435,7 +438,6 @@ export default function Chatbot() {
           {step === 4 && !isLoading && (
             <div className="w-full dynamicselector border-t border-border flex gap-2 bottom-0 left-0 right-0 p-4">
               <DynamicSelector
-                className="border border-gray-300 rounded-md px-4 py-2 mb-2 overflow-y-auto"
                 selectedValue={selectedBank}
                 setSelectedValue={setSelectedBank}
                 options={BANCOS.map((banco) => ({
@@ -444,6 +446,7 @@ export default function Chatbot() {
                 }))}
                 placeholder={"Selecciona tu banco"}
               />
+
               <Button
                 onClick={() => processInput(selectedBank)}
                 className="bg-gradient-to-r from-[#00adee] to-[#0093ee] text-white px-4 py-2 rounded-lg"

@@ -32,7 +32,7 @@ export default function CustomDropdown({
       <CommandInput 
         placeholder={`Buscar ${placeholder.toLowerCase()}...`} 
         value={search} 
-        onChange={(e) => setSearch(e.target.value)} 
+        onValueChange={setSearch}
       />
       <CommandList>
         <CommandEmpty>No se encontraron opciones.</CommandEmpty>
