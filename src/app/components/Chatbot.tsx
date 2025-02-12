@@ -12,7 +12,7 @@ import Bot from "./svgs/Bot";
 import User from "./svgs/User";
 import Link from "next/link";
 
-export default function Chatbot() {
+export default function Chatbot({ openedFromQR }) {
   const [messages, setMessages] = useState([
     { from: "bot", text: "Soy ArgenBot, el asistente virtual de Argenpesos." },
     {

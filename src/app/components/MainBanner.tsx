@@ -9,11 +9,13 @@ import ChatBanner from './ChatBanner';
 export default function MainBanner() {
 
     const [isChatOpen, setIsChatOpen] = useState(false);
+    const [ openedFromQR, setOpenedFromQR ] = useState(false)
     const router = useRouter();
 
     useEffect(() => {
         if (new URLSearchParams(window.location.search).get('openChat') === 'true') {
             setIsChatOpen(true);
+            setOpenedFromQR(true);
         }
     }, []);
 
@@ -29,7 +31,10 @@ export default function MainBanner() {
                             <DialogTrigger asChild>
                                 <Button 
                                     className='mt-8 bg-[#17AAE1] hover:bg-[#2799c2] text-white text-[16px] md:text-base lg:text-[32px] font-bold py-2 px-4 rounded-full w-[160px] h-[50px] md:w-[170px] md:h-[50px] lg:w-[250px] lg:h-[80px]'
-                                    onClick={() => setIsChatOpen(true)}
+                                    onClick={() => {
+                                        setIsChatOpen(true);
+                                        setOpenedFromQR(false);
+                                    }}
                                 >
                                     Pedilo acá
                                 </Button>
@@ -43,7 +48,7 @@ export default function MainBanner() {
             <DialogPortal>
                 <DialogContent className="flex flex-col lg:flex-row items-center justify-start lg:justify-center p-8 lg:h-auto min-h-[600px] h-[600px] w-full overflow-y-auto overflow-x-hidden">
                     <ChatBanner/>
-                    <Chatbot />
+                    <Chatbot openedFromQR={openedFromQR} />
                 </DialogContent>
             </DialogPortal>
         </Dialog>
