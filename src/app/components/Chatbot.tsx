@@ -241,7 +241,7 @@ export default function Chatbot({ openedFromQR }) {
 
     const requestBody = {
       ticket: process.env.NEXT_PUBLIC_SMARTER_TICKET,
-      usuario: process.env.NEXT_PUBLIC_SMARTER_USER,
+      usuario: openedFromQR ? "QRWEB" : "ONLINEWEB",
       productoId: parseInt(process.env.NEXT_PUBLIC_SMARTER_PRODUCT || "0", 10),
       entidadFinancieraCodigo: bankCodigo,
       ingresos: ingresos,
