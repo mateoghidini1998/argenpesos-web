@@ -1,7 +1,7 @@
-'use client'
-import React, { useState } from 'react';
-import FormGroup from './FormGroup';
-import FormTitle from './FormTitle';
+"use client";
+import React, { useState } from "react";
+import FormGroup from "./FormGroup";
+import FormTitle from "./FormTitle";
 
 interface GenericFormProps<T extends FormData> {
   title: string;
@@ -16,44 +16,58 @@ interface FormData {
   // ... otros campos
 }
 
-function GenericForm<T extends FormData>({ title, fields, onSubmit, errors }: GenericFormProps<T>) {
+function GenericForm<T extends FormData>({
+  title,
+  fields,
+  onSubmit,
+  errors,
+}: GenericFormProps<T>) {
   const initialFormData = {} as T;
   const [formData, setFormData] = useState<T>(initialFormData);
 
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value, files } = event.target as HTMLInputElement;
     setFormData((prevData) => ({
       ...prevData,
-      [name]: files ? files[0] : value, 
+      [name]: files ? files[0] : value,
     }));
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     onSubmit(formData);
-    
-    if (!Object.values(errors).some(error => error !== undefined)) {
+
+    if (!Object.values(errors).some((error) => error !== undefined)) {
       setFormData(initialFormData);
     }
   };
-  
 
   return (
     <>
       <FormTitle title={title} />
+      {errors.general && (
+        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+          {errors.general}
+        </div>
+      )}
       <div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 form-container">
           {fields.map((field, index) => (
             <div
               key={index}
-              className={`${fields.length % 2 !== 0 && index === fields.length - 1 ? 'md:col-span-2' : ''}`}
+              className={`${
+                fields.length % 2 !== 0 && index === fields.length - 1
+                  ? "md:col-span-2"
+                  : ""
+              }`}
             >
               <FormGroup
                 label={field.label}
                 inputType={field.inputType}
                 inputProps={{
-                  value: formData[field.name] || '',
+                  value: formData[field.name] || "",
                   onChange: handleChange,
                   name: field.name,
                 }}

@@ -27,7 +27,7 @@ const BotonArrepentimientoForm = ({ title }) => {
         }, {});
         setErrors(formErrors);
       } else {
-        setErrors({ general: 'Ha ocurrido un error desconocido' });
+        setErrors({ general: err.message || 'Ha ocurrido un error desconocido' });
       }
     }
   };

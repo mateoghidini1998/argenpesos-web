@@ -32,10 +32,23 @@ async function sendEmail(formData, formType) {
     throw new Error('Invalid formType');
   }
 
-  const transformedFormData = {
+  let transformedFormData = {
     ...formData,
-    venta_al_publico: formData.venta_al_publico ? 'Si' : 'No',
   };
+
+  if (formType === 'comercio' && formData.venta_al_publico) {
+    transformedFormData = {
+      ...transformedFormData,
+      venta_al_publico: formData.venta_al_publico ? 'Si' : 'No',
+    };
+  }
+
+  if (formType === 'boton_arrepentimiento' && formData.codigoVerificacion) {
+    transformedFormData = {
+      ...transformedFormData,
+      'Código de Verificación': formData.codigoVerificacion,
+    };
+  }
   
   const emailContent = { ...transformedFormData };
   delete emailContent.cv;
