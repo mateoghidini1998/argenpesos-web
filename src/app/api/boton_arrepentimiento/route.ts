@@ -20,7 +20,7 @@ export async function POST(request: NextRequest) {
     console.log("Payload final enviado a la API externa:\n", JSON.stringify(payload, null, 2));
 
     const response = await fetch(
-      "http://smarter.argenpesos.com.ar:30002/external/BotonArrepentimiento",
+      "http://smarter.argenpesos.com.ar:30001/external/BotonArrepentimiento",
       {
         method: "POST",
         headers: {
