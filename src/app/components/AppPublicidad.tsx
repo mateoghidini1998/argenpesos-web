@@ -1,6 +1,7 @@
 import appstore from "../../../public/appstore.png"
 import googleplay from "../../../public/googleplay.png"
 import appImg from "../../../public/PhoneWeb.png"
+import QR from "../../../public/QR_APP.png"
 import Image from "next/image"
 import DownloadSVG from "./svgs/Download"
 import Link from "next/link"
@@ -17,7 +18,9 @@ export default function AppPublicidad () {
                         </div>
                         <div className="flex flex-col md:flex-row w-full items-center justify-start gap-[20px] xl:gap-[30px]">
                             <div className="flex flex-col items-center w-[150px] md:w-[120px] md:h-[180px] lg:w-[175px] h-[160px] lg:h-[200px] xl:w-[205px] xl:h-[230px] md:gap-[12px] p-1 md:p-2.5 bg-white rounded-[18px]">
-                                <div className="w-[130px] md:w-[100px] lg:w-[150px] xl:w-[180px] xl:h-[160px] h-[130px] md:h-[140px] mb-[5px] md:mb-2.5 rounded-[8px] md:rounded-[14px] border-solid border-[2px] md:border-[4px] border-[#4DC4F1]"></div>
+                                <div className="w-[130px] md:w-[100px] lg:w-[150px] xl:w-[180px] xl:h-[160px] h-[130px] md:h-[140px] mb-[5px] md:mb-2.5 rounded-[8px] md:rounded-[14px] border-solid border-[2px] md:border-[4px] border-[#4DC4F1]">
+                                    <Image src={QR} alt="Application Argenpesos" className="h-full w-full rounded-[8px] md:rounded-[14px]"/>
+                                </div>
                                 <div className="w-full flex items-center justify-center gap-0.5 md:gap-[6px]">
                                     <DownloadSVG className="w-[10px] h-[10px] md:w-[18px] md:h-[18px]" />
                                     <p className="text-lightblue-primary text-[14px] md:text-xs lg:text-sm xl:text-base font-bold">Descarga la app</p>
@@ -27,8 +30,8 @@ export default function AppPublicidad () {
                                 <Link href="">
                                     <Image src={appstore} alt="appstore" className="h-[30px] w-[100px] sm:h-[40px] sm:w-[110px] md:h-[52px] md:w-[180px]"/>
                                 </Link>
+                                <Link href="https://play.google.com/store/apps/details?id=com.binarysorcerers.argenpesosnuevo">
                                     <Image src={googleplay} alt="google-play"  className=" h-[30px] w-[100px] sm:h-[40px] sm:w-[110px] md:h-[52px] md:w-[180px] "/>
-                                <Link href="">
                                 </Link>
                             </div>
                         </div>
