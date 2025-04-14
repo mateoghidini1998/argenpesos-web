@@ -15,6 +15,7 @@ import SOLANO from "../../../public/SOLANO.png";
 import SANMIGUEL from "../../../public/SAN-MIGUEL.png";
 import SANJOSE from "../../../public/SAN-JOSE.png";
 import SANMARTIN from "../../../public/SAN-MARTIN.jpg";
+import MONTEGRANDE from "../../../public/MONTE-GRANDE.jpeg";
 
 const SUCURSALES = [
   {
@@ -148,8 +149,8 @@ const SUCURSALES = [
       "telefono": null,
       "celular": "15-2169-7799",
       "direccion": "Belgrano 3371",
-      "link_whatsapp": "https://maps.app.goo.gl/o66ADxzPw3S9Yqbh9",
-      "link_maps": "",
+      "link_whatsapp": "",
+      "link_maps": "https://maps.app.goo.gl/o66ADxzPw3S9Yqbh9",
       "image": SANMARTIN
   },
   {
@@ -157,9 +158,27 @@ const SUCURSALES = [
       "telefono": null,
       "celular": "15-2184-6156",
       "direccion": "Av. Libertador 674",
-      "link_whatsapp": "https://maps.app.goo.gl/s1VvnFB37dRZnuiP9",
-      "link_maps": "",
+      "link_whatsapp": "",
+      "link_maps": "https://maps.app.goo.gl/s1VvnFB37dRZnuiP9",
       "image": MERLO
+  },
+  {
+      "sucursal": "LOMAS DE ZAMORA 2",
+      "telefono": null,
+      "celular": "15-2184-7191",
+      "direccion": "Carlos Pellegrini 62",
+      "link_whatsapp": "",
+      "link_maps": "https://maps.app.goo.gl/s1VvnFB37dRZnuiP9",
+      "image": null
+  },
+  {
+      "sucursal": "MONTE GRANDE",
+      "telefono": null,
+      "celular": "15-2184-5732",
+      "direccion": "Alem 181",
+      "link_whatsapp": "",
+      "link_maps": "https://maps.app.goo.gl/s1VvnFB37dRZnuiP9",
+      "image": MONTEGRANDE
   },
 ]
 
@@ -170,7 +189,7 @@ export default function Sucursales() {
       <section className=" p-8">
         <h2 className="text-lightblue-primary text-center text-2xl md:text-heading mb-10">Sucursales</h2>
         <div className="grid grid-cols-1 place-items-center md:grid-cols-2 lg:grid-cols-2 gap-8">
-          {SUCURSALES.map((sucursal, index) => (
+        {SUCURSALES.sort((a, b) => a.sucursal.localeCompare(b.sucursal)).map((sucursal, index) => (
               <SucursalCard
                   key={index}
                   sucursal={sucursal.sucursal}
