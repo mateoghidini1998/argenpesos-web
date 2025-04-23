@@ -167,7 +167,7 @@ const SUCURSALES = [
       "telefono": null,
       "celular": "15-2184-7191",
       "direccion": "Carlos Pellegrini 62",
-      "link_whatsapp": "",
+      "link_whatsapp": "https://qrco.de/bfeEbk",
       "link_maps": "https://maps.app.goo.gl/s1VvnFB37dRZnuiP9",
       "image": null
   },
