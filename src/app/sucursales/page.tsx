@@ -5,12 +5,14 @@ import LANUS from "../../../public/LANUS.png";
 import LAFERRERE from "../../../public/LAFERRERE.png";
 import LINIERS from "../../../public/LINIERS.png";
 import LOMAS from "../../../public/LOMAS.png";
+import LOMAS2 from "../../../public/LOMAS2.jpeg";
 import MERLO from "../../../public/MERLO.png";
 import MORENO from "../../../public/MORENO.png";
 import QUILMES from "../../../public/QUILMES.png";
 import SANFERNANDO from "../../../public/SAN-FERNANDO.png";
 import SANJUSTO from "../../../public/SAN-JUSTO.jpg";
 import VARELA from "../../../public/VARELA.png";
+import VARELA2 from "../../../public/VARELA2.jpeg";
 import SOLANO from "../../../public/SOLANO.png";
 import SANMIGUEL from "../../../public/SAN-MIGUEL.png";
 import SANJOSE from "../../../public/SAN-JOSE.png";
@@ -30,7 +32,7 @@ const SUCURSALES = [
   {
       "sucursal": "BERAZATEGUI",
       "telefono": "4356-0717 / 0911",
-      "celular": "15-3252-4896",
+      "celular": "15-7102-2907",
       "direccion": "Av.14 N°5022",
       "link_whatsapp": "https://qrco.de/beahhm",
       "link_maps": "https://maps.app.goo.gl/EgjxkRgRTsHp11X79",
@@ -39,7 +41,7 @@ const SUCURSALES = [
   {
       "sucursal": "LANUS",
       "telefono": "4240-4798/ 5448",
-      "celular": "15-3252-4303",
+      "celular": "15-6222-9389",
       "direccion": "9 de Julio 1101, Esquina 29 de septiembre",
       "link_whatsapp": "https://qrco.de/beahjp",
       "link_maps": "https://maps.app.goo.gl/jAkfFnGD7CNv7Uvg6",
@@ -66,11 +68,20 @@ const SUCURSALES = [
   {
       "sucursal": "FLORENCIO VARELA",
       "telefono": "4287-8544 y 4287-3269",
-      "celular": "15-3252-4920",
+      "celular": "15-3045-6857",
       "direccion": "Monteagudo 3053 ex 345",
       "link_whatsapp": "https://qrco.de/beahq8",
       "link_maps": "https://maps.app.goo.gl/FiTxmVem8eRKEmKW6",
       "image": VARELA
+  },
+  {
+      "sucursal": "FLORENCIO VARELA 2",
+      "telefono": "4287-8544 y 4287-3269",
+      "celular": "15-2184-5585",
+      "direccion": "Monteagudo 3282",
+      "link_whatsapp": "https://qrco.de/beahq8",
+      "link_maps": "https://maps.app.goo.gl/FiTxmVem8eRKEmKW6",
+      "image": VARELA2
   },
   {
       "sucursal": "SAN JOSE",
@@ -111,7 +122,7 @@ const SUCURSALES = [
   {
       "sucursal": "SAN JUSTO",
       "telefono": "4651-0046 / 4482-4968",
-      "celular": "15-3252-2397",
+      "celular": "15-6551-0706",
       "direccion": "Arieta 3320",
       "link_whatsapp": "https://qrco.de/beahyr",
       "link_maps": "https://maps.app.goo.gl/vLaqkb2jedXs1sr89",
@@ -120,7 +131,7 @@ const SUCURSALES = [
   {
       "sucursal": "LINIERS",
       "telefono": "6062-0475",
-      "celular": "15-2660-0019",
+      "celular": "15-2668-9818",
       "direccion": "Av. Rivadavia 11640",
       "link_whatsapp": "https://qrco.de/beai0C",
       "link_maps": "https://maps.app.goo.gl/r5qc65pnWdqLuDH3A",
@@ -149,7 +160,7 @@ const SUCURSALES = [
       "telefono": null,
       "celular": "15-2169-7799",
       "direccion": "Belgrano 3371",
-      "link_whatsapp": "",
+      "link_whatsapp": "https://qrco.de/bfeEbk",
       "link_maps": "https://maps.app.goo.gl/o66ADxzPw3S9Yqbh9",
       "image": SANMARTIN
   },
@@ -158,7 +169,7 @@ const SUCURSALES = [
       "telefono": null,
       "celular": "15-2184-6156",
       "direccion": "Av. Libertador 674",
-      "link_whatsapp": "",
+      "link_whatsapp": "https://qrco.de/bfVX1J",
       "link_maps": "https://maps.app.goo.gl/s1VvnFB37dRZnuiP9",
       "image": MERLO
   },
@@ -167,16 +178,16 @@ const SUCURSALES = [
       "telefono": null,
       "celular": "15-2184-7191",
       "direccion": "Carlos Pellegrini 62",
-      "link_whatsapp": "https://qrco.de/bfeEbk",
+      "link_whatsapp": "https://qrco.de/bfqA5J",
       "link_maps": "https://maps.app.goo.gl/s1VvnFB37dRZnuiP9",
-      "image": null
+      "image": LOMAS2
   },
   {
       "sucursal": "MONTE GRANDE",
       "telefono": null,
       "celular": "15-2184-5732",
       "direccion": "Alem 181",
-      "link_whatsapp": "",
+      "link_whatsapp": "https://qrco.de/bfeEbk",
       "link_maps": "https://maps.app.goo.gl/s1VvnFB37dRZnuiP9",
       "image": MONTEGRANDE
   },
