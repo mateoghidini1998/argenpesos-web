@@ -16,28 +16,29 @@ function ContactItem({ href, ariaLabel, icon: Icon, label, tooltip }) {
         </Link>
         <div
           className="
-            absolute
-            bottom-full       
-            mb-2                
-            left-1/2
-            -translate-x-1/2
-            bg-[#17AAE1] text-white font-bold text-sm md:text-base
-            px-3 py-2 rounded-lg
-            opacity-0 group-hover:opacity-100
-            transition-opacity duration-300 pointer-events-none z-10
-          "
+    absolute
+    bottom-full       
+    mb-2                
+    left-1/2
+    -translate-x-1/2
+    bg-[#17AAE1] text-white font-bold text-sm md:text-base
+    px-3 py-2 rounded-lg
+    opacity-0 group-hover:opacity-100
+    transition-opacity duration-300 pointer-events-none z-10
+    whitespace-nowrap
+  "
         >
           {tooltip}
           <div
             className="
-              absolute
-              top-full           /* justo debajo del tooltip */
-              left-1/2
-              -translate-x-1/2
-              w-0 h-0
-              border-l-[6px] border-r-[6px] border-t-[6px]
-              border-l-transparent border-r-transparent border-t-[#17AAE1]
-            "
+      absolute
+      top-full
+      left-1/2
+      -translate-x-1/2
+      w-0 h-0
+      border-l-[6px] border-r-[6px] border-t-[6px]
+      border-l-transparent border-r-transparent border-t-[#17AAE1]
+    "
           />
         </div>
       </div>

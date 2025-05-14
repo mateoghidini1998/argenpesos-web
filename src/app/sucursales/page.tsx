@@ -179,7 +179,7 @@ const SUCURSALES = [
       "celular": "15-2184-7191",
       "direccion": "Carlos Pellegrini 62",
       "link_whatsapp": "https://qrco.de/bfqA5J",
-      "link_maps": "https://maps.app.goo.gl/s1VvnFB37dRZnuiP9",
+      "link_maps": "",
       "image": LOMAS2
   },
   {
