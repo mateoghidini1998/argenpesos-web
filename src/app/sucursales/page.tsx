@@ -58,7 +58,7 @@ const SUCURSALES = [
   },
   {
       "sucursal": "SOLANO",
-      "telefono": null,
+      "telefono": "6066-7628",
       "celular": "11 2664-9025",
       "direccion": "Calle 844 Nº2364",
       "link_whatsapp": "https://qrco.de/beahnt",
@@ -68,7 +68,7 @@ const SUCURSALES = [
   {
       "sucursal": "FLORENCIO VARELA",
       "telefono": "4287-8544 y 4287-3269",
-      "celular": "15-3045-6857",
+      "celular": "15-2184-7307",
       "direccion": "Monteagudo 3053 ex 345",
       "link_whatsapp": "https://qrco.de/beahq8",
       "link_maps": "https://maps.app.goo.gl/FiTxmVem8eRKEmKW6",
@@ -79,7 +79,7 @@ const SUCURSALES = [
       "telefono": "4287-8544 y 4287-3269",
       "celular": "15-2184-5585",
       "direccion": "Monteagudo 3282",
-      "link_whatsapp": "https://qrco.de/beahq8",
+      "link_whatsapp": "https://qrco.de/bg08gQ",
       "link_maps": "https://maps.app.goo.gl/FiTxmVem8eRKEmKW6",
       "image": VARELA2
   },
@@ -166,7 +166,7 @@ const SUCURSALES = [
   },
   {
       "sucursal": "MERLO",
-      "telefono": null,
+      "telefono": "21846156 / 21691905",
       "celular": "15-2184-6156",
       "direccion": "Av. Libertador 674",
       "link_whatsapp": "https://qrco.de/bfVX1J",
