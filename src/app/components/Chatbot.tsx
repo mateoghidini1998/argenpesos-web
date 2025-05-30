@@ -480,7 +480,7 @@ export default function Chatbot({ openedFromQR }) {
           {!isLoading && isConsultaStatus == "APPROVED" && (
             <div className="p-4 h-auto border-t border-border flex items-center justify-center bottom-0 left-0 right-0">
               <Link
-                href={`https://wa.me/541126785266?text=${encodeURIComponent(
+                href={`https://wa.me/541121825108?text=${encodeURIComponent(
                   `¡Hola! ArgenBot me confirmó que mi préstamo fue aprobado, mi número de DNI es ${userData.dni}. ¿Podrían indicarme los próximos pasos?`
                 )}`}
                 target="_blank"
@@ -496,7 +496,7 @@ export default function Chatbot({ openedFromQR }) {
           {!isLoading && isConsultaStatus == "PENDING" && (
             <div className="p-4 h-auto border-t border-border flex items-center justify-center absolute bottom-0 left-0 right-0">
               <Link
-                href={`https://wa.me/541161231754?text=${encodeURIComponent(
+                href={`https://wa.me/541121825108?text?text=${encodeURIComponent(
                   `¡Hola! ArgenBot me confirmó que mi préstamo fue aprobado, mi número de DNI es ${userData.dni}. ¿Podrían indicarme los próximos pasos?`
                 )}`}
                 target="_blank"
