@@ -176,7 +176,7 @@ const SUCURSALES = [
   {
       "sucursal": "LOMAS DE ZAMORA 2",
       "telefono": null,
-      "celular": "15-2184-7191",
+      "celular": "15-2682-6226",
       "direccion": "Carlos Pellegrini 62",
       "link_whatsapp": "https://qrco.de/bfqA5J",
       "link_maps": "",
