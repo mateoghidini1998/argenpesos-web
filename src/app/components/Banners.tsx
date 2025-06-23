@@ -1,6 +1,7 @@
 import ArgenCompras from "./ArgenCompras";
 import Responsabilidad from "./Responsabilidad";
 import Cuponizate from "./Cuponizate";
+import MainBanner from "./MainBanner";
 
 export default function Banners(){
     return (

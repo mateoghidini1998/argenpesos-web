@@ -40,7 +40,6 @@ export default function Responsabilidad() {
 
   return (
     <div className="relative w-full h-[650px] md:h-[600px] xl:h-[800px] bg-transparent">
-      {/* Carousel */}
       <Carousel
         opts={{
           align: "start",
