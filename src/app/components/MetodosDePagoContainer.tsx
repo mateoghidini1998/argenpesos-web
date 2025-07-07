@@ -37,7 +37,7 @@ const METODOS_DE_PAGO = [
        description1: <p className="text-lg text-[#888]">•	Para abonar la cuota de tu préstamo por Mercado Pago comunicate por WhatsApp con el sector de cobranzas, donde te enviaremos un link de pago con el importe de la cuota para que puedas pagar.</p>, 
        description2: <p className="text-lg whitespace-pre-line">El pago puede hacerse con dinero en cuenta, tarjeta de débito o crédito (este último posee interés).</p>, 
        description3: null, 
-       description4: <p className="text-lg">Luego deberás enviar un comprobante con tu número de DNI a cobranzas@argenpesos.com.ar o por WhatsApp al 11-3818-2485</p>, 
+       description4: <p className="text-lg">Luego deberás enviar un comprobante con tu número de DNI a cobranzas@argenpesos.com.ar o por WhatsApp al 11-3818-4285</p>, 
     },
     { 
       title: "Billetera Virtual",
