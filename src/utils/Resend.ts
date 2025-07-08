@@ -13,6 +13,7 @@ async function sendEmail(formData, formType) {
     'comercio': [
       process.env.CONVERTITE_COMERZIALIZADOR_MAIL,
       process.env.CONVERTITE_COMERZIALIZADOR_MAIL_SECUNDARIO,
+      process.env.CONVERTITE_COMERZIALIZADOR_MAIL_TRES,
     ],
   };
 
