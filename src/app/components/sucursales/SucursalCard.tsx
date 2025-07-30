@@ -5,7 +5,7 @@ import Location from "../svgs/Location";
 import Whatsapp from "../svgs/Whatsapp";
 import { Card } from "@/components/ui/card";
 
-export default function SucursalCard({ sucursal, telefono, celular, direccion, link_whatsapp, link_maps, image }) {
+export default function SucursalCard({ sucursal, telefono, celular, direccion, link_whatsapp, link_maps, image, horario_sem, horario_fin }) {
     return (
 
         <div className="w-full max-w-4xl mx-auto overflow-hidden">
@@ -31,8 +31,8 @@ export default function SucursalCard({ sucursal, telefono, celular, direccion, l
                                     <p className="text-[#888] text-muted-foreground mb-2">{telefono}</p>
                                 )}
                                 <p className="text-[#888] text-muted-foreground mb-2">{celular}</p>
-                                <p className="text-[#888] text-muted-foreground mb-2">Lun a Vier 9:00 a 18:45 hs</p>
-                                <p className="text-[#888] text-muted-foreground mb-6">Sab 9:00 a 13:00 hs</p>
+                                <p className="text-[#888] text-muted-foreground mb-2">{horario_sem}</p>
+                                <p className="text-[#888] text-muted-foreground mb-6">{horario_fin}</p>
                             </div>
                             <div className="flex flex-col sm:flex-row md:flex-col lg:flex-row gap-4">
                                 <Link href={link_whatsapp} target="__blank" className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-primary-foreground  h-10 px-4 py-2 w-full sm:w-auto bg-[#77BE78]">

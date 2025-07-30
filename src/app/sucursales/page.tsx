@@ -27,6 +27,8 @@ const SUCURSALES = [
       "direccion": "Av. Mitre 531",
       "link_whatsapp": "https://qrco.de/beahcy",
       "link_maps": "https://maps.app.goo.gl/dyjeuAQBq9rFYHVaA",
+      "horario_sem": "Lun a Vier 9:00 a 18:45 hs",
+      "horario_fin": "Sab 9:00 a 13:00 hs",
       "image": AVELLANEDA
   },
   {
@@ -36,6 +38,8 @@ const SUCURSALES = [
       "direccion": "Av.14 N°5022",
       "link_whatsapp": "https://qrco.de/beahhm",
       "link_maps": "https://maps.app.goo.gl/EgjxkRgRTsHp11X79",
+      "horario_sem": "Lun a Vier 9:00 a 18:45 hs",
+      "horario_fin": "Sab 9:00 a 13:00 hs",
       "image": BERAZATEGUI
   },
   {
@@ -45,6 +49,8 @@ const SUCURSALES = [
       "direccion": "9 de Julio 1101, Esquina 29 de septiembre",
       "link_whatsapp": "https://qrco.de/beahjp",
       "link_maps": "https://maps.app.goo.gl/jAkfFnGD7CNv7Uvg6",
+      "horario_sem": "Lun a Vier 9:00 a 18:45 hs",
+      "horario_fin": "Sab 9:00 a 13:00 hs",
       "image": LANUS
   },
   {
@@ -54,6 +60,8 @@ const SUCURSALES = [
       "direccion": "Av. Meeks 101",
       "link_whatsapp": "https://qrco.de/beahlU",
       "link_maps": "https://maps.app.goo.gl/k7LYYxtXYZPbGC5V9",
+      "horario_sem": "Lun a Vier 9:00 a 18:45 hs",
+      "horario_fin": "Sab 9:00 a 13:00 hs",
       "image": LOMAS
   },
   {
@@ -63,6 +71,8 @@ const SUCURSALES = [
       "direccion": "Calle 844 Nº2364",
       "link_whatsapp": "https://qrco.de/beahnt",
       "link_maps": "https://maps.app.goo.gl/YSX3GBodgJ1XRNbb9",
+      "horario_sem": "Lun a Vier 9:00 a 18:45 hs",
+      "horario_fin": "Sab 9:00 a 13:00 hs",
       "image": SOLANO
   },
   {
@@ -72,6 +82,8 @@ const SUCURSALES = [
       "direccion": "Monteagudo 3053 ex 345",
       "link_whatsapp": "https://qrco.de/beahq8",
       "link_maps": "https://maps.app.goo.gl/FiTxmVem8eRKEmKW6",
+      "horario_sem": "Lun a Vier 9:00 a 18:45 hs",
+      "horario_fin": "Sab 9:00 a 13:00 hs",
       "image": VARELA
   },
   {
@@ -81,6 +93,8 @@ const SUCURSALES = [
       "direccion": "Monteagudo 3282",
       "link_whatsapp": "https://qrco.de/bg08gQ",
       "link_maps": "https://maps.app.goo.gl/FiTxmVem8eRKEmKW6",
+      "horario_sem": "Lun a Vier 9:00 a 18:45 hs",
+      "horario_fin": "Sab 9:00 a 13:00 hs",
       "image": VARELA2
   },
   {
@@ -90,6 +104,8 @@ const SUCURSALES = [
       "direccion": "Salta 87",
       "link_whatsapp": "https://qrco.de/beahrP",
       "link_maps": "https://maps.app.goo.gl/SRtqbhgj4ZnT5A3F8",
+      "horario_sem": "Lun a Vier 9:00 a 13:00 hs / 15:00 a 18:45 hs",
+      "horario_fin": "Sab 9:00 a 13:00 hs",
       "image": SANJOSE
   },
   {
@@ -99,6 +115,8 @@ const SUCURSALES = [
       "direccion": "Av. Rivadavia 96",
       "link_whatsapp": "https://qrco.de/beahsn",
       "link_maps": "https://maps.app.goo.gl/Qf9QD96hyDhz6Mfc8",
+      "horario_sem": "Lun a Vier 9:00 a 18:45 hs",
+      "horario_fin": "Sab 9:00 a 13:00 hs",
       "image": QUILMES
   },
   {
@@ -108,6 +126,8 @@ const SUCURSALES = [
       "direccion": "Constitución 198",
       "link_whatsapp": "https://qrco.de/beahwA",
       "link_maps": "https://maps.app.goo.gl/4Q1nkTLjyTeqUMdb9",
+      "horario_sem": "Lun a Vier 9:00 a 18:45 hs",
+      "horario_fin": "Sab 9:00 a 13:00 hs",
       "image": SANFERNANDO
   },
   {
@@ -117,6 +137,8 @@ const SUCURSALES = [
       "direccion": "Presidente Perón 1185",
       "link_whatsapp": "https://qrco.de/beahxK",
       "link_maps": "https://maps.app.goo.gl/wLmBh5KQbJQvmCmo6",
+      "horario_sem": "Lun a Vier 9:00 a 18:45 hs",
+      "horario_fin": "Sab 9:00 a 13:00 hs",
       "image": SANMIGUEL
   },
   {
@@ -126,6 +148,8 @@ const SUCURSALES = [
       "direccion": "Arieta 3320",
       "link_whatsapp": "https://qrco.de/beahyr",
       "link_maps": "https://maps.app.goo.gl/vLaqkb2jedXs1sr89",
+      "horario_sem": "Lun a Vier 9:00 a 18:45 hs",
+      "horario_fin": "Sab 9:00 a 13:00 hs",
       "image": SANJUSTO
   },
   {
@@ -135,6 +159,8 @@ const SUCURSALES = [
       "direccion": "Av. Rivadavia 11640",
       "link_whatsapp": "https://qrco.de/beai0C",
       "link_maps": "https://maps.app.goo.gl/r5qc65pnWdqLuDH3A",
+      "horario_sem": "Lun a Vier 9:00 a 18:45 hs",
+      "horario_fin": "Sab 9:00 a 13:00 hs",
       "image": LINIERS
   },
   {
@@ -144,6 +170,8 @@ const SUCURSALES = [
       "direccion": "Av. Luro 6096",
       "link_whatsapp": "https://qrco.de/beai1I",
       "link_maps": "https://maps.app.goo.gl/u6CcuiaeAeH9H7uM9",
+      "horario_sem": "Lun a Vier 9:00 a 18:45 hs",
+      "horario_fin": "Sab 9:00 a 13:00 hs",
       "image": LAFERRERE
   },
   {
@@ -153,6 +181,8 @@ const SUCURSALES = [
       "direccion": "Av. Libertador 165",
       "link_whatsapp": "https://qrco.de/beai2y",
       "link_maps": "",
+      "horario_sem": "Lun a Vier 9:00 a 18:45 hs",
+      "horario_fin": "Sab 9:00 a 13:00 hs",
       "image": MORENO
   },
   {
@@ -162,6 +192,8 @@ const SUCURSALES = [
       "direccion": "Belgrano 3371",
       "link_whatsapp": "https://qrco.de/bfeEbk",
       "link_maps": "https://maps.app.goo.gl/o66ADxzPw3S9Yqbh9",
+      "horario_sem": "Lun a Vier 9:00 a 18:45 hs",
+      "horario_fin": "Sab 9:00 a 13:00 hs",
       "image": SANMARTIN
   },
   {
@@ -171,6 +203,8 @@ const SUCURSALES = [
       "direccion": "Av. Libertador 674",
       "link_whatsapp": "https://qrco.de/bfVX1J",
       "link_maps": "https://maps.app.goo.gl/s1VvnFB37dRZnuiP9",
+      "horario_sem": "Lun a Vier 9:00 a 18:45 hs",
+      "horario_fin": "Sab 9:00 a 13:00 hs",
       "image": MERLO
   },
   {
@@ -180,6 +214,8 @@ const SUCURSALES = [
       "direccion": "Carlos Pellegrini 62",
       "link_whatsapp": "https://qrco.de/bfqA5J",
       "link_maps": "",
+      "horario_sem": "Lun a Vier 9:00 a 18:45 hs",
+      "horario_fin": "Sab 9:00 a 13:00 hs",
       "image": LOMAS2
   },
   {
@@ -189,6 +225,8 @@ const SUCURSALES = [
       "direccion": "Alem 181",
       "link_whatsapp": "https://qrco.de/bfeEbk",
       "link_maps": "https://maps.app.goo.gl/s1VvnFB37dRZnuiP9",
+      "horario_sem": "Lun a Vier 9:00 a 18:45 hs",
+      "horario_fin": "Sab 9:00 a 13:00 hs",
       "image": MONTEGRANDE
   },
 ]
@@ -210,6 +248,8 @@ export default function Sucursales() {
                   link_whatsapp={sucursal.link_whatsapp}
                   link_maps={sucursal.link_maps}
                   image={sucursal.image}
+                  horario_sem={sucursal.horario_sem}
+                  horario_fin={sucursal.horario_fin}
               />
           ))}
         </div>
