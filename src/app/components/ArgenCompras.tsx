@@ -98,7 +98,7 @@ export default function ArgenCompras() {
                         </div>
                         <div className="w-full h-auto py-1 px-2.5 md:px-4 bg-[#007092] rounded-md md:rounded-[10px] text-center">
                           <Link
-                            href="#"
+                            href={item.canonical_url}
                             className="inline-block w-full whitespace-nowrap"
                           >
                             + info

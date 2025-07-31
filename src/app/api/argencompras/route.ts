@@ -19,8 +19,10 @@ export async function GET(req: NextRequest) {
         });
         
         const data = await response.json();
+        const publishedProducts = data.filter((product: any) => product.published === true);
+        console.log(publishedProducts);
     
-        return NextResponse.json(data);
+        return NextResponse.json(publishedProducts);
     } catch (error) {
         return NextResponse.json({ error: 'Error fetching data' }, { status: 500 });
     }
