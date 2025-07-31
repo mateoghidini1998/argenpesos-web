@@ -20,7 +20,6 @@ export async function GET(req: NextRequest) {
         
         const data = await response.json();
         const publishedProducts = data.filter((product: any) => product.published === true);
-        console.log(publishedProducts);
     
         return NextResponse.json(publishedProducts);
     } catch (error) {
