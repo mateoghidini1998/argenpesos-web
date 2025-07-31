@@ -17,8 +17,15 @@ import {
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 
+interface Product {
+  name: { es: string };
+  variants: { price: number }[];
+  images: { src: string }[];
+  canonical_url: string;
+}
+
 export default function ArgenCompras() {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState<Product[] | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -67,7 +74,7 @@ export default function ArgenCompras() {
           >
             <CarouselContent>
               {data && data.length > 0 ? (
-                data.map((item, index) => (
+                data.map((item: Product, index: number) => (
                   <CarouselItem
                     key={index}
                     className="lg:basis-1/2 xl:basis-1/3 min-h-[300px] xl:min-h-[280px]"
@@ -90,7 +97,8 @@ export default function ArgenCompras() {
                         )}`}</span>
                         <div className="w-full h-auto py-1 px-2.5 md:px-4 mb-2 bg-[#EC5647] rounded-md md:rounded-[10px] text-center">
                           <Link
-                            href="#"
+                            href={`https://web.whatsapp.com/send?phone=5491171448040&text=¡Hola, vengo desde el Sitio Web de Argen! Me interesa comprar ${encodeURIComponent(item.name.es)}`}
+                            target="_blank"
                             className="inline-block w-full whitespace-nowrap"
                           >
                             Comprar ahora
