@@ -35,9 +35,9 @@ export default function FooterForms() {
             </DialogTrigger>
           </li>
           <li className="text-[#888]">
-            <a href="./Modo-de-Rescision.docx" download>
+            <Link href="/docs/Modo-de-Rescision.pdf" target="__blank">
               Modo de Recisión
-            </a>
+            </Link>
           </li>
           <li className="text-[#888] whitespace-nowrap">
             <DialogTrigger asChild>
