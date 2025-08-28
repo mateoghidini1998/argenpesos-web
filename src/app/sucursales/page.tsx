@@ -26,8 +26,8 @@ const SUCURSALES = [
       "celular": "15-3252-5817",
       "direccion": "Av. Mitre 531",
       "link_whatsapp": "https://qrco.de/beahcy",
-      "link_maps": "https://maps.app.goo.gl/dyjeuAQBq9rFYHVaA",
-      "horario_sem": "Lun a Vier 9:00 a 18:45 hs",
+      "link_maps": "https://g.page/r/CdQEGwC8HsLsEAE/review",
+      "horario_sem": "Lun a Vier 9:00 a 18:30 hs",
       "horario_fin": "Sab 9:00 a 13:00 hs",
       "image": AVELLANEDA
   },
@@ -37,9 +37,9 @@ const SUCURSALES = [
       "celular": "15-7102-2907",
       "direccion": "Av.14 N°5022",
       "link_whatsapp": "https://qrco.de/beahhm",
-      "link_maps": "https://maps.app.goo.gl/EgjxkRgRTsHp11X79",
+      "link_maps": "https://g.page/r/CYeVYwL89a_CEAE/review",
       "horario_sem": "Lun a Vier 9:00 a 18:45 hs",
-      "horario_fin": "Sab 9:00 a 13:00 hs",
+      "horario_fin": "Sab 9:00 a 16:00 hs",
       "image": BERAZATEGUI
   },
   {
@@ -48,20 +48,20 @@ const SUCURSALES = [
       "celular": "15-6222-9389",
       "direccion": "9 de Julio 1101, Esquina 29 de septiembre",
       "link_whatsapp": "https://qrco.de/beahjp",
-      "link_maps": "https://maps.app.goo.gl/jAkfFnGD7CNv7Uvg6",
+      "link_maps": "https://g.page/r/CfoR4WURdH3OEAE/review",
       "horario_sem": "Lun a Vier 9:00 a 18:45 hs",
-      "horario_fin": "Sab 9:00 a 13:00 hs",
+      "horario_fin": "Sab 9:00 a 16:00 hs",
       "image": LANUS
   },
   {
       "sucursal": "LOMAS DE ZAMORA",
-      "telefono": "4244-1120 / 4243-1456 /6088-8253",
+      "telefono": "6088-8253",
       "celular": "15-3252-4297",
       "direccion": "Av. Meeks 101",
       "link_whatsapp": "https://qrco.de/beahlU",
-      "link_maps": "https://maps.app.goo.gl/k7LYYxtXYZPbGC5V9",
+      "link_maps": "https://g.page/r/CeT0H4UhqkATEAE/review",
       "horario_sem": "Lun a Vier 9:00 a 18:45 hs",
-      "horario_fin": "Sab 9:00 a 13:00 hs",
+      "horario_fin": "Sab 9:00 a 16:00 hs",
       "image": LOMAS
   },
   {
@@ -70,9 +70,9 @@ const SUCURSALES = [
       "celular": "11 2664-9025",
       "direccion": "Calle 844 Nº2364",
       "link_whatsapp": "https://qrco.de/beahnt",
-      "link_maps": "https://maps.app.goo.gl/YSX3GBodgJ1XRNbb9",
+      "link_maps": "https://g.page/r/Ccg1UGicofVQEAE/review",
       "horario_sem": "Lun a Vier 9:00 a 18:45 hs",
-      "horario_fin": "Sab 9:00 a 13:00 hs",
+      "horario_fin": "Sab 9:00 a 16:00 hs",
       "image": SOLANO
   },
   {
@@ -81,9 +81,9 @@ const SUCURSALES = [
       "celular": "15-2184-7307",
       "direccion": "Monteagudo 3053 ex 345",
       "link_whatsapp": "https://qrco.de/beahq8",
-      "link_maps": "https://maps.app.goo.gl/FiTxmVem8eRKEmKW6",
+      "link_maps": "https://g.page/r/CW33tYUu64fCEAE/review",
       "horario_sem": "Lun a Vier 9:00 a 18:45 hs",
-      "horario_fin": "Sab 9:00 a 13:00 hs",
+      "horario_fin": "Sab 9:00 a 16:00 hs",
       "image": VARELA
   },
   {
@@ -94,7 +94,7 @@ const SUCURSALES = [
       "link_whatsapp": "https://qrco.de/bg08gQ",
       "link_maps": "https://maps.app.goo.gl/FiTxmVem8eRKEmKW6",
       "horario_sem": "Lun a Vier 9:00 a 18:45 hs",
-      "horario_fin": "Sab 9:00 a 13:00 hs",
+      "horario_fin": "Sab 9:00 a 16:00 hs",
       "image": VARELA2
   },
   {
@@ -103,9 +103,9 @@ const SUCURSALES = [
       "celular": "15-2165-4919",
       "direccion": "Salta 87",
       "link_whatsapp": "https://qrco.de/beahrP",
-      "link_maps": "https://maps.app.goo.gl/SRtqbhgj4ZnT5A3F8",
+      "link_maps": "https://g.page/r/CfrNw3piBj_QEAE/review",
       "horario_sem": "Lun a Vier 9:00 a 13:00 hs / 15:00 a 18:45 hs",
-      "horario_fin": "Sab 9:00 a 13:00 hs",
+      "horario_fin": "",
       "image": SANJOSE
   },
   {
@@ -114,18 +114,18 @@ const SUCURSALES = [
       "celular": "15-6551-0711",
       "direccion": "Av. Rivadavia 96",
       "link_whatsapp": "https://qrco.de/beahsn",
-      "link_maps": "https://maps.app.goo.gl/Qf9QD96hyDhz6Mfc8",
+      "link_maps": "https://g.page/r/CSgw-kK8mT4bEAE/review",
       "horario_sem": "Lun a Vier 9:00 a 18:45 hs",
-      "horario_fin": "Sab 9:00 a 13:00 hs",
+      "horario_fin": "Sab 9:00 a 16:00 hs",
       "image": QUILMES
   },
   {
       "sucursal": "SAN FERNANDO",
-      "telefono": "4506-3730",
+      "telefono": "4506-3732",
       "celular": "15-3252-4072",
       "direccion": "Constitución 198",
       "link_whatsapp": "https://qrco.de/beahwA",
-      "link_maps": "https://maps.app.goo.gl/4Q1nkTLjyTeqUMdb9",
+      "link_maps": "https://g.page/r/Cecc4TsNN-GHEAE/review",
       "horario_sem": "Lun a Vier 9:00 a 18:45 hs",
       "horario_fin": "Sab 9:00 a 13:00 hs",
       "image": SANFERNANDO
@@ -136,9 +136,9 @@ const SUCURSALES = [
       "celular": "15-3252-3061",
       "direccion": "Presidente Perón 1185",
       "link_whatsapp": "https://qrco.de/beahxK",
-      "link_maps": "https://maps.app.goo.gl/wLmBh5KQbJQvmCmo6",
+      "link_maps": "https://g.page/r/CWY-v9zbaLqUEAE/review",
       "horario_sem": "Lun a Vier 9:00 a 18:45 hs",
-      "horario_fin": "Sab 9:00 a 13:00 hs",
+      "horario_fin": "Sab 9:00 a 16:00 hs",
       "image": SANMIGUEL
   },
   {
@@ -147,9 +147,9 @@ const SUCURSALES = [
       "celular": "15-6551-0706",
       "direccion": "Arieta 3320",
       "link_whatsapp": "https://qrco.de/beahyr",
-      "link_maps": "https://maps.app.goo.gl/vLaqkb2jedXs1sr89",
+      "link_maps": "https://g.page/r/CfMY3AXp4Q0LEAE/review",
       "horario_sem": "Lun a Vier 9:00 a 18:45 hs",
-      "horario_fin": "Sab 9:00 a 13:00 hs",
+      "horario_fin": "Sab 9:00 a 16:00 hs",
       "image": SANJUSTO
   },
   {
@@ -158,7 +158,7 @@ const SUCURSALES = [
       "celular": "15-2668-9818",
       "direccion": "Av. Rivadavia 11640",
       "link_whatsapp": "https://qrco.de/beai0C",
-      "link_maps": "https://maps.app.goo.gl/r5qc65pnWdqLuDH3A",
+      "link_maps": "https://g.page/r/CZh1K-2-eRbsEAE/review",
       "horario_sem": "Lun a Vier 9:00 a 18:45 hs",
       "horario_fin": "Sab 9:00 a 13:00 hs",
       "image": LINIERS
@@ -169,9 +169,9 @@ const SUCURSALES = [
       "celular": "15-7144-8047",
       "direccion": "Av. Luro 6096",
       "link_whatsapp": "https://qrco.de/beai1I",
-      "link_maps": "https://maps.app.goo.gl/u6CcuiaeAeH9H7uM9",
+      "link_maps": "https://g.page/r/CfAeId4VmNHfEAE/review",
       "horario_sem": "Lun a Vier 9:00 a 18:45 hs",
-      "horario_fin": "Sab 9:00 a 13:00 hs",
+      "horario_fin": "Sab 9:00 a 16:00 hs",
       "image": LAFERRERE
   },
   {
@@ -182,7 +182,7 @@ const SUCURSALES = [
       "link_whatsapp": "https://qrco.de/beai2y",
       "link_maps": "",
       "horario_sem": "Lun a Vier 9:00 a 18:45 hs",
-      "horario_fin": "Sab 9:00 a 13:00 hs",
+      "horario_fin": "Sab 9:00 a 16:00 hs",
       "image": MORENO
   },
   {
@@ -191,31 +191,31 @@ const SUCURSALES = [
       "celular": "15-2169-7799",
       "direccion": "Belgrano 3371",
       "link_whatsapp": "https://qrco.de/bfeEbk",
-      "link_maps": "https://maps.app.goo.gl/o66ADxzPw3S9Yqbh9",
+      "link_maps": "https://g.page/r/CXpJHVINz3cyEAE/review",
       "horario_sem": "Lun a Vier 9:00 a 18:45 hs",
       "horario_fin": "Sab 9:00 a 13:00 hs",
       "image": SANMARTIN
   },
   {
       "sucursal": "MERLO",
-      "telefono": "21846156 / 21691905",
+      "telefono": "20886755",
       "celular": "15-2184-6156",
       "direccion": "Av. Libertador 674",
       "link_whatsapp": "https://qrco.de/bfVX1J",
-      "link_maps": "https://maps.app.goo.gl/s1VvnFB37dRZnuiP9",
+      "link_maps": "https://g.page/r/CVgkGsx55E5eEAE/review",
       "horario_sem": "Lun a Vier 9:00 a 18:45 hs",
-      "horario_fin": "Sab 9:00 a 13:00 hs",
+      "horario_fin": "Sab 9:00 a 16:00 hs",
       "image": MERLO
   },
   {
       "sucursal": "LOMAS DE ZAMORA 2",
-      "telefono": null,
+      "telefono": "4267-3775",
       "celular": "15-2682-6226",
       "direccion": "Carlos Pellegrini 62",
       "link_whatsapp": "https://qrco.de/bfqA5J",
       "link_maps": "",
       "horario_sem": "Lun a Vier 9:00 a 18:45 hs",
-      "horario_fin": "Sab 9:00 a 13:00 hs",
+      "horario_fin": "Sab 9:00 a 16:00 hs",
       "image": LOMAS2
   },
   {
@@ -226,7 +226,7 @@ const SUCURSALES = [
       "link_whatsapp": "https://qrco.de/bfeEbk",
       "link_maps": "https://maps.app.goo.gl/s1VvnFB37dRZnuiP9",
       "horario_sem": "Lun a Vier 9:00 a 18:45 hs",
-      "horario_fin": "Sab 9:00 a 13:00 hs",
+      "horario_fin": "Sab 9:00 a 16:00 hs",
       "image": MONTEGRANDE
   },
 ]

@@ -27,7 +27,7 @@ export default function AppPublicidad () {
                                 </div>
                             </div>
                             <div className="flex flex-col items-center justify-center gap-2 md:gap-4">
-                                <Link href="">
+                                <Link href="https://apps.apple.com/ar/app/argenpesos-te-hace-feliz/id6745909844?l=en-GB" target="_blank">
                                     <Image src={appstore} alt="appstore" className="h-[30px] w-[100px] sm:h-[40px] sm:w-[110px] md:h-[52px] md:w-[180px]"/>
                                 </Link>
                                 <Link href="https://play.google.com/store/apps/details?id=com.binarysorcerers.argenpesosnuevo">
