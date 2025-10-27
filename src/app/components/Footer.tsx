@@ -119,10 +119,10 @@ export default function Footer() {
                 </Link>
               </li>
               <li className="text-[#17AAE1]">
-                <Link href="boton_baja">Botón de Baja</Link>
+                <Link href="boton_baja">Botón de Baja de Servicio</Link>
               </li>
               <li className="text-[#888] font-bold text-wrap">
-                <Link href="/docs/SolicitudArgen.pdf" target="_blank">
+                <Link href="/docs/SOLICITUD-COMPLETA-ARGENPESOS.pdf" target="_blank">
                   Contratos de adhesión - Ley 24.240 de Defensa del Consumidor
                 </Link>
               </li>
@@ -155,14 +155,14 @@ export default function Footer() {
                   </li>
                   <li className="text-[#888]">
                     <Link
-                      href="https://www.argenpesos.com.ar/public/storage/pdf/Jurisdiccion%20en%20caso%20de%20litigio.pdf"
+                      href="/docs/Jurisdiccion-en-caso-de-litigio.pdf"
                       target="__blank"
                     >
                       Jurisdicción en caso de litigio
                     </Link>
                   </li>
                   <li className="text-[#888]">
-                    <Link href="/docs/Modo-de-Rescision.pdf" target="__blank">
+                    <Link href="/docs/Protecion-de-Datos-Personales.pdf" target="__blank">
                       Protección de datos personales
                     </Link>
                   </li>
@@ -194,7 +194,7 @@ export default function Footer() {
               </li>
               <li className="lg:hidden text-[#888]">
                 <Link
-                  href="https://www.argenpesos.com.ar/public/storage/pdf/Jurisdiccion%20en%20caso%20de%20litigio.pdf"
+                  href="/docs/Jurisdiccion-en-caso-de-litigio.pdf"
                   target="__blank"
                 >
                   Jurisdicción en caso de litigio
