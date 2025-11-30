@@ -24,7 +24,7 @@ const BotonArrepentimientoForm = ({ title }: Props) => {
     try {
       await handleSubmit(data, PrestamoSchema, 'boton_arrepentimiento');
       setErrors({}); 
-      setSuccessMessage('¡Tu solicitud fue enviada correctamente! No es necesario reenviarla.');
+      setSuccessMessage('¡Tu solicitud fue enviada correctamente!');
     } catch (err: any) {
       setSuccessMessage(null);
       if (err.inner) {
