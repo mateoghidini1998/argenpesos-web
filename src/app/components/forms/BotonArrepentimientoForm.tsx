@@ -4,24 +4,31 @@ import GenericForm from "./GenericForm";
 import PrestamoSchema from "@/schemes/prestamos-scheme";
 import { useState } from "react";
 
-const BotonArrepentimientoForm = ({ title }) => {
+interface Props {
+  title: string;
+}
+
+const BotonArrepentimientoForm = ({ title }: Props) => {
   const fields = [
-    { label: "Nombre", inputType: "input", name: "nombre" },
-    { label: "Apellido", inputType: "input", name: "apellido" },
-    { label: "DNI (sin puntos)", inputType: "input", name: "DNI" },
-    { label: "Celular", inputType: "input", name: "celular" },
-    { label: "Mail", inputType: "input", name: "mail" },
+    { label: "Nombre", inputType: "input" as const, name: "nombre" },
+    { label: "Apellido", inputType: "input" as const, name: "apellido" },
+    { label: "DNI (sin puntos)", inputType: "input" as const, name: "DNI" },
+    { label: "Celular", inputType: "input" as const, name: "celular" },
+    { label: "Mail", inputType: "input" as const, name: "mail" },
   ];
 
   const [errors, setErrors] = useState({});
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data: any) => {
     try {
       await handleSubmit(data, PrestamoSchema, 'boton_arrepentimiento');
       setErrors({}); 
-    } catch (err) {
+      setSuccessMessage('¡Tu solicitud fue enviada correctamente! No es necesario reenviarla.');
+    } catch (err: any) {
+      setSuccessMessage(null);
       if (err.inner) {
-        const formErrors = err.inner.reduce((acc, currentError) => {
+        const formErrors = err.inner.reduce((acc: any, currentError: any) => {
           acc[currentError.path] = currentError.message;
           return acc;
         }, {});
@@ -32,7 +39,7 @@ const BotonArrepentimientoForm = ({ title }) => {
     }
   };
 
-  return <GenericForm title={title} fields={fields} onSubmit={onSubmit} errors={errors}/>;
+  return <GenericForm title={title} fields={fields} onSubmit={onSubmit} errors={errors} successMessage={successMessage || undefined}/>;
 };
 
 export default BotonArrepentimientoForm;

@@ -5,9 +5,15 @@ import FormTitle from "./FormTitle";
 
 interface GenericFormProps<T extends FormData> {
   title: string;
-  fields: Array<{ label: string; inputType: string; name: keyof T }>;
+  fields: Array<{
+    label: string;
+    inputType: "input" | "select" | "textarea" | "file";
+    name: keyof T;
+    selectOptions?: Array<{ label: string; value: string }>;
+  }>;
   onSubmit: (data: T) => void;
-  errors: { [key in keyof T]?: string };
+  errors: ({ [key in keyof T]?: string }) & { general?: string };
+  successMessage?: string;
 }
 
 interface FormData {
@@ -21,6 +27,7 @@ function GenericForm<T extends FormData>({
   fields,
   onSubmit,
   errors,
+  successMessage,
 }: GenericFormProps<T>) {
   const initialFormData = {} as T;
   const [formData, setFormData] = useState<T>(initialFormData);
@@ -35,7 +42,7 @@ function GenericForm<T extends FormData>({
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit: React.MouseEventHandler<HTMLButtonElement> = async (e) => {
     e.preventDefault();
     onSubmit(formData);
 
@@ -47,6 +54,11 @@ function GenericForm<T extends FormData>({
   return (
     <>
       <FormTitle title={title} />
+      {successMessage && (
+        <div className="bg-green-100 border border-green-400 text-green-800 px-4 py-3 rounded mb-4">
+          {successMessage}
+        </div>
+      )}
       {errors.general && (
         <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
           {errors.general}
@@ -67,9 +79,9 @@ function GenericForm<T extends FormData>({
                 label={field.label}
                 inputType={field.inputType}
                 inputProps={{
-                  value: formData[field.name] || "",
+                  value: String(formData[field.name] ?? ""),
                   onChange: handleChange,
-                  name: field.name,
+                  name: String(field.name),
                 }}
                 selectOptions={field.selectOptions}
                 error={errors[field.name]}

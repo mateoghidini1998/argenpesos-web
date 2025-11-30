@@ -51,18 +51,28 @@ export async function POST(request: NextRequest) {
     };
 
     console.log("Payload final enviado a la API externa:\n", JSON.stringify(payload, null, 2));
-    const baseUrl = process.env.NEXT_PUBLIC_SMARTER_BASE_URL
-    const response = await fetch(
-      `${baseUrl}external/BotonArrepentimiento`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json",
-        },
-        body: JSON.stringify(payload),
-      }
-    );
+    const baseUrl = process.env.NEXT_PUBLIC_SMARTER_BASE_URL;
+
+    let response: Response;
+    try {
+      response = await fetch(
+        `${baseUrl}external/BotonArrepentimiento`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+          },
+          body: JSON.stringify(payload),
+        }
+      );
+    } catch (networkError: any) {
+      console.error("Fallo de red al invocar servicio externo:", networkError);
+      return NextResponse.json(
+        { error: "No se pudo conectar con el servicio externo. Intentá nuevamente más tarde." },
+        { status: 502 }
+      );
+    }
 
     let data: any = null;
     try {
