@@ -8,7 +8,7 @@ export async function GET(request: NextRequest) {
 
   try {
     const response = await fetch(
-      `http://smarter.argenpesos.com.ar:30002/External/validacionidentidad?ticket=${ticket}&documento=${dni}&sexo=${sexo}`
+      `https://smarter.argenpesos.com.ar:30010/External/validacionidentidad?ticket=${ticket}&documento=${dni}&sexo=${sexo}`
     );
 
     const data = await response.json();
