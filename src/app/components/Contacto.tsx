@@ -89,7 +89,7 @@ export default function ContactSection() {
         />
 
         <ContactItem
-          href="https://www.facebook.com/argenpesos"
+          href="https://www.facebook.com/p/ArgenPesos-61577080799765/"
           ariaLabel="Visitar el Facebook de ArgenPesos"
           icon={Facebook}
           label="Facebook"
