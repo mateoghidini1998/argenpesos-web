@@ -10,7 +10,7 @@ export default function Navbar({ onNavbarToggle }) {
     { text: "Inicio", url: "/" },
     {
       text: "ArgenCompras",
-      url: "https://www.argencompras.ar",
+      url: "https://www.argencompras.com.ar",
       target: "_blank",
     },
     { text: "Cuponizate", url: "https://cuponizate.com.ar/", target: "_blank" },
