@@ -5,7 +5,7 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const baseUrl = process.env.NEXT_PUBLIC_SMARTER_BASE_URL;
     const endpoint = process.env.NEXT_PUBLIC_SMARTER_ENDPOINT;
-    const url = `${baseUrl}${endpoint}`;
+    const url = `${baseUrl}/${endpoint}`;
 
     // Hacer la llamada a la API externa
     const response = await fetch(

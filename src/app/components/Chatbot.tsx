@@ -12,7 +12,7 @@ import Bot from "./svgs/Bot";
 import User from "./svgs/User";
 import Link from "next/link";
 
-export default function Chatbot({ openedFromQR }) {
+export default function Chatbot({ openedFromQR }: { openedFromQR?: boolean }) {
   const [messages, setMessages] = useState([
     { from: "bot", text: "Soy ArgenBot, el asistente virtual de Argenpesos." },
     {
@@ -26,15 +26,25 @@ export default function Chatbot({ openedFromQR }) {
   const [isFlowComplete, setIsFlowComplete] = useState(false);
   const [selectedAreaCode, setSelectedAreaCode] = useState("");
   const [selectedBank, setSelectedBank] = useState("");
-  const [identidades, setIdentidades] = useState([]);
+  const [identidades, setIdentidades] = useState<Array<{ cuil: number; nombre: string }>>([]);
   const [selectedIdentidad, setSelectedIdentidad] = useState("");
-  const [isConsultaStatus, setIsConsultaStatus] = useState(null);
-  const [userData, setUserData] = useState({
+  const [isConsultaStatus, setIsConsultaStatus] = useState<null | "REJECTED" | "PENDING" | "APPROVED">(null);
+  type UserData = {
+    dni: string;
+    bankCodigo: number;
+    telefono: string;
+    areaCode: string;
+    ingresos: string;
+    nombre: string;
+    cuil?: number;
+  };
+  const [userData, setUserData] = useState<UserData>({
     dni: "",
-    bankCodigo: "",
+    bankCodigo: 0,
     telefono: "",
     areaCode: "",
     ingresos: "",
+    nombre: "",
   });
 
   const genderOptions = [
@@ -96,7 +106,7 @@ export default function Chatbot({ openedFromQR }) {
     setStep(0);
   };
 
-  const validateIdentidad = async (dni) => {
+  const validateIdentidad = async (dni: string) => {
     setIsLoading(true);
     try {
       const response = await fetch(
@@ -110,7 +120,7 @@ export default function Chatbot({ openedFromQR }) {
           ...prevMessages,
           { from: "bot", text: `Identidad validada: ${identidad.nombre}` },
         ]);
-        setUserData((prevData) => ({ ...prevData, cuil: identidad.cuil }));
+        setUserData((prevData) => ({ ...prevData, cuil: identidad.cuil, nombre: identidad.nombre }));
         setStep(2);
       } else if (data.statusCode === 201 && data.result.length > 1) {
         setIdentidades(data.result);
@@ -142,7 +152,7 @@ export default function Chatbot({ openedFromQR }) {
     }
   };
 
-  const processInput = async (inputText) => {
+  const processInput = async (inputText: string) => {
     switch (step) {
       case 0:
         setUserData((prevData) => ({ ...prevData, dni: inputText }));
@@ -181,7 +191,7 @@ export default function Chatbot({ openedFromQR }) {
               ...prevMessages,
               { from: "user", text: bancoSeleccionado.Descripcion },
             ]);
-            setUserData((prevData) => ({
+            setUserData((prevData: UserData) => ({
               ...prevData,
               bankCodigo: bancoSeleccionado.Codigo,
             }));
@@ -223,6 +233,7 @@ export default function Chatbot({ openedFromQR }) {
             setUserData((prevData) => ({
               ...prevData,
               cuil: identidadSeleccionada.cuil,
+              nombre: identidadSeleccionada.nombre,
             }));
             setMessages((prevMessages) => [
               ...prevMessages,
@@ -235,11 +246,32 @@ export default function Chatbot({ openedFromQR }) {
     }
   };
 
-  const sendConsultaCupo = async (userData) => {
+  const sendTelepromMessage = async (data: UserData, montoOverride?: number | string) => {
+    try {
+      // Send minimal payload; server will build the MessageWpp body with server-side env
+      const body = {
+        nombre: data.nombre || "Cliente",
+        monto: String(montoOverride ?? data.ingresos ?? ""),
+        areaCode: data.areaCode,
+        telefono: data.telefono,
+      };
+      await fetch("/api/teleprom/send", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(body),
+      });
+    } catch (err) {
+      console.error("Error sending WhatsApp message via Teleprom:", err);
+    }
+  };
+
+  const sendConsultaCupo = async (userData: UserData) => {
     setIsLoading(true);
     const { dni, cuil, bankCodigo, ingresos, telefono, areaCode } = userData;
 
-    const requestBody = {
+    const requestBody: any = {
       ticket: process.env.NEXT_PUBLIC_SMARTER_TICKET,
       usuario: openedFromQR ? "QRWEB" : "ONLINEWEB",
       productoId: parseInt(process.env.NEXT_PUBLIC_SMARTER_PRODUCT || "0", 10),
@@ -305,6 +337,7 @@ export default function Chatbot({ openedFromQR }) {
             ...prevMessages,
             { from: "bot", text: finalMessage },
           ]);
+          await sendTelepromMessage(userData, maximoCapital);
         } else if (resultado === "APROBADO CON CUPO") {
           finalMessage = `¡Excelente! Tenés un préstamo aprobado por $${maximoCapital} en 12 cuotas de $${maximoCuota}. Sujeto a un análisis crediticio.`;
           setIsConsultaStatus("APPROVED");
@@ -312,6 +345,7 @@ export default function Chatbot({ openedFromQR }) {
             ...prevMessages,
             { from: "bot", text: finalMessage },
           ]);
+          await sendTelepromMessage(userData, maximoCapital);
         }
 
         setIsFlowComplete(true);
@@ -420,7 +454,6 @@ export default function Chatbot({ openedFromQR }) {
           {step === 2 && !isLoading && (
             <div className="w-full dynamicselector border-t border-border flex gap-2 bottom-0 left-0 right-0 p-4">
               <DynamicSelector
-                className="border border-gray-300 rounded-md px-4 py-2 mb-2 overflow-y-scroll flex-grow"
                 selectedValue={selectedAreaCode}
                 setSelectedValue={setSelectedAreaCode}
                 options={phoneAreaOptions}
@@ -441,7 +474,7 @@ export default function Chatbot({ openedFromQR }) {
                 selectedValue={selectedBank}
                 setSelectedValue={setSelectedBank}
                 options={BANCOS.map((banco) => ({
-                  value: banco.Codigo,
+                  value: String(banco.Codigo),
                   label: banco.Descripcion,
                 }))}
                 placeholder={"Selecciona tu banco"}
@@ -459,11 +492,10 @@ export default function Chatbot({ openedFromQR }) {
           {step === 6 && !isLoading && (
             <div className="w-full dynamicselector border-t border-border flex gap-2 bottom-0 left-0 right-0 p-4">
               <DynamicSelector
-                className="border border-gray-300 rounded-md px-4 py-2 mb-2 overflow-y-scroll touch-auto"
                 selectedValue={selectedIdentidad}
                 setSelectedValue={setSelectedIdentidad}
                 options={identidades.map((identidad) => ({
-                  value: identidad.cuil,
+                  value: String(identidad.cuil),
                   label: `${identidad.nombre} (CUIL: ${identidad.cuil})`,
                 }))}
                 placeholder={"Seleccione su identidad"}

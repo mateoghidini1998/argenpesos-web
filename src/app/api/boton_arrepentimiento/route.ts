@@ -56,7 +56,7 @@ export async function POST(request: NextRequest) {
     let response: Response;
     try {
       response = await fetch(
-        `${baseUrl}external/BotonArrepentimiento`,
+        `${baseUrl}/external/BotonArrepentimiento`,
         {
           method: "POST",
           headers: {

@@ -7,8 +7,9 @@ export async function GET(request: NextRequest) {
   const ticket = searchParams.get('ticket');
 
   try {
+    const baseUrl = process.env.NEXT_PUBLIC_SMARTER_BASE_URL;
     const response = await fetch(
-      `https://smarter.argenpesos.com.ar:30010/External/validacionidentidad?ticket=${ticket}&documento=${dni}&sexo=${sexo}`
+      `${baseUrl}/External/validacionidentidad?ticket=${ticket}&documento=${dni}&sexo=${sexo}`
     );
 
     const data = await response.json();
