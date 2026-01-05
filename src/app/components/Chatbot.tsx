@@ -337,7 +337,6 @@ export default function Chatbot({ openedFromQR }: { openedFromQR?: boolean }) {
             ...prevMessages,
             { from: "bot", text: finalMessage },
           ]);
-          await sendTelepromMessage(userData, maximoCapital);
         } else if (resultado === "APROBADO CON CUPO") {
           finalMessage = `¡Excelente! Tenés un préstamo aprobado por $${maximoCapital} en 12 cuotas de $${maximoCuota}. Sujeto a un análisis crediticio.`;
           setIsConsultaStatus("APPROVED");
