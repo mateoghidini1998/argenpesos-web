@@ -19,12 +19,5 @@
         "image": "/make-a-wish.png",
         "imageMobile": "/make-a-wish-m.png",
         "text-position": "up"
-    },
-    {
-        "title": "¡Llegamos a Merlo!",
-        "subtitle":"#Comunidad",
-        "image": "/merlo.png",
-        "imageMobile": "/merlo_m.png",
-        "text-position": "down"
     }
 ]
