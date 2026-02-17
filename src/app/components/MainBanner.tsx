@@ -59,11 +59,11 @@ export default function MainBanner() {
 
           {/* TEXTO */}
           <div className="relative z-10 w-full md:w-1/3 flex flex-col justify-center items-center md:items-start text-white text-center md:text-left py-14 md:py-0">
-            <h1 className="text-[48px] md:text-[40px] lg:text-[70px] font-bold leading-[1.1] mb-6">
-              <span className="text-nowrap">ACCEDÉ A TU</span>
+            <h1 className="text-[52px] md:text-[44px] lg:text-[76px] font-bold leading-[1.1] mb-6">
+              <span className="text-nowrap">¡ANTICIPATE A</span>
               <br />
-              <span className="text-[52px] md:text-[44px] lg:text-[76px]">
-                PRÉSTAMO
+              <span className="text-[48px] md:text-[40px] lg:text-[55px] text-nowrap">
+                LA VUELTA AL COLE!
               </span>
             </h1>
 
@@ -73,7 +73,7 @@ export default function MainBanner() {
                   <IoIosArrowForward className="fill-white rounded-full bg-[#f75333]" />
                 </span>
                 <p className="text-lg md:text-xl lg:text-2xl font-medium">
-                  Cuotas fijas en pesos
+                  Fácil y rápido
                 </p>
               </div>
               <div className="flex items-center justify-start">
@@ -81,7 +81,7 @@ export default function MainBanner() {
                   <IoIosArrowForward className="fill-white rounded-full bg-[#f75333]" />
                 </span>
                 <p className="text-lg md:text-xl lg:text-2xl font-medium">
-                  Con o sin veraz
+                  Mínimos requisitos
                 </p>
               </div>
               <div className="flex items-center justify-start">
@@ -89,7 +89,7 @@ export default function MainBanner() {
                   <IoIosArrowForward className="fill-white rounded-full bg-[#f75333]" />
                 </span>
                 <p className="text-lg md:text-xl lg:text-2xl font-medium">
-                  Solo con DNI
+                  Cómodas cuotas fijas
                 </p>
               </div>
             </div>
@@ -117,9 +117,9 @@ export default function MainBanner() {
             </button>
 
             <img
-              src="/banner-agosto.png"
-              alt="Préstamo Banner"
-              className="object-contain object-bottom md:object-cover w-auto h-full self-end md:self-auto max-h-[400px] md:max-h-[450px] lg:max-h-[700px]"
+              src="/vuelta-al-cole.png"
+              alt="Vuelta al cole"
+              className="object-contain object-bottom md:object-cover w-auto h-full self-end md:self-auto max-h-[400px] md:max-h-[450px] lg:max-h-[600px] translate-x-3 md:translate-x-[12rem]"
             />
           </div>
         </section>
