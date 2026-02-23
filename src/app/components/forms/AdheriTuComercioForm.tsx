@@ -8,7 +8,7 @@ const AdheriTuComercioForm = () => {
   const fields = [
     { label: "Nombre", inputType: "input", name: "nombre" },
     { label: "Apellido", inputType: "input", name: "apellido" },
-    { label: "DNI (sin puntos)", inputType: "input", name: "dni" },
+    { label: "Antigüedad", inputType: "input", name: "antigüedad" },
     { label: "Celular", inputType: "input", name: "celular" },
     { label: "Mail", inputType: "input", name: "mail" },
     { label: "Nombre del comercio", inputType: "input", name: "nombre_comercio" },
